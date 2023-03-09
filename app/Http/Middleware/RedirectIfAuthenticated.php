@@ -2,7 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Providers\RouteServiceProvider;
 use Closure;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
@@ -11,26 +13,20 @@ class RedirectIfAuthenticated
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  $guard
-     * @return mixed
+     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @param  string|null  ...$guards
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle(Request $request, Closure $next, ...$guards)
     {
-      switch ($guard) {
-        case 'admin':
-          if(Auth::guard($guard)->check()){
-           return redirect()->route('dashboard.index');
-          }
-        break;
+        $guards = empty($guards) ? [null] : $guards;
 
-        default:
-          if (Auth::guard($guard)->check()) {
-            return redirect('/');
-          }
-        break;
-      }
+        foreach ($guards as $guard) {
+            if (Auth::guard($guard)->check()) {
+                return redirect(RouteServiceProvider::HOME);
+            }
+        }
 
-      return $next($request);
+        return $next($request);
     }
 }
