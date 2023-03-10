@@ -6,6 +6,10 @@
 <meta name="keywords" content="{{ isset($pageData['keywords']) ? $pageData['keywords'] : null }}" />
 
 <title>Maison Wealth</title>
+<link rel="shortcut icon" sizes="16x16 32x32 64x64"
+href="/favicon.png" type="image/x-icon" />
+<link rel="icon" href="/favicon.png" type="image/x-icon" />
+<link rel="apple-touch-icon" href="/favicon.png" />
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
