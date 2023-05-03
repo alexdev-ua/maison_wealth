@@ -818,6 +818,10 @@ button.custom-link{
 .property-item .property-description hr{
     border-top: 1px solid #c5c5c5;
 }
+.property-item .property-description .custom-link {
+    position: absolute;
+    bottom: 35px;
+}
 .property-item:hover .property-description{
     transform: translateX(0);
 }
