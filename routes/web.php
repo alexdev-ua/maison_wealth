@@ -22,6 +22,9 @@ use App\Http\Controllers\Dashboard\OrderController as DashboardOrderController;
 */
 
 Route::get('/', [IndexController::class, 'index'])->name('home');
+Route::get('/properties', [IndexController::class, 'properties'])->name('properties');
+Route::get('/properties/{location}', [IndexController::class, 'properties']);
+
 
 Route::get('/team', [IndexController::class, 'team'])->name('team');
 Route::get('/contacts', [IndexController::class, 'contacts'])->name('contacts');
