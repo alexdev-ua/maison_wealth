@@ -374,7 +374,7 @@ class Property extends Model
         return $properties;
     }
 
-    private function getPropertiesByLocation($location){
+    private static function getPropertiesByLocation($location){
         if(in_array($location, ['bali', 'miami', 'dubai', 'mexico'])){
             foreach(self::$properties as $url=>$property){
                 if($property['location'] == $location){
