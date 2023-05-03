@@ -21,7 +21,7 @@ class Property extends Model
             'for' => 'For living / For re-sale / For long term rent',
             'completion_date' => 'Q3 2026',
             'payment_plan' => '-',
-            'image' => 'im_district_11.png',
+            'image' => 'im_district_11.jpg',
             'mode' => 'invest',
         ],
         'cielo-maya' => [
@@ -49,7 +49,7 @@ class Property extends Model
             'for' => 'For living / For re-sale / For long term rent',
             'completion_date' => '-',
             'payment_plan' => '-',
-            'image' => 'im_cipriani.png',
+            'image' => 'im_cipriani.jpg',
             'mode' => 'more',
         ],
         'waldorf-astoria' => [
@@ -91,7 +91,7 @@ class Property extends Model
             'for' => 'For living / For re-sale / For long term rent',
             'completion_date' => '2027',
             'payment_plan' => '-',
-            'image' => 'im_bentley_residence.png',
+            'image' => 'im_bentley_residence.jpg',
             'mode' => 'more',
         ],
         'nalu-luxury-residences' => [
@@ -147,7 +147,7 @@ class Property extends Model
             'for' => 'For living / For re-sale / For long term rent',
             'completion_date' => '2025',
             'offer' => 'EB 5 program — you can get green card for the investment in this project',
-            'image' => 'im_nexo_residences.png',
+            'image' => 'im_nexo_residences.jpg',
             'mode' => 'more',
         ],
         'west-eleventh' => [
@@ -161,7 +161,7 @@ class Property extends Model
             'for' => 'For living / For re-sale / For long term rent',
             'completion_date' => '2025',
             'payment_plan' => '-',
-            'image' => 'im_west_eleventh.png',
+            'image' => 'im_west_eleventh.jpg',
             'mode' => 'invest',
         ],
         'secret-waters' => [
@@ -217,7 +217,7 @@ class Property extends Model
             'for' => 'For living / For re-sale / For daily rent',
             'completion_date' => 'Q1 2026',
             'payment_plan' => '-',
-            'image' => 'im_upper_house.png',
+            'image' => 'im_upper_house.jpg',
             'mode' => 'invest',
         ],
         'ceiba-condo-paradise' => [
@@ -283,7 +283,7 @@ class Property extends Model
             'rent_out' => '12% ROI',
             'buy_out' => '100-130% after development',
             'payback' => '5-6 years',
-            'image' => 'im_batu_bolong.png',
+            'image' => 'im_batu_bolong.jpg',
         ],*/
         'umalas-premier' => [
             'location' => 'bali',
@@ -330,7 +330,7 @@ class Property extends Model
             'rent_out' => '12% ROI',
             'buy_out' => '100-130% after development',
             'payback' => '5-6 years',
-            'image' => 'im_sunny_apart_2.png',
+            'image' => 'im_sunny_apart_2.jpg',
             'mode' => 'invest',
         ],
         'batu-bolong-2' => [
@@ -360,7 +360,7 @@ class Property extends Model
             'for' => 'For living / For re-sale / For daily rent',
             'completion_date' => '2026',
             'payment_plan' => '-',
-            'image' => 'im_sea_heaven.png',
+            'image' => 'im_sea_heaven.jpg',
             'mode' => 'invest',
         ]
     ];

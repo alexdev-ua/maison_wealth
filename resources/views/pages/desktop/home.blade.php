@@ -99,7 +99,7 @@
             </div>
             <div class="col-4 p-0">
                 <div class="facility-block">
-                    <img src="/images/im_edge.jpg" class="facility-bg-image" />
+                    <img src="/images/projects/im_edge.jpg" class="facility-bg-image" />
                     <div class="facility-info">
                         <div class="bottom-block">
                             <p class="facility-title">The Edge <img src="/images/ic_arrow_right.svg" class="link-icon" /></p>
@@ -110,7 +110,7 @@
             </div>
             <div class="col-4 p-0">
                 <div class="facility-block">
-                    <img src="/images/im_upper_house.png" class="facility-bg-image" />
+                    <img src="/images/projects/im_upper_house.jpg" class="facility-bg-image" />
                     <div class="facility-info">
                         <div class="bottom-block">
                             <p class="facility-title">Upper House <img src="/images/ic_arrow_right.svg" class="link-icon" /></p>
@@ -125,7 +125,7 @@
         <div class="row m-0">
             <div class="col-4 p-0">
                 <div class="facility-block">
-                    <img src="/images/im_bentley_residence.png" class="facility-bg-image" />
+                    <img src="/images/projects/im_bentley_residence.jpg" class="facility-bg-image" />
                     <div class="facility-info">
                         <div class="bottom-block">
                             <p class="facility-title">Bentley<br>Residences <img src="/images/ic_arrow_right.svg" class="link-icon" /></p>
@@ -136,7 +136,7 @@
             </div>
             <div class="col-4 p-0">
                 <div class="facility-block">
-                    <img src="/images/im_umalas_premier.jpg" class="facility-bg-image" />
+                    <img src="/images/projects/im_umalas_premier.jpg" class="facility-bg-image" />
                     <div class="facility-info">
                         <div class="bottom-block">
                             <p class="facility-title">Umalas Premier <img src="/images/ic_arrow_right.svg" class="link-icon" /></p>
@@ -147,7 +147,7 @@
             </div>
             <div class="col-4 p-0">
                 <div class="facility-block">
-                    <img src="/images/im_batu_bolong.png" class="facility-bg-image" />
+                    <img src="/images/projects/im_batu_bolong_2.jpg" class="facility-bg-image" />
                     <div class="facility-info">
                         <div class="bottom-block">
                             <p class="facility-title">Batu Bolong <img src="/images/ic_arrow_right.svg" class="link-icon" /></p>
