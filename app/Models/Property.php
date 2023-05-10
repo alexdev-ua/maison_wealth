@@ -239,7 +239,7 @@ class Property extends Model
         ],
         'the-edge' => [
             'location' => 'dubai',
-            'title' => 'Upper House',
+            'title' => 'The Edge',
             'country' => 'UAE',
             'city' => 'Dubai',
             'location_full' => 'Dubai, Business Bay',
@@ -384,6 +384,14 @@ class Property extends Model
             return $result;
         }
         return [];
+    }
+
+    public static function getByKey($key){
+        $properties = self::$properties;
+        if(isset($properties[$key])){
+            return $properties[$key];
+        }
+        return null;
     }
 
 }

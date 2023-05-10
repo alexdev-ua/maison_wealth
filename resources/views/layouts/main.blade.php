@@ -21,8 +21,6 @@
 			<!-- sidebar menu -->
 			@if($platform == 'mobile')
 				@include('includes.mobile.menu')
-			@else
-				@include('includes.desktop.user_menu')
 			@endif
 			<!-- end sidebar menu -->
 
@@ -32,10 +30,6 @@
 			</div>
 			<!-- end content -->
 
-			@if($platform == 'mobile')
-				@include('includes.mobile.contact_form')
-			
-			@endif
 		</div>
 
 		<!-- footer -->
@@ -45,6 +39,22 @@
 			@include('includes.desktop.footer')
 		@endif
 		<!-- end footer -->
+
+		@if($platform == 'desktop')
+			@if($showCookies)
+			<div class="cookies-panel">
+				<div class="row">
+					<div class="col-6 offset-6 pl-0">
+						<div class="cookies-content">
+							<button class="close-cookies-btn"><img src="/images/ic_close.svg" /></button>
+							<p class="cookies-message mb-0">To improve your experience on our site and to show you relevant advertising.<br>To find out more, read our <a href="" class="custom-link">Privacy Policy</a> and <a href="" class="custom-link">Cookie Policy</a>.</p>
+							<button class="main-btn black-btn accept-cookies-btn">Accept</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			@endif
+		@endif
 
 	</body>
 </html>

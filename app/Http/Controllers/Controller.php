@@ -7,6 +7,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Cookie;
 
 class Controller extends BaseController
 {
@@ -39,6 +40,19 @@ class Controller extends BaseController
 		$this->viewPath = $result;
 		$this->platform = $result;
 		View::share(['platform' => $this->platform]);
+
+        $this->middleware(function ($request, $next) {
+            $acceptCookies = Cookie::get('acceptCookies', null);
+
+            if($acceptCookies == null){
+                $showCookies = true;
+            }else{
+                $showCookies = false;
+            }
+            View::share(['showCookies' => $showCookies]);
+            return $next($request);
+        });
+
 	}
 
 }

@@ -5,41 +5,86 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Cookie;
 
 use App\Models\Property;
 
 class IndexController extends Controller
 {
-  public function index(){
-    return View::make('pages.'.$this->viewPath .'.home')->with([
+    public function index(){
+        return View::make('pages.'.$this->viewPath .'.home')->with([
 
-    ]);
-  }
+        ]);
+    }
 
-  public function properties($location='all', Request $request){
-      $properties = Property::getAll($location);
-      return View::make('pages.'.$this->viewPath .'.properties')->with([
-          'location' => $location,
-          'properties' => $properties,
-      ]);
-  }
+    public function properties($location='all', Request $request){
+        $properties = Property::getAll($location);
+        return View::make('pages.'.$this->viewPath .'.properties')->with([
+            'location' => $location,
+            'properties' => $properties,
+        ]);
+    }
 
-  public function about(){
-    return View::make('pages.'.$this->viewPath .'.about')->with([
+    public function propertyView($property, Request $request){
+        $propertyItem = Property::getByKey($property);
+        if(!$propertyItem || $this->platform == 'mobile'){
+            abort(404);
+        }
 
-    ]);
-  }
+        return View::make('pages.'.$this->viewPath .'.property_view')->with([
+            'property' => $propertyItem,
+        ]);
+    }
 
-  public function contacts(){
-    return View::make('pages.'.$this->viewPath .'.contacts')->with([
+    public function country(Request $request){
+        return View::make('pages.'.$this->viewPath .'.country')->with([
 
-    ]);
-  }
+        ]);
+    }
 
-  public function team(){
-    return View::make('pages.'.$this->viewPath .'.team')->with([
+    public function about(){
+        if($this->platform == 'mobile'){
+            abort(404);
+        }
+        return View::make('pages.'.$this->viewPath .'.about')->with([
 
-    ]);
-  }
+        ]);
+    }
+
+    public function blog(){
+        if($this->platform == 'mobile'){
+            abort(404);
+        }
+        return View::make('pages.'.$this->viewPath .'.blog')->with([
+
+        ]);
+    }
+
+    public function blogArticle(Request $request){
+        if($this->platform == 'mobile'){
+            abort(404);
+        }
+        return View::make('pages.'.$this->viewPath .'.blog_article')->with([
+
+        ]);
+    }
+
+    public function cookies(Request $request){
+        $accept = $request->accept;
+        Cookie::queue(Cookie::make('acceptCookies', $accept, 60*24*30*12));
+    }
+
+
+    public function contacts(){
+        return View::make('pages.'.$this->viewPath .'.contacts')->with([
+
+        ]);
+    }
+
+    public function team(){
+        return View::make('pages.'.$this->viewPath .'.team')->with([
+
+        ]);
+    }
 
 }

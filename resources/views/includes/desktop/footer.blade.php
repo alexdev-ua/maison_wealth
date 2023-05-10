@@ -15,8 +15,8 @@
 			<div class="col-6 offset-6 pl-0 row">
 				<div class="col-4">
 					<b class="group-title">Company</b>
-					<a href="" class="custom-link white-link footer-link mt-2">Properties</a>
-					<a href="" class="custom-link white-link footer-link mt-1">About</a>
+					<a href="{{route('properties')}}/all" class="custom-link white-link footer-link mt-2">Properties</a>
+					<a href="{{route('about')}}" class="custom-link white-link footer-link mt-1">About</a>
 					<a href="" class="custom-link white-link footer-link mt-1">Contact</a>
 				</div>
 				<div class="col-4">

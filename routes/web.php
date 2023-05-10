@@ -25,10 +25,20 @@ Route::get('/', [IndexController::class, 'index'])->name('home');
 Route::get('/properties', [IndexController::class, 'properties'])->name('properties');
 Route::get('/properties/{location}', [IndexController::class, 'properties']);
 
+Route::get('/property/{property}', [IndexController::class, 'propertyView']);
+
+Route::get('/countries', [IndexController::class, 'country'])->name('countries');
+Route::get('/about', [IndexController::class, 'about'])->name('about');
+
+Route::get('/blog', [IndexController::class, 'blog'])->name('blog');
+Route::get('/blog/article', [IndexController::class, 'blogArticle']);
+
+Route::get('/cookies', [IndexController::class, 'cookies']);
+
 
 Route::get('/team', [IndexController::class, 'team'])->name('team');
 Route::get('/contacts', [IndexController::class, 'contacts'])->name('contacts');
-Route::get('/about', [IndexController::class, 'about'])->name('about');
+
 Route::get('/gallery', [ProjectsController::class, 'gallery'])->name('gallery');
 
 Route::get('/projects', [ProjectsController::class, 'index'])->name('projects');

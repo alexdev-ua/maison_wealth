@@ -143,7 +143,7 @@
                                 </p>
                                 @endif
 
-                                <a href="" class="custom-link">{{$property['mode'] == 'more' ? 'More Info' : 'To Invest'}} <img src="/images/ic_arrow_right_white.svg"></a>
+                                <a href="/property/{{$url}}" class="custom-link">{{$property['mode'] == 'more' ? 'More Info' : 'To Invest'}} <img src="/images/ic_arrow_right_white.svg"></a>
                             </div>
                         </div>
                     </div>
@@ -153,7 +153,7 @@
         </div>
 
         <div class="text-center p-4">
-            <button class="custom-link">Back to Top <img src="/images/ic_arrow_right_white.svg"></button>
+            <button class="custom-link back-to-top-btn">Back to Top <img src="/images/ic_arrow_right_white.svg"></button>
         </div>
     </div>
 </div>

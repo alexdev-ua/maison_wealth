@@ -1,43 +1,29 @@
 <div class="main-menu" id="mainMenu">
 	<div class="menu-content">
-
+		<div class="text-right">
+			<button class="menu-btn">Close</button>
+		</div>
 		<ul class="menu mb-0">
 			<li class="menu-item">
-				<a href="{{route('team')}}" class="menu-link">Team</a>
+				<a href="{{route('properties')}}/all" class="menu-link">Properties</a>
 			</li>
 			<li class="menu-item">
-				<a href="{{route('projects')}}" class="menu-link">Projects</a>
+				<a href="{{route('countries')}}" class="menu-link">Countries</a>
 			</li>
 			<li class="menu-item">
-				<a href="{{route('gallery')}}" class="menu-link">Gallery</a>
+				<a href="{{route('about')}}" class="menu-link">About us</a>
 			</li>
 			<li class="menu-item">
-				<a href="{{route('contacts')}}" class="menu-link">Contacts</a>
+				<a href="{{route('blog')}}" class="menu-link">Blog</a>
 			</li>
 		</ul>
 
-		<div class="menu-contact-block mt-4">
-			<div class="logo-block">
-	      		Maison Wealth
-	    	</div>
-
-		    <div class="call-block mt-4">
-				<p class="mb-1">Call us</p>
-				<p class="phone-number">+62 813-3851-6360</p>
-
-				<button class="callback-btn">Request a call</button>
-		    </div>
-
-			<div class="social-links">
-				<a href="" class="social-link"><img src="/images/ic_fb.svg" /></a>
-	      		<a href="" class="social-link"><img src="/images/ic_insta.svg" /></a>
-			</div>
-		</div>
-
-		<div class="lang-block">
-			<p class="mb-0"><small>Language</small></p>
-			<a href="#" class="lang-link active">RU</a>
-			<a href="#" class="lang-link">EN</a>
+		<div class="menu-contact-block">
+			<p class="footer-label mb-3">Connect with us</p>
+			<a href="" class="custom-link white-link mr-2">LN <img src="/images/ic_arrow_right_white.svg" /></a>
+			<a href="" class="custom-link white-link ml-4 mr-2">FB <img src="/images/ic_arrow_right_white.svg" /></a>
+			<a href="" class="custom-link white-link ml-4 mr-2">TW <img src="/images/ic_arrow_right_white.svg" /></a>
+			<a href="" class="custom-link white-link ml-4">IG <img src="/images/ic_arrow_right_white.svg" /></a>
 		</div>
 
 	</div>
