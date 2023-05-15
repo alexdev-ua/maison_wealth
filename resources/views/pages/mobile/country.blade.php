@@ -3,7 +3,7 @@
 @section('content')
 <!-- carousel screen -->
 <div class="page-screen carousel-screen">
-    <div class="carousel">
+    <div class="carousel country-carousel">
         <div class="carousel-slide">
             <div class="carousel-image" style="background-image: url(../images/projects/im_edge.jpg)">
                 <div class="wraper">

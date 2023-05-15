@@ -1392,3 +1392,17 @@ button.custom-link{
     padding: 5px 30px;
     float: right;
 }
+
+.country-carousel .carousel-arrow {
+    bottom: 100px;
+}
+.country-carousel .carousel-arrow.btn-prev {
+    left: 50%;
+    transform: translateX(-100%);
+    margin-left: -15px;
+}
+.country-carousel .carousel-arrow.btn-next {
+    right: 50%;
+    transform: translateX(100%);
+    margin-right: -15px;
+}
