@@ -27,7 +27,7 @@ class IndexController extends Controller
 
     public function propertyView($property, Request $request){
         $propertyItem = Property::getByKey($property);
-        if(!$propertyItem || $this->platform == 'mobile'){
+        if(!$propertyItem){
             abort(404);
         }
 
@@ -43,27 +43,18 @@ class IndexController extends Controller
     }
 
     public function about(){
-        if($this->platform == 'mobile'){
-            abort(404);
-        }
         return View::make('pages.'.$this->viewPath .'.about')->with([
 
         ]);
     }
 
     public function blog(){
-        if($this->platform == 'mobile'){
-            abort(404);
-        }
         return View::make('pages.'.$this->viewPath .'.blog')->with([
 
         ]);
     }
 
     public function blogArticle(Request $request){
-        if($this->platform == 'mobile'){
-            abort(404);
-        }
         return View::make('pages.'.$this->viewPath .'.blog_article')->with([
 
         ]);
@@ -77,12 +68,6 @@ class IndexController extends Controller
 
     public function contacts(){
         return View::make('pages.'.$this->viewPath .'.contacts')->with([
-
-        ]);
-    }
-
-    public function team(){
-        return View::make('pages.'.$this->viewPath .'.team')->with([
 
         ]);
     }

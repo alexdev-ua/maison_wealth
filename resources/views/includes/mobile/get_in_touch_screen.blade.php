@@ -1,4 +1,4 @@
-<div class="page-screen auto-height mt-4">
+<div class="page-screen auto-height">
     <div class="wraper">
         <div class="get-in-touch-block">
             <p class="page-screen-heading text-center mb-4">Get In Touch</p>
