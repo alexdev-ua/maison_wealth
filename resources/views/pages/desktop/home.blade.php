@@ -94,7 +94,7 @@
 
                         <div class="bottom-block opened">
                             <p class="facility-description">We are an investment company. Sunlit and expansive. </p>
-                            <button class="main-btn red-btn watch-btn mt-3">Watch <span class="btn-icon"></span></button>
+                            <a href="/properties/all" class="main-btn red-btn watch-btn mt-3 d-inline-block">Watch <span class="btn-icon"></span></a>
                         </div>
                     </div>
                 </div>

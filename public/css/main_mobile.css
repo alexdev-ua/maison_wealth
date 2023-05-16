@@ -917,6 +917,11 @@ button.custom-link{
 }
 .invest-screen .banner-image{
     max-height: 75vw;
+    display: none;
+    transition: .3s ease;
+}
+.invest-screen .banner-image.active-banner{
+    display: block;
 }
 .invest-screen .page-screen-heading{
 	font-size: 36px;
@@ -942,14 +947,10 @@ button.custom-link{
     font-weight: 400;
     font-size: 18px;
     color: #1B1B1B;
-    opacity: 0;
     transition: all .3s ease-in-out;
 }
 .invest-block .invest-item.opened{
     border-color: #000000;
-}
-.invest-block .invest-item.opened .invest-description{
-    opacity: 1;
 }
 
 /* get in touch */
