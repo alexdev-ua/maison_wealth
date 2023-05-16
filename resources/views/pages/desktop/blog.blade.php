@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- top screen -->
-<div class="page-screen start-invest-screen">
+<div class="page-screen active-screen start-invest-screen">
     <img src="/images/im_blog_banner.jpg" class="page-screen-bg-image" />
     <div class="wraper">
         <div class="fixed-block left-block">
@@ -15,7 +15,7 @@
 <!-- end top screen -->
 
 <!-- blog articles screen -->
-<div class="page-screen auto-height blog-articles-screen mb-5">
+<div class="page-screen auto-height white-bg blog-articles-screen mb-5">
     <div class="wraper">
         <div class="row">
             <div class="col-6">

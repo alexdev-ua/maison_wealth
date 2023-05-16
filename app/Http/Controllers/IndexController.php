@@ -18,10 +18,15 @@ class IndexController extends Controller
     }
 
     public function properties($location='all', Request $request){
-        $properties = Property::getAll($location);
+        $options = [];
+        if($request->price){
+            $options['price'] = $request->price;
+        }
+        $properties = Property::getAll($location, $options);
         return View::make('pages.'.$this->viewPath .'.properties')->with([
             'location' => $location,
             'properties' => $properties,
+            'investPrice' => $request->price
         ]);
     }
 

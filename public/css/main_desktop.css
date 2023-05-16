@@ -128,7 +128,7 @@
 	font-weight: 300;
 }
 *::-webkit-scrollbar {
-	width: 10px;
+	width: 0;
 }
 
 *::-webkit-scrollbar-thumb {
@@ -159,6 +159,14 @@ a, a:focus{
 }
 ul{
 	list-style:none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
 }
 
 .banner-image{
@@ -249,6 +257,22 @@ footer .group-title{
     height: 100%;
     transform: translateY(-100%);
     background: rgba(255, 255, 255, 0.7);
+}
+
+.animated-block{
+    transition: all .5s ease-in-out;
+}
+.animated-block.slide-from-bottom{
+    transform: translateY(100%);
+}
+.page-screen.active-screen.opened .animated-block.slide-from-bottom{
+    transform: translateY(0);
+}
+.animated-block.slide-from-top{
+    transform: translateY(-100%);
+}
+.page-screen.active-screen.opened .animated-block.slide-from-top{
+    transform: translateY(0);
 }
 
 .main-menu .main-menu-link{
@@ -563,9 +587,19 @@ button.custom-link{
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    position: sticky;
+    top: 0;
+    opacity: 0;
+    z-index: -1;
 }
+.page-screen.active-screen{
+    opacity: 1;
+    z-index: 1;
+}
+
 .page-screen.auto-height {
     height: auto;
+    position: relative;
 }
 .page-screen .page-screen-bg-image {
     width: 100%;
@@ -858,7 +892,13 @@ button.custom-link{
 }
 .invest-screen .banner-image{
     max-height: calc(100vh - 168px);
+    display: none;
+    transition: .3s ease;
 }
+.invest-screen .banner-image.active-banner{
+    display: block;
+}
+
 .invest-block .invest-item{
     border-top: 1px solid #C5C5C5;
     padding-bottom: 30px;

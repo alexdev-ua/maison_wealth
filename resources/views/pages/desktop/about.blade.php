@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- top screen -->
-<div class="page-screen">
+<div class="page-screen active-screen">
     <div class="row">
         <div class="col-6 text-center">
             <div class="content-wraper page-block-content">
@@ -49,9 +49,9 @@
 <!-- end our focus screen -->
 
 <!-- more options to invest screen -->
-<div class="page-screen invest-options-screen">
+<div class="page-screen invest-options-screen white-bg">
     <div class="row">
-        <div class="col-6">
+        <div class="col-6 animated-block slide-from-top">
             <div class="content-wraper page-block-content">
                 <p class="page-screen-heading text-left mb-2"><span class="red-text">More and better</span><br>options to invest</p>
 
@@ -66,7 +66,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-6 pl-0">
+        <div class="col-6 pl-0 animated-block slide-from-bottom">
             <img src="/images/im_invest_options_banner.jpg" class="page-screen-bg-image" />
         </div>
     </div>
@@ -76,10 +76,10 @@
 <!-- financial advantages screen -->
 <div class="page-screen gray-bg financial-advantages-screen">
     <div class="row">
-        <div class="col-6 pr-0">
+        <div class="col-6 pr-0 animated-block slide-from-bottom">
             <img src="/images/im_financial_advantages_banner.jpg" class="page-screen-bg-image" />
         </div>
-        <div class="col-6">
+        <div class="col-6 animated-block slide-from-top">
             <div class="page-block-content gray-bg">
                 <p class="page-screen-heading mb-2">Financial<br><span class="red-text">Advantages</span></p>
 
@@ -98,7 +98,7 @@
 <!-- end financial advantages screen -->
 
 <!-- our clients say screen -->
-<div class="page-screen red-screen auto-height our-clients-say-screen">
+<div class="page-screen red-screen our-clients-say-screen">
     <div class="wraper">
         <div class="row">
             <div class="col-6">

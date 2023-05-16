@@ -23,6 +23,7 @@ class Property extends Model
             'payment_plan' => '-',
             'image' => 'im_district_11.jpg',
             'mode' => 'invest',
+            'price_digit' => 1170800
         ],
         'cielo-maya' => [
             'location' => 'mexico',
@@ -37,6 +38,7 @@ class Property extends Model
             'payment_plan' => 'Different Options',
             'image' => 'im_cielo_maya.jpg',
             'mode' => 'more',
+            'price_digit' => 1435000
         ],
         'cipriani-residences' => [
             'location' => 'miami',
@@ -51,6 +53,7 @@ class Property extends Model
             'payment_plan' => '-',
             'image' => 'im_cipriani.jpg',
             'mode' => 'more',
+            'price_digit' => 2341900
         ],
         'waldorf-astoria' => [
             'location' => 'miami',
@@ -65,6 +68,7 @@ class Property extends Model
             'payment_plan' => '-',
             'image' => 'im_waldorf_astoria.jpg',
             'mode' => 'invest',
+            'price_digit' => 3942000
         ],
         'bloom' => [
             'location' => 'mexico',
@@ -79,6 +83,7 @@ class Property extends Model
             'payment_plan' => 'Down Payment 30%',
             'image' => 'im_bloom.jpg',
             'mode' => 'more',
+            'price_digit' => 639000
         ],
         'bentley-residences' => [
             'location' => 'miami',
@@ -93,6 +98,7 @@ class Property extends Model
             'payment_plan' => '-',
             'image' => 'im_bentley_residence.jpg',
             'mode' => 'more',
+            'price_digit' => 5600000
         ],
         'nalu-luxury-residences' => [
             'location' => 'mexico',
@@ -107,6 +113,7 @@ class Property extends Model
             'payment_plan' => 'Different Options',
             'image' => 'im_nalu_residences.jpg',
             'mode' => 'more',
+            'price_digit' => 600000
         ],
         'damac-bay-cavalli' => [
             'location' => 'dubai',
@@ -121,6 +128,7 @@ class Property extends Model
             'payment_plan' => '-',
             'image' => 'im_damac_bay.jpg',
             'mode' => 'invest',
+            'price_digit' => 814200
         ],
         'grand-peninsula' => [
             'location' => 'mexico',
@@ -135,6 +143,7 @@ class Property extends Model
             'payment_plan' => 'Down Payment 30%',
             'image' => 'im_grand_peninsula.jpg',
             'mode' => 'more',
+            'price_digit' => 779000
         ],
         'nexo-residences' => [
             'location' => 'miami',
@@ -149,6 +158,7 @@ class Property extends Model
             'offer' => 'EB 5 program — you can get green card for the investment in this project',
             'image' => 'im_nexo_residences.jpg',
             'mode' => 'more',
+            'price_digit' => 505000
         ],
         'west-eleventh' => [
             'location' => 'miami',
@@ -163,6 +173,7 @@ class Property extends Model
             'payment_plan' => '-',
             'image' => 'im_west_eleventh.jpg',
             'mode' => 'invest',
+            'price_digit' => 511000
         ],
         'secret-waters' => [
             'location' => 'mexico',
@@ -177,6 +188,7 @@ class Property extends Model
             'payment_plan' => 'Down Payment 30%',
             'image' => 'im_secret_waters.jpg',
             'mode' => 'more',
+            'price_digit' => 421000
         ],
         'nunna' => [
             'location' => 'mexico',
@@ -191,6 +203,7 @@ class Property extends Model
             'payment_plan' => '-',
             'image' => 'im_nunna.jpg',
             'mode' => 'more',
+            'price_digit' => 450000
         ],
         '600-wordcenter' => [
             'location' => 'miami',
@@ -205,6 +218,7 @@ class Property extends Model
             'payment_plan' => '-',
             'image' => 'im_600_worldcenter.jpg',
             'mode' => 'invest',
+            'price_digit' => 435000
         ],
         'upper-house' => [
             'location' => 'dubai',
@@ -219,6 +233,7 @@ class Property extends Model
             'payment_plan' => '-',
             'image' => 'im_upper_house.jpg',
             'mode' => 'invest',
+            'price_digit' => 336600
         ],
         'ceiba-condo-paradise' => [
             'location' => 'mexico',
@@ -236,6 +251,7 @@ class Property extends Model
             'payment_plan' => '-',
             'image' => 'im_ceiba_paradise.jpg',
             'mode' => 'more',
+            'price_digit' => 357000
         ],
         'the-edge' => [
             'location' => 'dubai',
@@ -250,6 +266,7 @@ class Property extends Model
             'payment_plan' => '-',
             'image' => 'im_edge.jpg',
             'mode' => 'invest',
+            'price_digit' => 350000
         ],
         'cuddles-berawa' => [
             'location' => 'bali',
@@ -269,6 +286,7 @@ class Property extends Model
             'payback' => '5-6 years',
             'image' => 'im_cuddles_berawa.jpg',
             'mode' => 'invest',
+            'price_digit' => [250000, 320000]
         ],
         /*'batu-bolong' => [
             'location' => 'bali',
@@ -300,6 +318,7 @@ class Property extends Model
             'payback' => '5-6 years',
             'image' => 'im_umalas_premier.jpg',
             'mode' => 'invest',
+            'price_digit' => 260000
         ],
         'sunny-apart-1' => [
             'location' => 'bali',
@@ -316,6 +335,7 @@ class Property extends Model
             'payback' => '5-6 years',
             'image' => 'im_sunny_apart_1.jpg',
             'mode' => 'invest',
+            'price_digit' => 180000
         ],
         'sunny-apart-2' => [
             'location' => 'bali',
@@ -332,6 +352,7 @@ class Property extends Model
             'payback' => '5-6 years',
             'image' => 'im_sunny_apart_2.jpg',
             'mode' => 'invest',
+            'price_digit' => 180000
         ],
         'batu-bolong-2' => [
             'location' => 'bali',
@@ -348,6 +369,7 @@ class Property extends Model
             'payback' => '5-6 years',
             'image' => 'im_batu_bolong_2.jpg',
             'mode' => 'invest',
+            'price_digit' => 350000
         ],
         'sea-heaven' => [
             'location' => 'dubai',
@@ -362,14 +384,24 @@ class Property extends Model
             'payment_plan' => '-',
             'image' => 'im_sea_heaven.jpg',
             'mode' => 'invest',
+            'price_digit' => 2180000
         ]
     ];
 
-    public static function getAll($location){
+    public static function getAll($location, $options){
         if($location == 'all'){
             $properties = self::$properties;
         }else{
             $properties = self::getPropertiesByLocation($location);
+        }
+        if(isset($options['price'])){
+            $propertiesByPrice = [];
+            foreach($properties as $url=>$property){
+                if($property['price_digit'] <= $options['price']){
+                    $propertiesByPrice[$url] = $property;
+                }
+            }
+            $properties = $propertiesByPrice;
         }
         return $properties;
     }

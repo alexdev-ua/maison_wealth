@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- carousel screen -->
-<div class="page-screen carousel-screen">
+<div class="page-screen active-screen carousel-screen">
     <div class="carousel">
         <div class="carousel-slide">
             <div class="carousel-image" style="background-image: url(../images/projects/im_edge.jpg)">
@@ -37,13 +37,11 @@
 <!-- end carousel screen -->
 
 <!-- popular countries screen -->
-<div class="page-screen invest-screen pt-5">
+<div class="page-screen white-bg invest-screen pt-5">
     <div class="wraper">
         <div class="row">
-            <div class="col-12">
-                <p class="page-screen-heading">MAISON W.<br>Directions</p>
-            </div>
             <div class="col-6">
+                <p class="page-screen-heading">MAISON W.<br>Directions</p>
                 <p class="page-block-description text-left font-normal">We create individual investment plans for each client and provide answers to all questions related to real estate investing, to make it safe and profitable.</p>
                 <p class="page-block-description text-left font-normal">We are always happy to help you choose the right property that meets our client's long-term needs, as well as a profitable investment plan.</p>
             </div>
@@ -52,29 +50,29 @@
                     <div class="col-6">
                         <div class="invest-item">
                             <p class="invest-name">UAE <span class="invest-city">(Dubai)</span></p>
-                            <div class="invest-description">A leading world-class residential destination. A city with a high level of security, progressive infrastructure...</div>
-                            <button class="custom-link details-btn mt-3">Details <img src="/images/ic_arrow_right_white.svg"></button>
+                            <div class="invest-description">Real estate in Dubai is one of the best assets for investment. The growth in property prices is at least 10-15% per year, guaranteeing high profits for your investments.</div>
+                            <a href="/properties/dubai" class="custom-link details-btn mt-3" data-banner="#investBanner1">Details <img src="/images/ic_arrow_right_white.svg"></a>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="invest-item">
                             <p class="invest-name">USA <span class="invest-city">(Miami)</span></p>
-                            <div class="invest-description">A leading world-class residential destination. A city with a high level of security, progressive infrastructure...</div>
-                            <button class="custom-link details-btn mt-3">Details <img src="/images/ic_arrow_right_white.svg"></button>
+                            <div class="invest-description">Miami is the place where dreams of stable and profitable investments come true. With an annual rental occupancy rate of over 85% and a growing demand for short-term rentals.</div>
+                            <a href="/properties/miami" class="custom-link details-btn mt-3" data-banner="#investBanner2">Details <img src="/images/ic_arrow_right_white.svg"></a>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="invest-item">
                             <p class="invest-name">Indonesia<br><span class="invest-city">(Bali)</span></p>
-                            <div class="invest-description">A leading world-class residential destination. A city with a high level of security, progressive infrastructure...</div>
-                            <button class="custom-link details-btn mt-3">Details <img src="/images/ic_arrow_right_white.svg"></button>
+                            <div class="invest-description">On Bali, you will find high returns on real estate investments, thanks to the 300% increase in land value over the last 5 years.</div>
+                            <a href="/properties/bali" class="custom-link details-btn mt-3" data-banner="#investBanner3">Details <img src="/images/ic_arrow_right_white.svg"></a>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="invest-item">
                             <p class="invest-name">Mexico<br><span class="invest-city">(Riviera Maya)</span></p>
-                            <div class="invest-description">A leading world-class residential destination. A city with a high level of security, progressive infrastructure...</div>
-                            <button class="custom-link details-btn mt-3">Details <img src="/images/ic_arrow_right_white.svg"></button>
+                            <div class="invest-description">The ROI ranges from 8% to 12%, and the payback period is 6-7 years.</div>
+                            <a href="/properties/mexico" class="custom-link details-btn mt-3" data-banner="#investBanner4">Details <img src="/images/ic_arrow_right_white.svg"></a>
                         </div>
                     </div>
                 </div>

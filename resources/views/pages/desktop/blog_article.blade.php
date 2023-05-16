@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- top screen -->
-<div class="page-screen auto-height article-screen">
+<div class="page-screen active-screen auto-height article-screen">
     <div class="wraper">
         <p class="article-title page-screen-heading">Property in<br>Dubai</p>
         <div class="row mb-5">
@@ -53,9 +53,9 @@
 <!-- end why screen -->
 
 <!-- more options to invest screen -->
-<div class="page-screen invest-options-screen">
+<div class="page-screen white-bg invest-options-screen">
     <div class="row">
-        <div class="col-6">
+        <div class="col-6 animated-block slide-from-bottom">
             <div class="content-wraper page-block-content">
                 <p class="page-screen-heading text-left mb-2"><span class="red-text">More and better</span><br>options to invest</p>
 
@@ -70,7 +70,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-6 pl-0">
+        <div class="col-6 pl-0 animated-block slide-from-top">
             <img src="/images/im_invest_options_banner.jpg" class="page-screen-bg-image" />
         </div>
     </div>
@@ -78,12 +78,12 @@
 <!-- end more options to invest screen -->
 
 <!-- commercial properties screen -->
-<div class="page-screen financial-advantages-screen">
+<div class="page-screen white-bg financial-advantages-screen">
     <div class="row">
-        <div class="col-6 pr-0">
+        <div class="col-6 pr-0 animated-block slide-from-top">
             <img src="/images/im_financial_advantages_banner.jpg" class="page-screen-bg-image" />
         </div>
-        <div class="col-6">
+        <div class="col-6 animated-block slide-from-bottom">
             <div class="page-block-content">
                 <p class="page-screen-heading mb-2"><span class="red-text">Commercial properties</span><br>for sale in Dubai</p>
 
@@ -103,12 +103,12 @@
 <!-- start investing screen -->
 <div class="page-screen gray-bg start-investing-screen">
     <div class="row">
-        <div class="col-6">
+        <div class="col-6 animated-block slide-from-bottom">
             <div class="page-block-content gray-bg">
                 <p class="page-screen-heading mb-2"><span class="gray-text">Start investing</span> in Dubai (UAE), <span class="gray-text">think it over and we will be there for you.</span></p>
             </div>
         </div>
-        <div class="col-6 pl-0">
+        <div class="col-6 pl-0 animated-block slide-from-top">
             <img src="/images/im_start_invest_banner.jpg" class="page-screen-bg-image" />
         </div>
     </div>

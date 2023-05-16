@@ -55,11 +55,4 @@ $(document).ready(function(){
 	    }, 1000);
 	});
 
-	$(document).on('mouseenter', '.invest-item .details-btn', function(){
-		$(this).closest('.invest-item').addClass('opened');
-	});
-	$(document).on('mouseleave', '.invest-item .details-btn', function(){
-		$(this).closest('.invest-item').removeClass('opened');
-	});
-
 });

@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- top screen -->
-<div class="page-screen property-screen">
+<div class="page-screen active-screen property-screen">
     <img src="/images/projects/{{$property['image']}}" class="page-screen-bg-image" />
     <div class="wraper">
         <div class="fixed-block right-block">
@@ -14,7 +14,7 @@
 <!-- end top screen -->
 
 <!-- pluses screen -->
-<div class="page-screen auto-height pluses-screen">
+<div class="page-screen auto-height white-bg pluses-screen">
     <div class="wraper">
         <div class="row">
             <div class="col-6 offset-6">
@@ -58,7 +58,7 @@
         <div class="col-6 pl-0">
             <div class="carousel features-carousel">
                 <div class="carousel-slide feature-slide">
-                    <div class="content-wraper page-block-content">
+                    <div class="content-wraper page-block-content white-bg">
                         <div>
                             <img src="/images/im_features_photo_1.jpg" class="page-screen-bg-image" />
                         </div>

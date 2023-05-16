@@ -30,6 +30,14 @@
 			</div>
 			<!-- end content -->
 
+			<!-- pop-ups -->
+			@if($platform == 'mobile')
+				@include('includes.mobile.consult_popup')
+			@else
+				@include('includes.desktop.consult_popup')
+			@endif
+			<!-- end pop-ups -->
+
 		</div>
 
 		<!-- footer -->

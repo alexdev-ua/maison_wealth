@@ -25,10 +25,10 @@
                         <p class="custom-form-text uppercase text-center mb-0">The amount you would like to invest</p>
                     </div>
                     <div class="col-6 pr-0 mt-5">
-                        <input type="text" class="custom-input bordered" placeholder="Enter your sum" />
+                        <input type="number" inputmode="numeric" pattern="\d*" class="custom-input bordered" name="price" placeholder="Enter your sum" autocomplete="off" />
                     </div>
                     <div class="col-6 pl-0 mt-5">
-                        <button class="main-btn black-btn pop-up-btn" data-pop-up="#personalConsultPopup">Search <span class="btn-icon"></span></button>
+                        <button class="main-btn black-btn">Search <span class="btn-icon"></span></button>
                     </div>
                 </div>
             </div>
@@ -140,7 +140,7 @@
     <div class="mt-5 wraper">
         <p class="page-screen-heading">Why invest in these<br>countries/ cities?</p>
     </div>
-    <img src="/images/im_invest_banner.jpg" class="banner-image" />
+    <img src="/images/im_invest_dubai_banner.jpg" class="banner-image" />
     <div class="wraper mt-4 pt-3">
         <div class="invest-block row">
             <div class="col-6">
@@ -179,48 +179,5 @@
 <!-- get in touch screen -->
 @include('includes.mobile.get_in_touch_screen')
 <!-- end get in touch screen -->
-
-<!-- pop-ups -->
-<div class="pop-up" id="personalConsultPopup">
-    <div class="wraper">
-        <div class="pop-up-header">
-            <button class="close-pop-up-btn pop-up-btn" data-pop-up="#personalConsultPopup"><img src="/images/ic_close.svg"></button>
-        </div>
-        <div class="pop-up-content">
-            <form class="custom-form">
-                <p class="pop-up-heading mb-0">Get a personal expert<br>consultation</p>
-                <div class="row mt-5 mb-5 pt-3">
-                    <div class="col-10">
-                        <div class="form-group">
-                            <span class="custom-label">First Name</span>
-                            <input type="text" name="firstName" class="custom-input" />
-                        </div>
-                    </div>
-                    <div class="col-10 mt-3">
-                        <div class="form-group">
-                            <span class="custom-label">Last Name</span>
-                            <input type="text" name="lastName" class="custom-input" />
-                        </div>
-                    </div>
-                    <div class="col-10 mt-3">
-                        <div class="form-group">
-                            <span class="custom-label">Phone Number</span>
-                            <input type="text" name="phone" class="custom-input" />
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group">
-                            <input type="checkbox" name="haveWhatsapp" class="custom-input mr-2" /><span class="custom-label">I have a WhatsApp account registered to this phone number</span>
-                        </div>
-                    </div>
-                    <div class="col-6 offset-3 mt-4 pt-2">
-                        <button class="main-btn black-btn inverted-btn">Send <span class="btn-icon"></span></button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- end pop-ups -->
 
 @endsection
