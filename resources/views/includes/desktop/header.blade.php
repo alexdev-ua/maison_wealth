@@ -1,10 +1,14 @@
-<header>
+<header @if($activePage == 'properties' || $activePage == 'article-view'){{'class=red-header'}}@endif>
     <div class="wraper">
         <div class="row m-0">
             <div class="col-6 pl-0">
                 <div class="border-top">
                     <a href="{{route('home')}}" class="main-logo">
+                        @if($activePage == 'properties' || $activePage == 'article-view')
+                        <img src="/images/ic_logo_red.svg" />
+                        @else
                         <img src="/images/ic_logo_light.svg" />
+                        @endif
                     </a>
                 </div>
             </div>

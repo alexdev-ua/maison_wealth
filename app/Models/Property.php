@@ -20,7 +20,7 @@ class Property extends Model
             'price' => 'from 1 170 800$',
             'for' => 'For living / For re-sale / For long term rent',
             'completion_date' => 'Q3 2026',
-            'payment_plan' => '-',
+            'payment_plan' => '+',
             'image' => 'im_district_11.jpg',
             'mode' => 'invest',
             'price_digit' => 1170800
@@ -50,7 +50,7 @@ class Property extends Model
             'price' => 'from 2 341 900$',
             'for' => 'For living / For re-sale / For long term rent',
             'completion_date' => '-',
-            'payment_plan' => '-',
+            'payment_plan' => '+',
             'image' => 'im_cipriani.jpg',
             'mode' => 'more',
             'price_digit' => 2341900
@@ -65,7 +65,7 @@ class Property extends Model
             'price' => 'from 3 942 000$',
             'for' => 'For living / For re-sale / For long term rent',
             'completion_date' => '-',
-            'payment_plan' => '-',
+            'payment_plan' => '+',
             'image' => 'im_waldorf_astoria.jpg',
             'mode' => 'invest',
             'price_digit' => 3942000
@@ -95,7 +95,7 @@ class Property extends Model
             'price' => 'from 5 600 000$',
             'for' => 'For living / For re-sale / For long term rent',
             'completion_date' => '2027',
-            'payment_plan' => '-',
+            'payment_plan' => '+',
             'image' => 'im_bentley_residence.jpg',
             'mode' => 'more',
             'price_digit' => 5600000
@@ -125,7 +125,7 @@ class Property extends Model
             'price' => 'from 814 200$',
             'for' => 'For living / For re-sale / For long term rent',
             'completion_date' => '2027',
-            'payment_plan' => '-',
+            'payment_plan' => '+',
             'image' => 'im_damac_bay.jpg',
             'mode' => 'invest',
             'price_digit' => 814200
@@ -170,7 +170,7 @@ class Property extends Model
             'price' => 'from 511 000$',
             'for' => 'For living / For re-sale / For long term rent',
             'completion_date' => '2025',
-            'payment_plan' => '-',
+            'payment_plan' => '+',
             'image' => 'im_west_eleventh.jpg',
             'mode' => 'invest',
             'price_digit' => 511000
@@ -200,7 +200,7 @@ class Property extends Model
             'price' => 'from 450 000$',
             'for' => 'For living / For re-sale / For daily rent',
             'completion_date' => 'Q4 2023',
-            'payment_plan' => '-',
+            'payment_plan' => '+',
             'image' => 'im_nunna.jpg',
             'mode' => 'more',
             'price_digit' => 450000
@@ -215,7 +215,7 @@ class Property extends Model
             'price' => 'from 435 000$',
             'for' => 'For living / For re-sale / For short term rent',
             'completion_date' => '2026',
-            'payment_plan' => '-',
+            'payment_plan' => '+',
             'image' => 'im_600_worldcenter.jpg',
             'mode' => 'invest',
             'price_digit' => 435000
@@ -230,7 +230,7 @@ class Property extends Model
             'price' => 'from 336 600$',
             'for' => 'For living / For re-sale / For daily rent',
             'completion_date' => 'Q1 2026',
-            'payment_plan' => '-',
+            'payment_plan' => '+',
             'image' => 'im_upper_house.jpg',
             'mode' => 'invest',
             'price_digit' => 336600
@@ -248,7 +248,7 @@ class Property extends Model
             'price' => 'from 357 000$',
             'for' => 'For living / For re-sale / For daily rent',
             'completion_date' => '-',
-            'payment_plan' => '-',
+            'payment_plan' => '+',
             'image' => 'im_ceiba_paradise.jpg',
             'mode' => 'more',
             'price_digit' => 357000
@@ -263,7 +263,7 @@ class Property extends Model
             'price' => 'from 350 000$',
             'for' => 'For living / For re-sale / For daily rent',
             'completion_date' => 'Q4 2026',
-            'payment_plan' => '-',
+            'payment_plan' => '+',
             'image' => 'im_edge.jpg',
             'mode' => 'invest',
             'price_digit' => 350000
@@ -381,7 +381,7 @@ class Property extends Model
             'price' => 'from 2 180 000$',
             'for' => 'For living / For re-sale / For daily rent',
             'completion_date' => '2026',
-            'payment_plan' => '-',
+            'payment_plan' => '+',
             'image' => 'im_sea_heaven.jpg',
             'mode' => 'invest',
             'price_digit' => 2180000

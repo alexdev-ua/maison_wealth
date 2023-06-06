@@ -27,6 +27,13 @@
 			<!-- content -->
 			<div class="content">
 				@yield('content')
+
+				@if($platform == 'mobile')
+				<!-- footer -->
+					@include('includes.mobile.footer')
+				<!-- end footer -->
+				@endif
+
 			</div>
 			<!-- end content -->
 
@@ -39,14 +46,6 @@
 			<!-- end pop-ups -->
 
 		</div>
-
-		<!-- footer -->
-		@if($platform == 'mobile')
-			@include('includes.mobile.footer')
-		@else
-			@include('includes.desktop.footer')
-		@endif
-		<!-- end footer -->
 
 		@if($platform == 'desktop')
 			@if($showCookies)

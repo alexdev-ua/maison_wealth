@@ -27,7 +27,7 @@
                     </div>
                     <div class="form-group mt-4">
                         <span class="custom-label">Phone Number *</span>
-                        <input type="text" name="phone" class="custom-input" value="+966" />
+                        <input type="text" name="phone" class="custom-input" value="" />
                     </div>
                     <div class="form-group mt-4">
                         <span class="custom-label">Email *</span>

@@ -2,40 +2,42 @@
 
 @section('content')
 <!-- top screen -->
-<div class="page-screen active-screen property-screen">
+<div class="page-screen active-screen opened property-screen">
     <img src="/images/projects/{{$property['image']}}" class="page-screen-bg-image" />
     <div class="wraper">
         <div class="fixed-block right-block">
             <p class="fixed-block-title">{{$property['title']}}</p>
         </div>
-        <a href="" class="main-btn black-btn inverted-btn border-0">Start to Invest <span class="btn-icon"></span></a>
+        <button class="main-btn black-btn inverted-btn border-0 scroll-to-btn" data-scroll-to="#personalConsultScreen">Start to Invest <span class="btn-icon"></span></button>
     </div>
 </div>
 <!-- end top screen -->
 
 <!-- pluses screen -->
-<div class="page-screen auto-height white-bg pluses-screen">
-    <div class="wraper">
-        <div class="row">
-            <div class="col-6 offset-6">
-                <p class="page-screen-heading mt-5 mb-5">We offer properties on the Mexican Caribbean coast from Cancun to Tulum. Today, Puerto Aventuras is experiencing an investment boom, and practically no properties are left for purchase.</p>
-                <div class="pluses-list row mt-2">
-                    <div class="col-6">
-                        <div class="plus-item">
-                            <div class="plus-item-heading">Top location</div>
-                            <div class="plus-item-description">Puerto Aventuras is a small resort town on the coast of the Caribbean Sea with a perfect location.</div>
+<div class="page-screen auto-height pluses-screen">
+    <div class="top-padding animated-block slide-from-bottom white-bg">
+        <div class="wraper">
+            <div class="row">
+                <div class="col-6 offset-6">
+                    <p class="page-screen-heading mb-5">We offer properties on the Mexican Caribbean coast from Cancun to Tulum. Today, Puerto Aventuras is experiencing an investment boom, and practically no properties are left for purchase.</p>
+                    <div class="pluses-list row mt-2">
+                        <div class="col-6">
+                            <div class="plus-item">
+                                <div class="plus-item-heading">Top location</div>
+                                <div class="plus-item-description">Puerto Aventuras is a small resort town on the coast of the Caribbean Sea with a perfect location.</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="plus-item">
-                            <div class="plus-item-heading">Reselling</div>
-                            <div class="plus-item-description">The real estate market on the Mexican Riviera provides high investment returns, with starting prices at just $200,000 and average prices at $500,000. </div>
+                        <div class="col-6">
+                            <div class="plus-item">
+                                <div class="plus-item-heading">Reselling</div>
+                                <div class="plus-item-description">The real estate market on the Mexican Riviera provides high investment returns, with starting prices at just $200,000 and average prices at $500,000. </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="plus-item">
-                            <div class="plus-item-heading">High return</div>
-                            <div class="plus-item-description">The shortage of land in this village will lead to the cost of land steadily increasing. Analysts promise a return on investments from 10% to 15%.</div>
+                        <div class="col-6">
+                            <div class="plus-item">
+                                <div class="plus-item-heading">High return</div>
+                                <div class="plus-item-description">The shortage of land in this village will lead to the cost of land steadily increasing. Analysts promise a return on investments from 10% to 15%.</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -48,15 +50,15 @@
 <!-- features screen -->
 <div class="page-screen features-screen">
     <div class="row">
-        <div class="col-6 pr-0">
+        <div class="col-6 pr-0 animated-block slide-from-top">
             <div class="content-wraper red-bg page-block-content">
                 <p class="page-screen-heading text-left mb-2">NÁLU Luxury Beachfront Residences consists of 12 exclusive luxury apartments, making it the most attractive development in Puerto Morelos.</p>
 
                 <p class="page-block-description font-normal light-weight mt-4 mb-2 text-left">At NÁLU Luxury Beachfront Residences, you will live sweet and mystical experiences through proximity to the sea. You will create unparalleled stories by being surrounded by the majestic mangrove swamp, its magical cenotes, and the imposing beauty of its coral reefs.</p>
             </div>
         </div>
-        <div class="col-6 pl-0">
-            <div class="carousel features-carousel">
+        <div class="col-6 pl-0 animated-block slide-from-bottom">
+            <div class="carousel features-carousel white-bg">
                 <div class="carousel-slide feature-slide">
                     <div class="content-wraper page-block-content white-bg">
                         <div>
@@ -97,16 +99,16 @@
 <!-- end features screen -->
 
 <!-- personal consulatation screen -->
-<div class="page-screen auto-height gray-bg personal-consultation-screen">
+<div class="page-screen gray-bg personal-consultation-screen" id="personalConsultScreen">
     <div class="row">
-        <div class="col-6">
-            <div class="page-block-content gray-bg">
+        <div class="col-6 animated-block slide-from-bottom">
+            <div class="page-block-content gray-bg top-padding">
                 <p class="page-screen-heading mb-2"><span class="gray-text">Start investing</span> correctly, without unnecessary risks and with the greatest benefit, <span class="gray-text">think it over and we will be there for you.</span></p>
             </div>
         </div>
-        <div class="col-6 pl-0">
+        <div class="col-6 pl-0 animated-block slide-from-top white-bg">
             <div class="form-container">
-                <div class="form-heading black-heading">Get a personal expert<br>consultation</div>
+                <div class="form-heading black-heading top-padding">Get a personal expert<br>consultation</div>
                 <div class="form-content">
                     <form class="custom-form">
                         <div class="row">
@@ -144,6 +146,10 @@
     </div>
 </div>
 <!-- end personal consultation screen -->
+
+<!-- footer -->
+@include('includes.desktop.footer')
+<!-- end footer -->
 
 <script>
     $('.features-carousel').slick({

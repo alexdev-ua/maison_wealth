@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- top screen -->
-<div class="page-screen active-screen">
+<div class="page-screen active-screen opened">
     <div class="row">
         <div class="col-6 text-center">
             <div class="content-wraper page-block-content">
@@ -23,12 +23,12 @@
 <!-- end top screen -->
 
 <!-- our focus screen -->
-<div class="page-screen focus-screen gray-bg">
-    <div class="wraper">
+<div class="page-screen focus-screen">
+    <div class="wraper animated-block slide-from-bottom gray-bg top-padding">
         <p class="focus-heading mb-0">Our focus is on stable and secure directions with clear legislation and high profitability. We will accompany the purchase and resale of your property at the right time.</p>
         <div class="row">
-            <div class="col-6 offset-6 pl-0">
-                <div class="stats-block">
+            <div class="col-10 offset-2 pl-0">
+                <div class="stats-block float-right">
                     <div class="stat-item">
                         <p class="stat-counter">12</p>
                         Worldwide projects
@@ -49,9 +49,9 @@
 <!-- end our focus screen -->
 
 <!-- more options to invest screen -->
-<div class="page-screen invest-options-screen white-bg">
+<div class="page-screen invest-options-screen">
     <div class="row">
-        <div class="col-6 animated-block slide-from-top">
+        <div class="col-6 animated-block slide-from-top white-bg pr-0">
             <div class="content-wraper page-block-content">
                 <p class="page-screen-heading text-left mb-2"><span class="red-text">More and better</span><br>options to invest</p>
 
@@ -74,12 +74,12 @@
 <!-- end more options to invest screen -->
 
 <!-- financial advantages screen -->
-<div class="page-screen gray-bg financial-advantages-screen">
+<div class="page-screen financial-advantages-screen">
     <div class="row">
         <div class="col-6 pr-0 animated-block slide-from-bottom">
             <img src="/images/im_financial_advantages_banner.jpg" class="page-screen-bg-image" />
         </div>
-        <div class="col-6 animated-block slide-from-top">
+        <div class="col-6 animated-block slide-from-top pl-0">
             <div class="page-block-content gray-bg">
                 <p class="page-screen-heading mb-2">Financial<br><span class="red-text">Advantages</span></p>
 
@@ -98,31 +98,33 @@
 <!-- end financial advantages screen -->
 
 <!-- our clients say screen -->
-<div class="page-screen red-screen our-clients-say-screen">
-    <div class="wraper">
-        <div class="row">
-            <div class="col-6">
-                <p class="page-screen-heading mt-5 pt-3">What our Clients<br>say</p>
-            </div>
-            <div class="col-6">
-                <div class="testimonials-container">
-                    <div class="carousel testimonials-carousel">
-                        <div class="carousel-slide content-wraper">
-                            <div class="testimonial-item">
-                                <div class="testimonial-text">During my invest in Maison Wealth company. That number alone is something to be amazed at. Other ways has helped my company is through writing copy for email campaigns and web support.</div>
-                                <p class="testimonial-author">- Liliia</p>
+<div class="page-screen our-clients-say-screen">
+    <div class="animated-block slide-from-bottom red-bg">
+        <div class="wraper top-padding">
+            <div class="row">
+                <div class="col-6">
+                    <p class="page-screen-heading">What our Clients<br>say</p>
+                </div>
+                <div class="col-6">
+                    <div class="testimonials-container">
+                        <div class="carousel testimonials-carousel">
+                            <div class="carousel-slide content-wraper">
+                                <div class="testimonial-item">
+                                    <div class="testimonial-text">During my invest in Maison Wealth company. That number alone is something to be amazed at. Other ways has helped my company is through writing copy for email campaigns and web support.</div>
+                                    <p class="testimonial-author">- Liliia</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="carousel-slide content-wraper">
-                            <div class="testimonial-item">
-                                <div class="testimonial-text">Here must be cool text about amazing company, and so on...</div>
-                                <p class="testimonial-author">- Alex</p>
+                            <div class="carousel-slide content-wraper">
+                                <div class="testimonial-item">
+                                    <div class="testimonial-text">Here must be cool text about amazing company, and so on...</div>
+                                    <p class="testimonial-author">- Alex</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="carousel-slide content-wraper">
-                            <div class="testimonial-item">
-                                <div class="testimonial-text">Investing in Maison Wealth is a good choice for own future</div>
-                                <p class="testimonial-author">- Johnny</p>
+                            <div class="carousel-slide content-wraper">
+                                <div class="testimonial-item">
+                                    <div class="testimonial-text">Investing in Maison Wealth is a good choice for own future</div>
+                                    <p class="testimonial-author">- Johnny</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -136,6 +138,10 @@
 <!-- get in touch screen -->
 @include('includes.desktop.get_in_touch_screen')
 <!-- end get in touch screen -->
+
+<!-- footer -->
+@include('includes.desktop.footer')
+<!-- end footer -->
 
 <script>
     $('.testimonials-carousel').slick({

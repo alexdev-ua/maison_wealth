@@ -86,7 +86,8 @@
         slidesToScroll: 1,
         arrows: true,
         adaptiveHeight: true,
-        speed: 1500,
+        speed: 500,
+        fade: true,
         prevArrow: '<button id="prev" type="button" class="btn btn-prev carousel-arrow"><img src="/images/ic_arrow_right_white.svg" /></button>',
         nextArrow: '<button id="next" type="button" class="btn btn-next carousel-arrow"><img src="/images/ic_arrow_right_white.svg" /></button>'
     });

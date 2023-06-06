@@ -5,7 +5,18 @@
 <meta name="description" content="{{ isset($pageData['description']) ? $pageData['description'] : null }}" />
 <meta name="keywords" content="{{ isset($pageData['keywords']) ? $pageData['keywords'] : null }}" />
 
-<title>Maison Wealth</title>
+<meta property="og:title" content="{{ isset($pageData['title']) ? $pageData['title'] : null }}" />
+<meta property="og:description" content="{{ isset($pageData['description']) ? $pageData['description'] : null }}" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Maison Wealth" />
+<meta property="og:image" content="{{route('home')}}/images/ic_logo_red.svg" />
+
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:title" content="{{ isset($pageData['title']) ? $pageData['title'] : null }}" />
+<meta property="twitter:description" content="{{ isset($pageData['description']) ? $pageData['description'] : null }}" />
+<meta property="twitter:image:src" content="{{route('home')}}/images/ic_logo_red.svg" />
+
+<title>{{ isset($pageData['title']) ? $pageData['title'] : 'Maison Wealth' }}</title>
 <link rel="shortcut icon" sizes="16x16 32x32 64x64"
 href="/images/ic_logo_red.svg" type="image/x-icon" />
 <link rel="icon" href="/images/ic_logo_red.svg" type="image/x-icon" />
