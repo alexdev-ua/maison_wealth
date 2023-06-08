@@ -130,6 +130,8 @@
 
 body,html{
 	margin:0;
+    height: 100vh;
+    overflow: hidden;
 }
 button, a, textarea, input, select{
     outline: none !important;
@@ -230,8 +232,8 @@ header .menu-btn {
 }
 
 footer{
-    background: var(--red-color);
-    padding: 34px 0;
+    //background: var(--red-color);
+    padding: 0 0 34px;
     color: #FFF;
 }
 footer .group-title{
@@ -264,6 +266,10 @@ footer .group-title{
 .main-logo{
 	margin-top: 5px;
 	display: inline-block;
+}
+
+.top-padding{
+    padding-top: 75px !important;
 }
 
  .gray-bg{
@@ -613,10 +619,39 @@ button.custom-link{
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
     overflow: hidden;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    z-index: -1;
 }
-.auto-height {
-    height: auto !important;
+.page-screen.active-screen{
+    opacity: 1;
+    z-index: 1;
 }
+
+.page-screen.auto-height {
+    //height: auto;
+    //position: relative;
+    overflow-y: scroll;
+}
+
+.animated-block{
+    transition: all .4s ease-in-out;
+    min-height: 100%;
+}
+.animated-block.slide-from-bottom{
+    transform: translateY(100%);
+}
+.page-screen.active-screen.opened .animated-block.slide-from-bottom{
+    transform: translateY(0);
+}
+.animated-block.slide-from-top{
+    transform: translateY(-100%);
+}
+.page-screen.active-screen.opened .animated-block.slide-from-top{
+    transform: translateY(0);
+}
+
 .page-screen .page-screen-bg-image {
     width: 100%;
     height: 100%;
@@ -827,7 +862,7 @@ button.custom-link{
 /* facilities */
 .facility-block{
 	background: var(--red-color);
-    height: 120vw;
+    height: 50vh;
 	overflow: hidden;
 	cursor: pointer;
     position: relative;
@@ -930,6 +965,13 @@ button.custom-link{
     border-top: 1px solid #C5C5C5;
     padding-bottom: 30px;
     padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100%;
+    flex-wrap: nowrap;
+    align-content: flex-start;
 }
 
 .invest-block .invest-item .invest-name{
@@ -948,19 +990,25 @@ button.custom-link{
     font-size: 18px;
     color: #1B1B1B;
     transition: all .3s ease-in-out;
+    padding-bottom: 30px;
 }
 .invest-block .invest-item.opened{
     border-color: #000000;
 }
 
+.invest-block .custom-link {
+    position: absolute;
+    bottom: 20px;
+}
+
 /* get in touch */
 .get-in-touch-block{
-    padding: 60px 0 70px;
+    padding: 0 0 70px;
 }
 
 .meet-company-screen .page-screen-bg-image{
-    height: calc(100vh - 175px);
-    height: calc(var(--vh, 1vh) * 100 - 175px);
+    height: calc(100vh - 220px);
+    height: calc(var(--vh, 1vh) * 100 - 220px);
 }
 
 /* properties */
@@ -989,7 +1037,7 @@ button.custom-link{
     border-top: 1px solid #c5c5c5;
 }
 .property-item {
-	height: 100vh;
+    height: 60vh;
     overflow: hidden;
     position: relative;
     cursor: pointer;
@@ -1001,9 +1049,9 @@ button.custom-link{
     filter: brightness(0.8);
 }
 .property-item .property-info {
-	position: absolute;
+    position: absolute;
     top: 0;
-    padding: 75px 25px 0;
+    padding: 16px 15px 0;
     width: 100%;
     left: 0;
 }
@@ -1014,10 +1062,10 @@ button.custom-link{
 	text-transform: uppercase;
 }
 .property-item .property-info  .property-title {
-	font-size: 40px;
-	font-weight: 500;
-	color: #fff;
-	line-height: 40px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 24px;
 }
 .property-item .property-info  .link-icon {
     float: right;
@@ -1033,7 +1081,7 @@ button.custom-link{
     top: 0;
     width: 100%;
     height: 100%;
-    padding: 65px 35px 35px;
+    padding: 24px 10px 0;
     background: #ececec;
     transition: all .3s ease-in-out;
     transform: translateX(100%);
@@ -1046,17 +1094,19 @@ button.custom-link{
     transform: translateX(0);
 }
 .property-item .property-description .property-heading {
-    font-size: 48px;
+    font-size: 24px;
     font-weight: 500;
-    line-height: 48px;
+    line-height: 24px;
+    margin-bottom: 10px;
 }
 .property-item .property-description .property-heading .property-city {
     font-weight: 400;
 }
 .property-item .property-description .property-desc-item {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 400;
-    margin-bottom: 5px;
+    margin-bottom: 0;
+    line-height: 100%;
 }
 .property-item .property-description .property-desc-item .property-desc-label{
     font-weight: 400;
@@ -1064,7 +1114,7 @@ button.custom-link{
     color: #c5c5c5;
     border-bottom: 1px solid;
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 5px;
 }
 .property-item .property-description .property-desc-item.red-desc-item{
     color: #811810;
@@ -1088,16 +1138,22 @@ button.custom-link{
 }
 .property-item .property-description .custom-link {
     position: absolute;
-    right: 18px;
+    top: 5px;
+    right: 10px;
+    font-size: 16px;
+}
+
+.property-item .property-description .custom-link img {
+    height: 10px;
 }
 
 /* focus sceen */
 .page-screen.focus-screen{
-    padding: 35px 0 65px;
+    padding: 0;
 }
 .focus-heading{
     font-weight: 700;
-    font-size: 36px;
+    font-size: 30px;
     line-height: 100%;
 }
 .stats-block {
@@ -1105,14 +1161,14 @@ button.custom-link{
 }
 .stat-item {
     border-top: 1px solid #000;
-    font-size: 26px;
+    font-size: 18px;
     font-weight: 400;
     padding: 10px 0;
     line-height: 100%;
 }
 
 .stat-counter {
-    font-size: 55px;
+    font-size: 45px;
     font-weight: 500;
     line-height: 100%;
     margin: 0;
@@ -1120,8 +1176,8 @@ button.custom-link{
 
 /* invest options & financial advantages */
 .invest-options-screen .page-screen-heading, .financial-advantages-screen .page-screen-heading{
-    font-size: 36px;
-    line-height: 44px;
+    font-size: 30px;
+    line-height: 35px;
     text-align: left;
 }
 .invest-options-screen .page-screen-bg-image, .financial-advantages-screen .page-screen-bg-image{
@@ -1131,27 +1187,36 @@ button.custom-link{
 /* our clients say */
 .our-clients-say-screen .page-screen-heading{
     font-weight: 700;
-    font-size: 64px;
+    font-size: 36px;
     line-height: 100%;
     color: #fff;
 }
 
 .testimonial-text {
-    font-size: 24px;
+    font-size: 18px;
 }
 .testimonial-author {
     margin-top: 25px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 500;
+}
+.carousel.testimonials-carousel{
+    height: calc(100vh - 350px);
 }
 .carousel.testimonials-carousel .carousel-arrow.slick-disabled {
     display: none !important;
 }
+.carousel.testimonials-carousel .carousel-arrow{
+    bottom: -30px;
+}
 .carousel.testimonials-carousel .carousel-arrow.btn-next {
-    right: 0 !important;
+    right: calc(50% - 45px) !important;
 }
 .carousel.testimonials-carousel .carousel-arrow.btn-prev {
-    right: 65px !important;
+    left: calc(50% - 45px) !important;
+}
+.carousel.testimonials-carousel .carousel-arrow img{
+    filter: unset;
 }
 
 /* start invest */
@@ -1162,15 +1227,14 @@ button.custom-link{
 
 /* blog articles */
 .blog-articles-screen .page-screen-heading{
-    font-size: 55px;
+    font-size: 45px;
     font-weight: 700;
-    line-height: 65px;
+    line-height: 50px;
 }
 .blog-aticle {
     border-top: 1px solid #000;
     padding-top: 24px;
     cursor: pointer;
-    margin-bottom: 20px;
 }
 .blog-aticle .blog-article-heading, .blog-aticle .blog-article-heading a{
     font-size: 28px;
@@ -1237,7 +1301,7 @@ button.custom-link{
     margin-bottom: 40px;
 }
 .why-screen{
-    padding-top: 40px;
+    padding-top: 0;
 }
 .why-item {
     border-top: 1px solid #000;
@@ -1282,6 +1346,10 @@ button.custom-link{
     margin: 0;
 }
 
+.page-screen.start-investing-screen .page-screen-bg-image {
+    height: 100vh;
+}
+
 /* property */
 .property-screen .fixed-block-title {
     font-size: 48px !important;
@@ -1296,7 +1364,7 @@ button.custom-link{
     left: 40px;
 }
 .pluses-screen{
-    padding-top: 40px;
+    padding-top: 0;
 }
 .pluses-screen .page-screen-heading{
     font-size: 36px;
@@ -1339,7 +1407,7 @@ button.custom-link{
     color: #000;
     line-height: 39px;
 }
-.features-screen .feature-slide .gray-bg{
+.features-screen .feature-slide.gray-bg{
     background: #DDDDDD !important;
 }
 

@@ -40,12 +40,7 @@ $(document).ready(function(){
 
 	$(document).on('click', '.pop-up-btn', function(){
 		$($(this).data('pop-up')).fadeToggle();
-	});
-
-	$(document).on('click', '.back-to-top-btn', function(){
-		$('html, body, .page').animate({
-	        scrollTop: 0
-	    }, 1000);
+		$($(this).data('pop-up')).toggleClass('opened');
 	});
 
 	$(document).on('click', '.property-location-btn', function(){
@@ -108,6 +103,8 @@ $(document).ready(function(){
 	$(document).on('mouseleave', '.invest-item .details-btn', function(){
 		$(this).closest('.invest-item').removeClass('opened');
 	});
+
+
 
 
 });

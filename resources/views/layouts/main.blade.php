@@ -27,13 +27,6 @@
 			<!-- content -->
 			<div class="content">
 				@yield('content')
-
-				@if($platform == 'mobile')
-				<!-- footer -->
-					@include('includes.mobile.footer')
-				<!-- end footer -->
-				@endif
-
 			</div>
 			<!-- end content -->
 

@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- top screen -->
-<div class="page-screen">
+<div class="page-screen active-screen opened" id="homeTopScreen">
     <img src="/images/im_main_top_bg.jpg" class="page-screen-bg-image" />
     <div class="fixed-block centered-block">
         <div class="wraper">
@@ -14,9 +14,9 @@
 <!-- end top screen -->
 
 <!-- search screen -->
-<div class="page-screen">
-    <div class="wraper">
-        <div class="page-block-content p-0 white-bg">
+<div class="page-screen" id="homeSearchScreen">
+    <div class="page-block-content p-0 white-bg animated-block slide-from-bottom">
+        <div class="wraper">
             <p class="page-block-description">We sell the best investment properties in the most sought-after locations in the world's most investment-attractive countries.</p>
             <form class="custom-form" action="/properties/all">
                 <hr>
@@ -38,15 +38,15 @@
 <!-- end search screen -->
 
 <!-- plots screen -->
-<div class="page-screen auto-height plots-screen">
-    <div>
+<div class="page-screen auto-height plots-screen" id="homePlotsScreen">
+    <div class="animated-block slide-from-bottom">
         <div class="plots-block">
             <div class="plots-container">
-                <p class="plots-title">Our mission</p>
+                <p class="plots-title top-padding mt-0">Our mission</p>
                 <img src="/images/im_plots_banner.jpg" class="banner-image" />
             </div>
         </div>
-        <div class="plots-block">
+        <div class="plots-block white-bg">
             <div class="plots-container wraper">
                 <div class="plots-list">
                     <div class="plot-item opened">
@@ -74,63 +74,65 @@
 <!-- end plots screen -->
 
 <!-- facilities screen -->
-<div class="page-screen auto-height">
-    <div class="facility-block auto-height">
-        <div class="facility-info">
-            <p class="facility-heading">TOP Facilities<br>we offer</p>
+<div class="page-screen auto-height" id="homeFacilitiesScreen">
+    <div class="animated-block slide-from-bottom">
+        <div class="facility-block auto-height">
+            <div class="facility-info top-padding">
+                <p class="facility-heading">TOP Facilities<br>we offer</p>
 
-            <div class="bottom-block pl-4 pr-4 opened">
-                <p class="facility-description">We are an investment company. Sunlit and expansive. </p>
+                <div class="bottom-block pl-4 pr-4 opened">
+                    <p class="facility-description">We are an investment company. Sunlit and expansive. </p>
 
-                <a href="/properties/all" class="main-btn red-btn watch-btn mt-5 d-inline-block">Watch <span class="btn-icon"></span></a>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6 pr-0">
-            <div class="facility-block">
-                <img src="/images/projects/im_edge.jpg" class="facility-bg-image" />
-                <div class="facility-info">
-                    <div class="bottom-block">
-                        <a href="/property/the-edge">
-                            <p class="facility-title">The Edge</p>
-                        </a>
-                    </div>
+                    <a href="/properties/all" class="main-btn red-btn watch-btn mt-5 d-inline-block">Watch <span class="btn-icon"></span></a>
                 </div>
             </div>
         </div>
-        <div class="col-6 pl-0">
-            <div class="facility-block">
-                <img src="/images/projects/im_upper_house.jpg" class="facility-bg-image" />
-                <div class="facility-info">
-                    <div class="bottom-block">
-                        <a href="/property/upper-house">
-                            <p class="facility-title">Upper House</p>
-                        </a>
+        <div class="row">
+            <div class="col-6 pr-0">
+                <div class="facility-block">
+                    <img src="/images/projects/im_edge.jpg" class="facility-bg-image" />
+                    <div class="facility-info">
+                        <div class="bottom-block">
+                            <a href="/property/the-edge">
+                                <p class="facility-title">The Edge</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-6 pr-0">
-            <div class="facility-block">
-                <img src="/images/projects/im_bentley_residence.jpg" class="facility-bg-image" />
-                <div class="facility-info">
-                    <div class="bottom-block">
-                        <a href="/property/bentley-residences">
-                            <p class="facility-title">Bentley<br>Residences</p>
-                        </a>
+            <div class="col-6 pl-0">
+                <div class="facility-block">
+                    <img src="/images/projects/im_upper_house.jpg" class="facility-bg-image" />
+                    <div class="facility-info">
+                        <div class="bottom-block">
+                            <a href="/property/upper-house">
+                                <p class="facility-title">Upper House</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-6 pl-0">
-            <div class="facility-block">
-                <img src="/images/projects/im_umalas_premier.jpg" class="facility-bg-image" />
-                <div class="facility-info">
-                    <div class="bottom-block">
-                        <a href="/property/umalas-premier">
-                            <p class="facility-title">Umalas Premier</p>
-                        </a>
+            <div class="col-6 pr-0">
+                <div class="facility-block">
+                    <img src="/images/projects/im_bentley_residence.jpg" class="facility-bg-image" />
+                    <div class="facility-info">
+                        <div class="bottom-block">
+                            <a href="/property/bentley-residences">
+                                <p class="facility-title">Bentley<br>Residences</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 pl-0">
+                <div class="facility-block">
+                    <img src="/images/projects/im_umalas_premier.jpg" class="facility-bg-image" />
+                    <div class="facility-info">
+                        <div class="bottom-block">
+                            <a href="/property/umalas-premier">
+                                <p class="facility-title">Umalas Premier</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -144,44 +146,46 @@
 <!-- end invest screen -->
 
 <!-- why invest screen -->
-<div class="page-screen auto-height invest-screen">
-    <div class="mt-5 wraper">
-        <p class="page-screen-heading">Why invest in these<br>countries/ cities?</p>
-    </div>
-    <div class="banners-block">
-        <img src="/images/im_invest_dubai_banner.jpg" class="banner-image active-banner" id="investBanner1" />
-        <img src="/images/projects/im_cipriani.jpg" class="banner-image" id="investBanner2" />
-        <img src="/images/projects/im_batu_bolong.jpg" class="banner-image" id="investBanner3" />
-        <img src="/images/projects/im_ceiba_paradise.jpg" class="banner-image" id="investBanner4" />
-    </div>
-    <div class="wraper mt-4 pt-3">
-        <div class="invest-block row">
-            <div class="col-6">
-                <div class="invest-item">
-                    <p class="invest-name">UAE <span class="invest-city">(Dubai)</span></p>
-                    <div class="invest-description">Real estate in Dubai is one of the best assets for investment. The growth in property prices is at least 10-15% per year, guaranteeing high profits for your investments.</div>
-                    <a href="/properties/dubai" class="custom-link details-btn mt-3" data-banner="#investBanner1">Details <img src="/images/ic_arrow_right_white.svg"></a>
+<div class="page-screen auto-height invest-screen" id="whyInvestScreen">
+    <div class="animated-block slide-from-bottom white-bg top-padding">
+        <div class="wraper">
+            <p class="page-screen-heading">Why invest in these<br>countries/ cities?</p>
+        </div>
+        <div class="banners-block">
+            <img src="/images/im_invest_dubai_banner.jpg" class="banner-image active-banner" id="investBanner1" />
+            <img src="/images/projects/im_cipriani.jpg" class="banner-image" id="investBanner2" />
+            <img src="/images/projects/im_batu_bolong.jpg" class="banner-image" id="investBanner3" />
+            <img src="/images/projects/im_ceiba_paradise.jpg" class="banner-image" id="investBanner4" />
+        </div>
+        <div class="wraper mt-4 pt-3">
+            <div class="invest-block row">
+                <div class="col-6">
+                    <div class="invest-item">
+                        <p class="invest-name">UAE <span class="invest-city">(Dubai)</span></p>
+                        <div class="invest-description">Real estate in Dubai is one of the best assets for investment. The growth in property prices is at least 10-15% per year, guaranteeing high profits for your investments.</div>
+                        <a href="/properties/dubai" class="custom-link details-btn mt-3" data-banner="#investBanner1">Details <img src="/images/ic_arrow_right_white.svg"></a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-6">
-                <div class="invest-item">
-                    <p class="invest-name">USA <span class="invest-city">(Miami)</span></p>
-                    <div class="invest-description">Miami is the place where dreams of stable and profitable investments come true. With an annual rental occupancy rate of over 85% and a growing demand for short-term rentals.</div>
-                    <a href="/properties/miami" class="custom-link details-btn mt-3" data-banner="#investBanner2">Details <img src="/images/ic_arrow_right_white.svg"></a>
+                <div class="col-6">
+                    <div class="invest-item">
+                        <p class="invest-name">USA <span class="invest-city">(Miami)</span></p>
+                        <div class="invest-description">Miami is the place where dreams of stable and profitable investments come true. With an annual rental occupancy rate of over 85% and a growing demand for short-term rentals.</div>
+                        <a href="/properties/miami" class="custom-link details-btn mt-3" data-banner="#investBanner2">Details <img src="/images/ic_arrow_right_white.svg"></a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-6">
-                <div class="invest-item">
-                    <p class="invest-name">Indonesia<br><span class="invest-city">(Bali)</span></p>
-                    <div class="invest-description">On Bali, you will find high returns on real estate investments, thanks to the 300% increase in land value over the last 5 years.</div>
-                    <a href="/properties/bali" class="custom-link details-btn mt-3" data-banner="#investBanner3">Details <img src="/images/ic_arrow_right_white.svg"></a>
+                <div class="col-6">
+                    <div class="invest-item">
+                        <p class="invest-name">Indonesia<br><span class="invest-city">(Bali)</span></p>
+                        <div class="invest-description">On Bali, you will find high returns on real estate investments, thanks to the 300% increase in land value over the last 5 years.</div>
+                        <a href="/properties/bali" class="custom-link details-btn mt-3" data-banner="#investBanner3">Details <img src="/images/ic_arrow_right_white.svg"></a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-6">
-                <div class="invest-item">
-                    <p class="invest-name">Mexico<br><span class="invest-city">(Riviera Maya)</span></p>
-                    <div class="invest-description">The ROI ranges from 8% to 12%, and the payback period is 6-7 years.</div>
-                    <a href="/properties/mexico" class="custom-link details-btn mt-3" data-banner="#investBanner4">Details <img src="/images/ic_arrow_right_white.svg"></a>
+                <div class="col-6">
+                    <div class="invest-item">
+                        <p class="invest-name">Mexico<br><span class="invest-city">(Riviera Maya)</span></p>
+                        <div class="invest-description">The ROI ranges from 8% to 12%, and the payback period is 6-7 years.</div>
+                        <a href="/properties/mexico" class="custom-link details-btn mt-3" data-banner="#investBanner4">Details <img src="/images/ic_arrow_right_white.svg"></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -192,5 +196,9 @@
 <!-- get in touch screen -->
 @include('includes.mobile.get_in_touch_screen')
 <!-- end get in touch screen -->
+
+<!-- footer screen -->
+@include('includes.mobile.footer')
+<!-- end footer screen -->
 
 @endsection

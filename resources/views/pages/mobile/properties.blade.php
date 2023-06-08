@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- popular countries screen -->
-<div class="page-screen auto-height invest-screen">
+<div class="page-screen active-screen opened auto-height invest-screen">
     <div class="banners-block">
         <img src="/images/im_invest_dubai_banner.jpg" class="banner-image @if($location == 'dubai' || $location == 'all')active-banner @endif" id="investBanner1" />
         <img src="/images/projects/im_cipriani.jpg" class="banner-image @if($location == 'miami')active-banner @endif" id="investBanner2" />
@@ -46,23 +46,25 @@
 <!-- end popular countries screen -->
 
 <!-- properties screen -->
-<div class="page-screen auto-height properties-screen pt-5">
-    <div class="wraper">
-        <p class="page-screen-heading">Properties</p>
-        <div class="properties-locations text-center">
-            <button class="custom-btn property-location-btn @if($location == 'all')active @endif" data-location="all">All</button>
-            <button class="custom-btn property-location-btn @if($location == 'dubai')active @endif" data-location="dubai">Dubai</button>
-            <button class="custom-btn property-location-btn @if($location == 'miami')active @endif" data-location="miami">Miami</button>
-            <button class="custom-btn property-location-btn @if($location == 'bali')active @endif" data-location="bali">Bali</button>
-            <button class="custom-btn property-location-btn @if($location == 'mexico')active @endif" data-location="mexico">Mexico</button>
+<div class="page-screen auto-height properties-screen" id="propertiesScreen">
+    <div class="animated-block slide-from-bottom white-bg top-padding">
+        <div class="wraper">
+            <p class="page-screen-heading">Properties</p>
+            <div class="properties-locations text-center">
+                <button class="custom-btn property-location-btn @if($location == 'all')active @endif" data-location="all">All</button>
+                <button class="custom-btn property-location-btn @if($location == 'dubai')active @endif" data-location="dubai">Dubai</button>
+                <button class="custom-btn property-location-btn @if($location == 'miami')active @endif" data-location="miami">Miami</button>
+                <button class="custom-btn property-location-btn @if($location == 'bali')active @endif" data-location="bali">Bali</button>
+                <button class="custom-btn property-location-btn @if($location == 'mexico')active @endif" data-location="mexico">Mexico</button>
+            </div>
         </div>
-    </div>
-    <div class="properties-list row mt-3">
-        @include('includes.mobile.properties_list')
-    </div>
+        <div class="properties-list row m-0 mt-3">
+            @include('includes.mobile.properties_list')
+        </div>
 
-    <div class="text-center p-5">
-        <button class="custom-link back-to-top-btn">Back to Top <img src="/images/ic_arrow_right_white.svg"></button>
+        <div class="text-center p-5">
+            <button class="custom-link scroll-to-btn" data-scroll-to="#propertiesScreen">Back to Top <img src="/images/ic_arrow_right_white.svg"></button>
+        </div>
     </div>
 
 </div>
@@ -72,9 +74,14 @@
 @include('includes.mobile.invest_screen')
 <!-- end invest screen -->
 
+<!-- footer -->
+@include('includes.mobile.footer')
+<!-- end footer -->
+
 <script>
     setTimeout(function(){
         $('#personalConsultPopup').fadeIn();
+        $('#personalConsultPopup').addClass('opened');
     }, 10000);
 </script>
 

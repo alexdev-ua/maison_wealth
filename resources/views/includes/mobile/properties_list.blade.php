@@ -1,7 +1,7 @@
 @if($properties)
     @php($i = 1)
     @foreach($properties as $url=>$property)
-        <div class="col-12 pt-2 {{($i % 2 == 0) ? 'pl-2 pr-2' : 'pr-2 pl-2'}}">
+        <div class="col-6 p-1 {{($i % 2 == 0) ? 'p-0' : 'p-0'}}">
             <div class="property-item">
                 <img src="/images/projects/{{$property['image']}}" class="property-image" />
                 <div class="property-info">
@@ -14,7 +14,7 @@
                         {{$property['country']}}<br><span class="property-city">{{$property['city']}}</span>
                     </p>
 
-                    <div class="row m-0" style="height: calc(100% - 68px);">
+                    <div class="row m-0" style="height: calc(100% - 48px);">
                         <div class="col-6 p-1">
                             <p class="property-desc-item">
                                 <span class="property-desc-label">Location</span> {{$property['location_full']}}
@@ -59,7 +59,7 @@
 
 
                         @if(isset($property['offer']))
-                        <div class="col-6 p-1">
+                        <div class="col-12 p-1">
                             <p class="property-desc-item red-desc-item">
                                 <span class="property-desc-label">Offer</span> {{$property['offer']}}
                             </p>
