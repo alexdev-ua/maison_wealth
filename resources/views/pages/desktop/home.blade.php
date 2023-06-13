@@ -65,19 +65,19 @@
                     <div class="plots-list white-bg">
                         <div class="plot-item opened">
                             <div class="plot-title" data-banner="#plotsBanner1"><img src="/images/ic_arrow_right_red.svg" /> Dubai</div>
-                            <div class="plot-description">Land, apartments, villas, hotel residences, townhouses, commercial spaces, ultra-luxury projects</div>
+                            <div class="plot-description">Land plots, apartments, villas, hotel residences, townhouses, commercial spaces, ultra-luxury projects</div>
                         </div>
                         <div class="plot-item">
                             <div class="plot-title" data-banner="#plotsBanner2"><img src="/images/ic_arrow_right_red.svg" /> Miami</div>
-                            <div class="plot-description">Land, apartments, villas, hotel residences, townhouses, commercial spaces, ultra-luxury projects</div>
+                            <div class="plot-description">Land plots, apartments, villas, hotel residences, townhouses, commercial spaces, ultra-luxury projects</div>
                         </div>
                         <div class="plot-item">
                             <div class="plot-title" data-banner="#plotsBanner3"><img src="/images/ic_arrow_right_red.svg" /> Bali</div>
-                            <div class="plot-description">Land, apartments, villas, hotel residences, townhouses, commercial spaces, ultra-luxury projects</div>
+                            <div class="plot-description">Land plots, apartments, villas, hotel residences, townhouses, commercial spaces, ultra-luxury projects</div>
                         </div>
                         <div class="plot-item">
                             <div class="plot-title" data-banner="#plotsBanner4"><img src="/images/ic_arrow_right_red.svg" /> Mexico(Riviera Maya)</div>
-                            <div class="plot-description">Land, apartments, villas, hotel residences, townhouses, commercial spaces, ultra-luxury projects</div>
+                            <div class="plot-description">Land plots, apartments, villas, hotel residences, townhouses, commercial spaces, ultra-luxury projects</div>
                         </div>
 
                     </div>
