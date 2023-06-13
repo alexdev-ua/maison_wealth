@@ -90,7 +90,7 @@
         <div class="row">
             <div class="col-6 pr-0">
                 <div class="facility-block">
-                    <img src="/images/projects/im_edge.jpg" class="facility-bg-image" />
+                    <img src="/images/projects/the-edge/preview.jpg" class="facility-bg-image" />
                     <div class="facility-info">
                         <div class="bottom-block">
                             <a href="/property/the-edge">
@@ -102,7 +102,7 @@
             </div>
             <div class="col-6 pl-0">
                 <div class="facility-block">
-                    <img src="/images/projects/im_upper_house.jpg" class="facility-bg-image" />
+                    <img src="/images/projects/upper-house/preview.jpg" class="facility-bg-image" />
                     <div class="facility-info">
                         <div class="bottom-block">
                             <a href="/property/upper-house">
@@ -114,7 +114,7 @@
             </div>
             <div class="col-6 pr-0">
                 <div class="facility-block">
-                    <img src="/images/projects/im_bentley_residence.jpg" class="facility-bg-image" />
+                    <img src="/images/projects/bentley-residences/preview.jpg" class="facility-bg-image" />
                     <div class="facility-info">
                         <div class="bottom-block">
                             <a href="/property/bentley-residences">
@@ -126,7 +126,7 @@
             </div>
             <div class="col-6 pl-0">
                 <div class="facility-block">
-                    <img src="/images/projects/im_umalas_premier.jpg" class="facility-bg-image" />
+                    <img src="/images/projects/umalas-premier/preview.jpg" class="facility-bg-image" />
                     <div class="facility-info">
                         <div class="bottom-block">
                             <a href="/property/umalas-premier">
@@ -153,9 +153,9 @@
         </div>
         <div class="banners-block">
             <img src="/images/im_invest_dubai_banner.jpg" class="banner-image active-banner" id="investBanner1" />
-            <img src="/images/projects/im_cipriani.jpg" class="banner-image" id="investBanner2" />
-            <img src="/images/projects/im_batu_bolong.jpg" class="banner-image" id="investBanner3" />
-            <img src="/images/projects/im_ceiba_paradise.jpg" class="banner-image" id="investBanner4" />
+            <img src="/images/im_invest_miami_banner.jpg" class="banner-image" id="investBanner2" />
+            <img src="/images/im_invest_bali_banner.jpg" class="banner-image" id="investBanner3" />
+            <img src="/images/im_invest_mexico_banner.jpg" class="banner-image" id="investBanner4" />
         </div>
         <div class="wraper mt-4 pt-3">
             <div class="invest-block row">

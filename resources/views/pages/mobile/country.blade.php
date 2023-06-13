@@ -5,28 +5,28 @@
 <div class="page-screen active-screen opened carousel-screen">
     <div class="carousel country-carousel">
         <div class="carousel-slide">
-            <div class="carousel-image" style="background-image: url(../images/projects/im_edge.jpg)">
+            <div class="carousel-image" style="background-image: url(../images/projects/the-edge/preview.jpg)">
                 <div class="wraper">
                     <p class="carousel-slide-text">Welcome to <u>DUBAI</u></p>
                 </div>
             </div>
         </div>
         <div class="carousel-slide">
-            <div class="carousel-image" style="background-image: url(../images/projects/im_district_11.jpg)">
+            <div class="carousel-image" style="background-image: url(../images/projects/district-11-opal-gardens/preview.jpg)">
                 <div class="wraper">
                     <p class="carousel-slide-text">Welcome to <u>DUBAI</u></p>
                 </div>
             </div>
         </div>
         <div class="carousel-slide">
-            <div class="carousel-image" style="background-image: url(../images/projects/im_sea_heaven.jpg)">
+            <div class="carousel-image" style="background-image: url(../images/projects/sea-heaven/preview.jpg)">
                 <div class="wraper">
                     <p class="carousel-slide-text">Welcome to <u>DUBAI</u></p>
                 </div>
             </div>
         </div>
         <div class="carousel-slide">
-            <div class="carousel-image" style="background-image: url(../images/projects/im_damac_bay.jpg)">
+            <div class="carousel-image" style="background-image: url(../images/projects/upper-house/preview.jpg)">
                 <div class="wraper">
                     <p class="carousel-slide-text">Welcome to <u>DUBAI</u></p>
                 </div>

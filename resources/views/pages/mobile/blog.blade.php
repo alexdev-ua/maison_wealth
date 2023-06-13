@@ -9,33 +9,25 @@
             <p class="fixed-block-title">Start your<br>Invest with Us</p>
             <p class="fixed-block-description mt-3">It's not so scary and much easier than you think at first glance. Start today and get results tomorrow.</p>
         </div>
-        <a href="" class="main-btn black-btn inverted-btn border-0">Learn more <span class="btn-icon"></span></a>
+        <button class="main-btn black-btn inverted-btn border-0 scroll-to-btn" data-scroll-to="#blogArticlesScreen">Learn more <span class="btn-icon"></span></button>
     </div>
 </div>
 <!-- end top screen -->
 
 <!-- blog articles screen -->
-<div class="page-screen auto-height blog-articles-screen">
+<div class="page-screen auto-height blog-articles-screen" id="blogArticlesScreen">
     <div class="animated-block slide-from-bottom white-bg top-padding">
         <div class="wraper">
             <p class="page-screen-heading"><span class="gray-text">Pay when you want and get</span> your income <span class="gray-text">immediately.</span></p>
 
             <div class="blog-articles mt-4">
+                @foreach($articles as $key=>$article)
                 <div class="blog-aticle">
-                    <div class="blog-article-heading"><a href="/blog/article"><span class="arrow-icon"></span> Guide for non-residents: how to buy the best Dubai property</a></div>
-                    <div class="blog-article-description">Investment opportunity: property in Dubai for rent, resale, and buy-to-live options for non-residents. Maison Wealth experts with proven variants. Returns on your investment.</div>
-                    <span class="blog-article-date">26/01/2023</span>
+                    <div class="blog-article-heading"><a href="/blog/{{$key}}"><span class="arrow-icon"></span> {!!$article['title']!!}</a></div>
+                    <div class="blog-article-description">{{$article['description']}}</div>
+                    <span class="blog-article-date">{{$article['date']}}</span>
                 </div>
-                <div class="blog-aticle">
-                    <div class="blog-article-heading"><a href="/blog/article"><span class="arrow-icon"></span> Risks involved in property investment: buy apartments in Dubai</a></div>
-                    <div class="blog-article-description">Pros and cons of buying property in Dubai. Only proven objects for life and...</div>
-                    <span class="blog-article-date">26/01/2023</span>
-                </div>
-                <div class="blog-aticle">
-                    <div class="blog-article-heading"><a href="/blog/article"><span class="arrow-icon"></span> Increase your capital by investing in real estate UAE—guaranteed options with high ROI.</a></div>
-                    <div class="blog-article-description">Invest with Maison Wealth. High level of profitability investment for foreigners and the opportunity for a non-residence visa. Fast payback...</div>
-                    <span class="blog-article-date">26/01/2023</span>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

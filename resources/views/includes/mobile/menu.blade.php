@@ -22,7 +22,7 @@
 			<p class="footer-label mb-3">Connect with us</p>
 			<a href="" class="custom-link white-link mr-2">LN <img src="/images/ic_arrow_right_white.svg" /></a>
 			<a href="" class="custom-link white-link ml-4 mr-2">FB <img src="/images/ic_arrow_right_white.svg" /></a>
-			<a href="" class="custom-link white-link ml-4 mr-2">TW <img src="/images/ic_arrow_right_white.svg" /></a>
+			<a href="" class="custom-link white-link ml-4 mr-2">TG <img src="/images/ic_arrow_right_white.svg" /></a>
 			<a href="" class="custom-link white-link ml-4">IG <img src="/images/ic_arrow_right_white.svg" /></a>
 		</div>
 

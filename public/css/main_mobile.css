@@ -1348,6 +1348,7 @@ button.custom-link{
 
 .page-screen.start-investing-screen .page-screen-bg-image {
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
 }
 
 /* property */
@@ -1358,6 +1359,18 @@ button.custom-link{
 .property-screen .page-screen-bg-image{
     filter: brightness(0.9);
 }
+.property-label {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: 40px;
+    display: block;
+    line-height: 30px;
+    width: 75%;
+    font-style: italic;
+    text-shadow: 0px 0px 10px #000;
+}
+
 .property-screen .main-btn{
     position: absolute;
     bottom: 40px;
@@ -1481,4 +1494,25 @@ button.custom-link{
     right: 50%;
     transform: translateX(100%);
     margin-right: -15px;
+}
+
+.article-subtitle{
+    font-size: 38px !important;
+    line-height: 100% !important;
+}
+.page-screen.article-screen-content .page-screen-bg-image{
+    height: 100vw;
+}
+
+.page-screen.article-screen-content .page-screen-heading{
+    font-size: 38px !important;
+    line-height: 100% !important;
+}
+.page-screen-bg-image.full-height {
+    height: 100vh !important;
+    height: calc(var(--vh, 1vh) * 100) !important;
+}
+
+.article-subtitle.white-text, .article-subtitle.white-text .gray-text{
+    color: #FFF !important;
 }

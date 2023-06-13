@@ -24,27 +24,15 @@
                 </div>
                 <div class="col-6 offset-6">
                     <div class="blog-articles row">
+                        @foreach($articles as $key=>$article)
                         <div class="col-6">
                             <div class="blog-aticle">
-                                <div class="blog-article-heading"><a href="/blog/article">Guide for non-residents: how to buy the best Dubai property <span class="arrow-icon"></span></a></div>
-                                <div class="blog-article-description">Investment opportunity: property in Dubai for rent, resale, and buy-to-live options for non-residents. Maison Wealth experts with proven variants. Returns on your investment.</div>
-                                <span class="blog-article-date">26/01/2023</span>
+                                <div class="blog-article-heading"><a href="/blog/{{$key}}">{!!$article['title']!!} <span class="arrow-icon"></span></a></div>
+                                <div class="blog-article-description">{{$article['description']}}</div>
+                                <span class="blog-article-date">{{$article['date']}}</span>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <div class="blog-aticle">
-                                <div class="blog-article-heading"><a href="/blog/article">Risks involved in property investment: buy apartments in Dubai <span class="arrow-icon"></span></a></div>
-                                <div class="blog-article-description">Pros and cons of buying property in Dubai. Only proven objects for life and...</div>
-                                <span class="blog-article-date">26/01/2023</span>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="blog-aticle">
-                                <div class="blog-article-heading"><a href="/blog/article">Increase your capital by investing in real estate UAE—guaranteed options with high ROI. <span class="arrow-icon"></span></a></div>
-                                <div class="blog-article-description">Invest with Maison Wealth. High level of profitability investment for foreigners and the opportunity for a non-residence visa. Fast payback...</div>
-                                <span class="blog-article-date">26/01/2023</span>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

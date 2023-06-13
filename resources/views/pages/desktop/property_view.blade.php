@@ -3,93 +3,89 @@
 @section('content')
 <!-- top screen -->
 <div class="page-screen active-screen opened property-screen">
-    <img src="/images/projects/{{$property['image']}}" class="page-screen-bg-image" />
+    <img src="{{$property['page']['banner_image']}}" class="page-screen-bg-image" />
     <div class="wraper">
         <div class="fixed-block right-block">
             <p class="fixed-block-title">{{$property['title']}}</p>
         </div>
         <button class="main-btn black-btn inverted-btn border-0 scroll-to-btn" data-scroll-to="#personalConsultScreen">Start to Invest <span class="btn-icon"></span></button>
+        <span class="property-label">{{$property['page']['label']}}</span>
     </div>
 </div>
 <!-- end top screen -->
 
-<!-- pluses screen -->
-<div class="page-screen auto-height pluses-screen">
-    <div class="top-padding animated-block slide-from-bottom white-bg">
-        <div class="wraper">
-            <div class="row">
-                <div class="col-6 offset-6">
-                    <p class="page-screen-heading mb-5">We offer properties on the Mexican Caribbean coast from Cancun to Tulum. Today, Puerto Aventuras is experiencing an investment boom, and practically no properties are left for purchase.</p>
-                    <div class="pluses-list row mt-2">
-                        <div class="col-6">
-                            <div class="plus-item">
-                                <div class="plus-item-heading">Top location</div>
-                                <div class="plus-item-description">Puerto Aventuras is a small resort town on the coast of the Caribbean Sea with a perfect location.</div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="plus-item">
-                                <div class="plus-item-heading">Reselling</div>
-                                <div class="plus-item-description">The real estate market on the Mexican Riviera provides high investment returns, with starting prices at just $200,000 and average prices at $500,000. </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="plus-item">
-                                <div class="plus-item-heading">High return</div>
-                                <div class="plus-item-description">The shortage of land in this village will lead to the cost of land steadily increasing. Analysts promise a return on investments from 10% to 15%.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end pluses screen -->
-
 <!-- features screen -->
-<div class="page-screen features-screen">
-    <div class="row">
-        <div class="col-6 pr-0 animated-block slide-from-top">
-            <div class="content-wraper red-bg page-block-content">
-                <p class="page-screen-heading text-left mb-2">NÁLU Luxury Beachfront Residences consists of 12 exclusive luxury apartments, making it the most attractive development in Puerto Morelos.</p>
+<div class="page-screen auto-height features-screen">
+    <div class="animated-block slide-from-bottom white-bg top-padding">
+        <div class="row">
+            <div class="col-6 offset-6">
+                <p class="page-screen-heading mb-5">{{$property['page']['description']}}</p>
 
-                <p class="page-block-description font-normal light-weight mt-4 mb-2 text-left">At NÁLU Luxury Beachfront Residences, you will live sweet and mystical experiences through proximity to the sea. You will create unparalleled stories by being surrounded by the majestic mangrove swamp, its magical cenotes, and the imposing beauty of its coral reefs.</p>
+                @if(isset($property['page']['options']))
+                <div class="pluses-list row mt-2">
+                    @foreach($property['page']['options'] as $propertyOption)
+                    <div class="col-6">
+                        <div class="plus-item">
+                            <div class="plus-item-heading">{{$propertyOption['title']}}</div>
+                            <div class="plus-item-description">{{$propertyOption['description']}}</div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                @endif
             </div>
-        </div>
-        <div class="col-6 pl-0 animated-block slide-from-bottom">
-            <div class="carousel features-carousel white-bg">
-                <div class="carousel-slide feature-slide">
-                    <div class="content-wraper page-block-content white-bg">
-                        <div>
-                            <img src="/images/im_features_photo_1.jpg" class="page-screen-bg-image" />
-                        </div>
-                        <div class="pt-2">
-                            <p class="page-screen-heading text-left mb-2 mt-1">Fall in love with Puerto Morelos’ magic and unique lifestyle</p>
-                            <u class="page-block-description text-left font-normal mt-1">18 months interest free</u>
+            <div class="col-6 pr-0 animated-block slide-from-top feature-slide">
+                <div class="content-wraper red-bg page-block-content top-padding">
+                    <p class="page-screen-heading white-heading text-left mb-2">{{$property['page']['features']['feature1']['title']}}</p>
+                    @if(isset($property['page']['features']['feature1']['description']))
+                    <p class="page-block-description font-normal light-weight mt-4 mb-2 text-left">{!!$property['page']['features']['feature1']['description']!!}</p>
+                    @endif
+                </div>
+            </div>
+            <div class="col-6 pl-0 animated-block slide-from-bottom">
+                <div class="carousel features-carousel white-bg">
+                    <div class="carousel-slide feature-slide">
+                        <div class="content-wraper page-block-content white-bg">
+                            <div class="page-screen-image-container">
+                                <img src="{{$property['page']['features']['feature2']['image']}}" class="page-screen-bg-image" />
+                            </div>
+                            <div class="pt-2">
+                                <p class="page-screen-heading text-left mb-2 mt-1">{{$property['page']['features']['feature2']['text']}}</p>
+                                @if(isset($property['page']['features']['feature2']['description']))
+                                <u class="page-block-description font-normal light-weight mt-4 mb-2 text-left">{!!$property['page']['features']['feature2']['description']!!}</u>
+                                @endif
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="carousel-slide feature-slide">
-                    <div class="page-block-content p-0">
-                        <img src="/images/im_features_photo_2.jpg" class="page-screen-bg-image" />
-                    </div>
-                </div>
-                <div class="carousel-slide feature-slide">
-                    <div class="content-wraper gray-bg page-block-content">
-                        <div class="page-block-content top-content pl-0">
-                            <p class="page-block-description text-left font-normal">About Location</p>
-                        </div>
-                        <div>
-                            <p class="page-screen-heading text-left mb-2 mt-1">The land area is 7000 sq.m.</p>
-                            <p class="page-block-description text-left font-normal">Puerto Morelos is the Mayan Riviera’s hidden. Its beautiful and paradisiacal beaches, with a wonderful blue sea, create an enigmatic and mystical atmosphere that evokes profound peace and tranquility.</p>
-                            <p class="page-block-description text-left font-normal">The dreamlike sunrises and sunsets in Puerto Morelos generate an energy that reminds us of our connection to life, making it the ideal place to find yourself again.</p>
+                    <div class="carousel-slide feature-slide">
+                        <div class="page-block-content p-0">
+                            <img src="{{$property['page']['features']['feature3']['image']}}" class="page-screen-bg-image" />
                         </div>
                     </div>
-                </div>
-                <div class="carousel-slide feature-slide">
-                    <div class="page-block-content p-0">
-                        <img src="/images/im_features_photo_3.jpg" class="page-screen-bg-image" />
+                    <div class="carousel-slide feature-slide">
+                        <div class="content-wraper gray-bg page-block-content">
+                            <div class="page-block-content top-content pl-0">
+                                <p class="page-block-description text-left font-normal">About Offer</p>
+                            </div>
+                            <div>
+                                <p class="page-screen-heading text-left mb-2 mt-1">{{$property['page']['features']['feature4']['text']}}</p>
+                                @if(isset($property['page']['features']['feature4']['description']))
+                                <p class="page-screen-description text-left mb-2 mt-1">{!!$property['page']['features']['feature4']['description']!!}</p>
+                                @endif
+                                @if(isset($property['page']['features']['feature4']['list']))
+                                    <ul class="custom-list">
+                                    @foreach($property['page']['features']['feature4']['list'] as $listItem)
+                                        <li><img src="/images/ic_arrow_right.svg" class="list-icon"> {{$listItem}}</li>
+                                    @endforeach
+                                    </ul>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide feature-slide">
+                        <div class="page-block-content p-0">
+                            <img src="{{$property['page']['features']['feature5']['image']}}" class="page-screen-bg-image" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -161,7 +157,7 @@
         adaptiveHeight: true,
         autoplay: true,
         autoplaySpeed: 3000,
-        fade: true,
+        fade: false,
         speed: 1500
     });
 </script>

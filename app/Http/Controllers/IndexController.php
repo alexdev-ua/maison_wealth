@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Cookie;
 
 use App\Models\Property;
+use App\Models\BlogArticle;
 
 class IndexController extends Controller
 {
@@ -94,20 +95,32 @@ class IndexController extends Controller
             'title' => 'Maison Wealth - Blog',
             'description' => 'Maison Wealth is a professional real estate investment firm offering customized solutions and a proven track record of analyzing and identifying lucrative investment opportunities. Our main goal is to maximize your profits by offering exclusive deals on rare land and real estate projects that maintain their value over time. What are you waiting for? Start to Invest!'
         ];
+
+        $articles = BlogArticle::getAll();
+
         return View::make('pages.'.$this->viewPath .'.blog')->with([
             'pageData' => $pageData,
             'activePage' => 'blog',
+            'articles' => $articles
         ]);
     }
 
-    public function blogArticle(Request $request){
+    public function articleView($article, Request $request){
         $pageData = [
             'title' => 'Maison Wealth',
             'description' => 'Maison Wealth is a professional real estate investment firm offering customized solutions and a proven track record of analyzing and identifying lucrative investment opportunities. Our main goal is to maximize your profits by offering exclusive deals on rare land and real estate projects that maintain their value over time. What are you waiting for? Start to Invest!'
         ];
-        return View::make('pages.'.$this->viewPath .'.blog_article')->with([
+
+        $articleItem = BlogArticle::getByKey($article);
+
+        if(!$articleItem){
+            abort(404);
+        }
+
+        return View::make('pages.'.$this->viewPath .'.article_view')->with([
             'pageData' => $pageData,
             'activePage' => 'article-view',
+            'article' => $articleItem
         ]);
     }
 

@@ -642,6 +642,11 @@ button.custom-link{
     //position: relative;
     overflow-y: scroll;
 }
+.page-screen-image-container{
+    height: 60vh;
+    width: 100%;
+    overflow: hidden;
+}
 .page-screen .page-screen-bg-image {
     width: 100%;
     height: 100%;
@@ -1278,11 +1283,16 @@ button.custom-link{
 /* blog article */
 .article-screen .page-screen-heading.article-title{
     font-weight: 700;
-    font-size: 96px;
+    font-size: 65px;
     line-height: 100%;
     border-bottom: 1px solid;
     padding-bottom: 24px;
     margin-bottom: 40px;
+}
+
+.article-screen .page-screen-heading.article-subtitle{
+    font-size: 38px;
+    line-height: 38px;
 }
 
 .why-item {
@@ -1321,6 +1331,13 @@ button.custom-link{
     left: 50%;
 }
 
+.property-label {
+    position: absolute;
+    bottom: 38px;
+    color: #fff;
+    font-size: 24px;
+}
+
 .pluses-screen .page-screen-heading{
     font-size: 48px;
     font-weight: 700;
@@ -1350,17 +1367,28 @@ button.custom-link{
 /* features */
 .features-screen .page-screen-heading{
     font-size: 40px;
-    color: #fff;
+    color: #000;
+    line-height: 44px;
+}
+
+.features-screen .page-screen-heading.white-heading{
+    color: #fff !important;
 }
 
 .features-screen .page-block-description{
     font-size: 20px;
 }
+.features-screen .page-block-content {
+    align-items: flex-start;
+}
+.features-screen .feature-slide:not(.carousel .feature-slide) .page-block-content {
+    justify-content: flex-start;
+}
 
 .features-screen .feature-slide .page-screen-heading{
     font-size: 32px;
     color: #000;
-    line-height: 39px;
+    line-height: 36px;
 }
 .features-screen .feature-slide .gray-bg{
     background: #DDDDDD !important;
@@ -1422,4 +1450,9 @@ button.custom-link{
     min-width: auto;
     padding: 5px 30px;
     float: right;
+}
+
+.page-screen.article-screen-content .article-title{
+    font-size: 40px !important;
+    line-height: 100% !important;
 }

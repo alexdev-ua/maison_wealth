@@ -11,9 +11,9 @@
                 </div>
                 <div class="banners-block" style="height: calc(100vh - 210px);">
                     <img src="/images/im_invest_dubai_banner.jpg" class="banner-image @if($location == 'dubai' || $location == 'all')active-banner @endif" id="investBanner1" />
-                    <img src="/images/projects/im_cipriani.jpg" class="banner-image @if($location == 'miami')active-banner @endif" id="investBanner2" />
-                    <img src="/images/projects/im_batu_bolong.jpg" class="banner-image @if($location == 'bali')active-banner @endif" id="investBanner3" />
-                    <img src="/images/projects/im_ceiba_paradise.jpg" class="banner-image @if($location == 'mexico')active-banner @endif" id="investBanner4" />
+                    <img src="/images/im_invest_miami_banner.jpg" class="banner-image @if($location == 'miami')active-banner @endif" id="investBanner2" />
+                    <img src="/images/im_invest_bali_banner.jpg" class="banner-image @if($location == 'bali')active-banner @endif" id="investBanner3" />
+                    <img src="/images/im_invest_mexico_banner.jpg" class="banner-image @if($location == 'mexico')active-banner @endif" id="investBanner4" />
                 </div>
             </div>
             <div class="col-6">

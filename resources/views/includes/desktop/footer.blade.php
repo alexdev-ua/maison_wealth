@@ -5,7 +5,7 @@
 				<p class="footer-label mb-1">Connect with us</p>
 				<a href="" class="custom-link white-link mr-2">LN <img src="/images/ic_arrow_right_white.svg" /></a>
 				<a href="" class="custom-link white-link ml-4 mr-2">FB <img src="/images/ic_arrow_right_white.svg" /></a>
-				<a href="" class="custom-link white-link ml-4 mr-2">TW <img src="/images/ic_arrow_right_white.svg" /></a>
+				<a href="" class="custom-link white-link ml-4 mr-2">TG <img src="/images/ic_arrow_right_white.svg" /></a>
 				<a href="" class="custom-link white-link ml-4">IG <img src="/images/ic_arrow_right_white.svg" /></a>
 
 				<div class="mt-5 pt-1">
@@ -41,7 +41,7 @@
 			</div>
 			<div class="row mt-4">
 				<div class="col-6">
-					<span class="footer-text">Maison W. - UAE, Dubai Registered on the Dutch<br>Chamber of Commerce: 80195520</span>
+					<span class="footer-text">Maison W. - UAE, Dubai<br>Trade licence: 1165671</span>
 				</div>
 				<div class="col-6">
 					<span class="footer-text">Maison Wealth is a real investment properties in the most sought-after locations in the world's most investment-attractive countries. We create opportunity to start your own business with us. It’s a great time to start, do you?</span>

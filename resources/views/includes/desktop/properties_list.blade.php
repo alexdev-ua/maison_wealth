@@ -5,14 +5,16 @@
     @foreach($properties as $url=>$property)
         <div class="col-4 p-3">
             <div class="property-item @if($partial){{'hidden-property'}}@endif">
-                <img src="/images/projects/{{$property['image']}}" class="property-image" />
+                <img src="{{$property['image']}}" class="property-image" />
                 <div class="property-info">
                     <span class="property-location">{{$property['location']}}</span>
                     <p class="property-title">{{$property['title']}}</p>
                     <span class="d-inline"><img src="/images/ic_arrow_right.svg" class="link-icon" /></span>
                 </div>
                 <div class="property-description">
+                    @if(isset($property['page']))
                     <a href="/property/{{$url}}" class="custom-link">{{$property['mode'] == 'more' ? 'More Info' : 'To Invest'}} <img src="/images/ic_arrow_right_white.svg"></a>
+                    @endif
                     <p class="property-heading">
                         {{$property['country']}}<br><span class="property-city">{{$property['city']}}</span>
                     </p>
@@ -52,6 +54,20 @@
                                 <span class="property-desc-label">Price</span> {{$property['price']}}
                             </p>
                             @endif
+                        </div>
+
+                        <div class="col-6 p-1">
+                            <p class="property-desc-item">
+                                <span class="property-desc-label">Square</span>
+                                {{$property['square']}}
+                            </p>
+                        </div>
+
+                        <div class="col-6 p-1">
+                            <p class="property-desc-item">
+                                <span class="property-desc-label">Price per Square</span>
+                                {{$property['price_per_square']}}
+                            </p>
                         </div>
 
                         <div class="col-6 p-1">

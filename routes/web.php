@@ -29,7 +29,7 @@ Route::get('/countries', [IndexController::class, 'country'])->name('countries')
 Route::get('/about', [IndexController::class, 'about'])->name('about');
 
 Route::get('/blog', [IndexController::class, 'blog'])->name('blog');
-Route::get('/blog/article', [IndexController::class, 'blogArticle']);
+Route::get('/blog/{article}', [IndexController::class, 'articleView']);
 
 Route::get('/cookies', [IndexController::class, 'cookies']);
 

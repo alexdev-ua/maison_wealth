@@ -5,7 +5,7 @@
 				<p class="footer-label mb-3">Connect with us</p>
 				<a href="" class="custom-link white-link mr-2">LN <img src="/images/ic_arrow_right_white.svg" /></a>
 				<a href="" class="custom-link white-link ml-2 mr-2">FB <img src="/images/ic_arrow_right_white.svg" /></a>
-				<a href="" class="custom-link white-link ml-2 mr-2">TW <img src="/images/ic_arrow_right_white.svg" /></a>
+				<a href="" class="custom-link white-link ml-2 mr-2">TG <img src="/images/ic_arrow_right_white.svg" /></a>
 				<a href="" class="custom-link white-link ml-2">IG <img src="/images/ic_arrow_right_white.svg" /></a>
 
 				<div class="mt-5 pt-1">
@@ -40,7 +40,7 @@
 				<span class="copyrights-label">&copy; {{date('Y')}} Maison Wealth. All rights reserved.</span>
 			</div>
 			<div class="mt-3">
-				<span class="footer-text">Maison W. - UAE, Dubai Registered on the Dutch Chamber of Commerce: 80195520</span>
+				<span class="footer-text">Maison W. - UAE, Dubai<br>Trade licence: 1165671</span>
 			</div>
 
 		</div>
