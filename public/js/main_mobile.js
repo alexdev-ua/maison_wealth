@@ -12,48 +12,52 @@ $(document).ready(function(){
         calcHeight();
     });
 
+    $.each($('.page-screen'), function(index, screenItem){
+        if($(document).scrollTop() + window.innerHeight >= $(screenItem).offset().top + window.innerHeight / 4){
+            $(screenItem).addClass('active-screen opened');
+        }
+    });
+
 	$(document).on('click','.menu-btn', function(){
 		$('.main-menu').toggleClass('opened');
+        if($('.main-menu').hasClass('opened')){
+            $('body').css('overflow', 'hidden');
+        }else{
+            $('body').css('overflow', 'auto');
+        }
 	});
 
     $(document).on('click', '.scroll-to-btn', function(){
-		var scrollScreen = $(this).data('scroll-to'),
-            autoScroll = false;
+		var scrollScreen = $(this).data('scroll-to');
 
-        $(scrollScreen).addClass('active-screen');
-        $(scrollScreen).addClass('opened');
+        $('.page-screen').addClass('active-screen opened');
+        //if(autoScroll){
+            $('html, body').animate({
+    	        scrollTop: $(scrollScreen).offset().top
+    	    }, 1500);
+        //}
 
-        $('.page-screen').not($('.page-screen').first()).not($(scrollScreen)).removeClass('active-screen opened');
-
-        console.log($(activeScreen), $(scrollScreen), $(scrollScreen).is($(activeScreen)));
-
-        if($(scrollScreen).is($(activeScreen))){
-            autoScroll = true;
-        }
-        activeScreen = $(scrollScreen);
-
-        if(autoScroll){
-            $(scrollScreen).animate({
-    	        scrollTop: 0
-    	    }, 1000);
-        }
-
-        scrollPosition = 0;
-        canScroll = true;
 	});
 
-	activeScreen = $('.page-screen').first();
+    $(document).scroll(function(e){
+        var scrollTop = $(this).scrollTop();
 
-	$('.page').bind('touchmove', function(e) {
-        if(!$('.main-menu.opened').length && !$('.pop-up.opened').length){
-    		clearTimeout(scrollTimer);
-            //if(!$(activeScreen).hasClass('auto-height')){
-                scrollTimer = setTimeout(function(){
-                    scroll(e);
-                }, 300);
-            //}
+        if(scrollTop > scrollPosition){
+            $.each($('.page-screen'), function(index, screenItem){
+                if(scrollTop + window.innerHeight >= $(screenItem).offset().top + window.innerHeight / 4){
+                    $(screenItem).addClass('active-screen opened');
+                }
+            });
+        }else{
+            $.each($('.page-screen'), function(index, screenItem){
+                if(scrollTop + window.innerHeight <= $(screenItem).offset().top){
+                    $(screenItem).removeClass('active-screen opened');
+                }
+            });
         }
-	});
+
+        scrollPosition = scrollTop;
+    });
 
 
     $(document).bind('touchstart', function (e){

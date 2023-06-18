@@ -130,8 +130,8 @@
 
 body,html{
 	margin:0;
-    height: 100vh;
-    overflow: hidden;
+    //height: 100vh;
+    //overflow: hidden;
 }
 button, a, textarea, input, select{
     outline: none !important;
@@ -380,8 +380,8 @@ button.custom-link{
 }
 .form-heading{
     font-weight: 500;
-    font-size: 48px;
-    line-height: 58px;
+    font-size: 40px;
+    line-height: 110%;
     padding: 150px 35px 24px;
 }
 .form-heading.black-heading{
@@ -448,6 +448,12 @@ button.custom-link{
     display: none;
     overflow: auto;
 }
+.pop-up-content {
+    height: calc(100vh - 60px);
+    height: calc(var(--vh, 1vh) * 100 - 60px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 .pop-up.half-width{
     width: 50%;
     left: 50%;
@@ -459,8 +465,8 @@ button.custom-link{
 }
 .pop-up .pop-up-heading{
     font-weight: 500;
-    font-size: 48px;
-    line-height: 59px;
+    font-size: 40px;
+    line-height: 100%;
     color: #000000;
 }
 
@@ -619,25 +625,31 @@ button.custom-link{
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
     overflow: hidden;
-    position: absolute;
-    top: 0;
-    opacity: 0;
-    z-index: -1;
+    //position: absolute;
+    //top: 0;
+    //opacity: 0;
+    //z-index: -1;
 }
 .page-screen.active-screen{
-    opacity: 1;
-    z-index: 1;
+    //opacity: 1;
+    //z-index: 1;
 }
 
 .page-screen.auto-height {
-    //height: auto;
+    height: auto;
     //position: relative;
-    overflow-y: scroll;
+    //overflow-y: scroll;
 }
 
 .animated-block{
     transition: all .4s ease-in-out;
     min-height: 100%;
+}
+.animated-block.resized-block{
+    transform: scale(0);
+}
+.page-screen.active-screen.opened .animated-block.resized-block{
+    transform: scale(1);
 }
 .animated-block.slide-from-bottom{
     transform: translateY(100%);
@@ -651,10 +663,18 @@ button.custom-link{
 .page-screen.active-screen.opened .animated-block.slide-from-top{
     transform: translateY(0);
 }
+.animated-block .page-screen-bg-image{
+    transform: scale(0);
+    transform-origin: center;
+    transition: .7s ease;
+}
+.page-screen.active-screen.opened .animated-block .page-screen-bg-image{
+    transform: scale(1);
+}
 
 .page-screen .page-screen-bg-image {
     width: 100%;
-    height: 100%;
+    height: 100vw;
     object-fit: cover;
 }
 .page-screen .page-screen-heading{
@@ -734,13 +754,13 @@ button.custom-link{
     position: absolute;
     height: 100%;
     z-index: 1;
-    transform: translateY(-100%);
+    //transform: translateY(-100%);
     width: 100%;
 }
 .page-block-content {
     //background: #fff;
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
+    //height: 100vh;
+    //height: calc(var(--vh, 1vh) * 100);
     align-items: center;
     display: flex;
     padding: 36px;
@@ -797,7 +817,7 @@ button.custom-link{
     filter: contrast(0.5) drop-shadow(1px 2px 2px black);
 }
 
-.carousel-slide-text{
+.carousel-slide-text, .carousel-slide-text:hover, .carousel-slide-text:focus, .carousel-slide-text:active{
 	font-weight: 500;
 	font-size: 20px;
 	color: #fff;
@@ -828,6 +848,18 @@ button.custom-link{
     position: absolute;
     left: 25px;
     margin-top: 15px;
+    z-index: 1;
+}
+.banners-block{
+    height: 50vh;
+    overflow: hidden;
+}
+.plots-screen .banner-image{
+    display: none;
+    height: 100%;
+}
+.plots-screen .banner-image.active-banner{
+    display: block;
 }
 
 .plots-screen .plots-list{
@@ -836,11 +868,19 @@ button.custom-link{
 
 .plots-screen .plots-list .plot-item .plot-title{
     font-weight: 500;
-    font-size: 32px;
+    font-size: 30px;
+    line-height: 110%;
     text-transform: uppercase;
     color: #9D9D9D;
     border-bottom: 1px solid;
     cursor: pointer;
+    margin-top: 10px;
+}
+.plots-screen .plots-list .plot-item .plot-title img {
+    filter: grayscale(1) opacity(0.5);
+}
+.plots-screen .plots-list .plot-item.opened .plot-title img{
+    filter: unset;
 }
 .plots-screen .plots-list .plot-item .plot-title:hover{
     color: var(--red-color);
@@ -1013,13 +1053,12 @@ button.custom-link{
 
 /* properties */
 .page-screen.properties-screen .page-screen-heading {
-	font-weight: 700;
-    font-size: 64px;
+    font-size: 50px;
     line-height: 78px;
     text-align: center;
 }
 .property-location-btn {
-	font-weight: 500;
+	font-weight: 400;
     font-size: 18px;
     color: #c5c5c5;
     background: none;
@@ -1056,14 +1095,13 @@ button.custom-link{
     left: 0;
 }
 .property-item .property-info .property-location {
-	font-size: 24px;
-	font-weight: 400;
+	font-size: 18px;
+	font-weight: 500;
 	color: #fff;
 	text-transform: uppercase;
 }
 .property-item .property-info  .property-title {
     font-size: 24px;
-    font-weight: 500;
     color: #fff;
     line-height: 24px;
 }
@@ -1082,7 +1120,7 @@ button.custom-link{
     width: 100%;
     height: 100%;
     padding: 24px 10px 0;
-    background: #ececec;
+    background: #fff;
     transition: all .3s ease-in-out;
     transform: translateX(100%);
 }
@@ -1207,7 +1245,7 @@ button.custom-link{
     display: none !important;
 }
 .carousel.testimonials-carousel .carousel-arrow{
-    bottom: -30px;
+    //bottom: -30px;
 }
 .carousel.testimonials-carousel .carousel-arrow.btn-next {
     right: calc(50% - 45px) !important;
@@ -1381,7 +1419,6 @@ button.custom-link{
 }
 .pluses-screen .page-screen-heading{
     font-size: 36px;
-    font-weight: 700;
     line-height: 43px;
 }
 
@@ -1407,8 +1444,10 @@ button.custom-link{
 
 /* features */
 .features-screen .page-screen-heading{
-    font-size: 40px;
+    font-size: 34px;
+    line-height: 110%;
     color: #fff;
+    font-weight: 400;
 }
 
 .features-screen .page-block-description{
@@ -1432,7 +1471,6 @@ button.custom-link{
 
 /* personal consultation */
 .personal-consultation-screen .page-screen-heading{
-    font-weight: 700;
     font-size: 32px;
     line-height: 39px;
 }
@@ -1515,4 +1553,25 @@ button.custom-link{
 
 .article-subtitle.white-text, .article-subtitle.white-text .gray-text{
     color: #FFF !important;
+}
+
+.direction-screen .page-screen-bg-image{
+    filter: brightness(0.9);
+}
+.direction-label {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: 40px;
+    display: block;
+    line-height: 30px;
+    width: 75%;
+    font-style: italic;
+    text-shadow: 0px 0px 10px #000;
+}
+
+.direction-screen .main-btn{
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
 }

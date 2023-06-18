@@ -1,5 +1,5 @@
 <footer class="page-screen" id="footerScreen">
-	<div class="animated-block slide-from-bottom red-bg top-padding">
+	<div class="red-bg top-padding">
 		<div class="wraper">
 			<div class="text-center">
 				<p class="footer-label mb-3">Connect with us</p>

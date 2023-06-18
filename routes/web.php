@@ -26,6 +26,9 @@ Route::get('/properties/{location}', [IndexController::class, 'properties']);
 Route::get('/property/{property}', [IndexController::class, 'propertyView']);
 
 Route::get('/countries', [IndexController::class, 'country'])->name('countries');
+
+Route::get('/direction/{direction}', [IndexController::class, 'directionView']);
+
 Route::get('/about', [IndexController::class, 'about'])->name('about');
 
 Route::get('/blog', [IndexController::class, 'blog'])->name('blog');

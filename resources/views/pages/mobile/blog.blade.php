@@ -3,7 +3,7 @@
 @section('content')
 <!-- top screen -->
 <div class="page-screen active-screen opened start-invest-screen">
-    <img src="/images/im_blog_banner.jpg" class="page-screen-bg-image" />
+    <img src="/images/im_blog_banner.jpg" class="page-screen-bg-image full-height" />
     <div class="wraper">
         <div class="fixed-block left-block">
             <p class="fixed-block-title">Start your<br>Invest with Us</p>

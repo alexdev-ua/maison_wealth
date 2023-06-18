@@ -6,20 +6,20 @@
         <div class="pop-up-content">
             <form class="custom-form">
                 <p class="pop-up-heading mb-0">Get a personal expert<br>consultation</p>
-                <div class="row mt-5 mb-5 pt-3">
-                    <div class="col-10">
+                <div class="row mt-3 pt-3">
+                    <div class="col-12">
                         <div class="form-group">
                             <span class="custom-label">First Name</span>
                             <input type="text" name="firstName" class="custom-input" />
                         </div>
                     </div>
-                    <div class="col-10 mt-3">
+                    <div class="col-12 mt-3">
                         <div class="form-group">
                             <span class="custom-label">Last Name</span>
                             <input type="text" name="lastName" class="custom-input" />
                         </div>
                     </div>
-                    <div class="col-10 mt-3">
+                    <div class="col-12 mt-3">
                         <div class="form-group">
                             <span class="custom-label">Phone Number</span>
                             <input type="text" name="phone" class="custom-input" />

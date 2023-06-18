@@ -3,15 +3,15 @@
 @section('content')
 <!-- top screen -->
 <div class="page-screen active-screen opened article-screen">
-    <img src="{{$article['page']['banner']}}" class="page-screen-bg-image" />
+    <img src="{{$article['page']['banner']}}" class="page-screen-bg-image full-height" />
     <div class="wraper">
         <div class="fixed-block left-block">
             <p class="fixed-block-title white-text">{!! $article['title'] !!}</p>
         </div>
     </div>
 </div>
-<div class="page-screen article-screen">
-    <div class="animated-block slide-from-bottom gray-bg top-padding pb-5">
+<div class="page-screen auto-height article-screen">
+    <div class="animated-block slide-from-bottom gray-bg pt-4 pb-4">
         <div class="wraper">
             <p class="page-screen-heading red-text article-subtitle with-border">{!! $article['page']['title'] !!}</p>
             <p class="page-block-description light-weight font-normal text-left">{!! $article['page']['description'] !!}</p>
@@ -21,14 +21,14 @@
 <!-- end top screen -->
 
 <!-- why screen -->
-<div class="page-screen @if(count($article['page']['options']['list']) > 2){{'auto-height'}}@endif why-screen">
-    <div class="animated-block slide-from-bottom white-bg top-padding pb-4">
+<div class="page-screen auto-height why-screen">
+    <div class="animated-block slide-from-bottom white-bg pt-4 pb-4">
         <div class="wraper">
             <p class="page-screen-heading red-text">{{ $article['page']['options']['title']}}</p>
 
             <div class="why-list mt-5">
                 @foreach($article['page']['options']['list'] as $articleOption)
-                <div class="why-item">
+                <div class="why-item mt-5">
                     <div class="why-item-heading">{{$articleOption['title']}}</div>
                     <div class="why-item-description">{{$articleOption['description']}}</div>
                 </div>

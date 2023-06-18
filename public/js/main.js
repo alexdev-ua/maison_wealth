@@ -39,8 +39,7 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click', '.pop-up-btn', function(){
-		$($(this).data('pop-up')).fadeToggle();
-		$($(this).data('pop-up')).toggleClass('opened');
+		popUp($(this).data('pop-up'));
 	});
 
 	$(document).on('click', '.property-location-btn', function(){
@@ -108,3 +107,13 @@ $(document).ready(function(){
 
 
 });
+
+function popUp(popUp){
+	$(popUp).fadeToggle();
+	$(popUp).toggleClass('opened');
+	if($('.pop-up').hasClass('opened')){
+		$('body').css('overflow', 'hidden');
+	}else{
+		$('body').css('overflow', 'auto');
+	}
+}

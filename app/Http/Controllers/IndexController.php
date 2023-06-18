@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Cookie;
 
 use App\Models\Property;
 use App\Models\BlogArticle;
+use App\Models\Direction;
 
 class IndexController extends Controller
 {
@@ -73,9 +74,30 @@ class IndexController extends Controller
             'title' => 'Maison Wealth - Countries',
             'description' => 'Maison Wealth is a professional real estate investment firm offering customized solutions and a proven track record of analyzing and identifying lucrative investment opportunities. Our main goal is to maximize your profits by offering exclusive deals on rare land and real estate projects that maintain their value over time. What are you waiting for? Start to Invest!'
         ];
+
+        $directions = Direction::getAll();
+        
         return View::make('pages.'.$this->viewPath .'.country')->with([
             'pageData' => $pageData,
             'activePage' => 'countries',
+            'directions' => $directions
+        ]);
+    }
+
+    public function directionView($direction, Request $request){
+        $pageData = [
+            'title' => 'Maison Wealth',
+            'description' => 'Maison Wealth is a professional real estate investment firm offering customized solutions and a proven track record of analyzing and identifying lucrative investment opportunities. Our main goal is to maximize your profits by offering exclusive deals on rare land and real estate projects that maintain their value over time. What are you waiting for? Start to Invest!'
+        ];
+        $directionItem = Direction::getByKey($direction);
+        if(!$directionItem){
+            abort(404);
+        }
+
+        return View::make('pages.'.$this->viewPath .'.direction_view')->with([
+            'direction' => $directionItem,
+            'pageData' => $pageData,
+            'activePage' => 'direction-view',
         ]);
     }
 

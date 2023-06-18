@@ -80,8 +80,7 @@
 
 <script>
     setTimeout(function(){
-        $('#personalConsultPopup').fadeIn();
-        $('#personalConsultPopup').addClass('opened');
+        popUp('#personalConsultPopup')
     }, 10000);
 </script>
 

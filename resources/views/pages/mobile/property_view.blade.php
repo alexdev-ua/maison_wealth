@@ -3,7 +3,7 @@
 @section('content')
 <!-- top screen -->
 <div class="page-screen active-screen opened property-screen">
-    <img src="{{$property['page']['banner_image']}}" class="page-screen-bg-image" />
+    <img src="{{$property['page']['banner_image']}}" class="page-screen-bg-image full-height" />
     <div class="wraper">
         <div class="fixed-block left-block">
             <p class="fixed-block-title white-text">{{$property['title']}}</p>
@@ -16,7 +16,7 @@
 
 <!-- pluses screen -->
 <div class="page-screen auto-height pluses-screen">
-    <div class="animated-block slide-from-bottom white-bg top-padding pb-4">
+    <div class="animated-block resized-block white-bg pt-4 pb-4">
         <div class="wraper">
             <p class="page-screen-heading">{{$property['page']['description']}}</p>
 
@@ -37,9 +37,9 @@
 
 <!-- features screen -->
 <div class="page-screen auto-height features-screen">
-    <div class="animated-block slide-from-bottom red-bg pb-4">
+    <div class="animated-block slide-from-bottom red-bg pt-4 pb-4">
         <div class="wraper">
-            <p class="page-screen-heading white-text top-padding text-left">{{$property['page']['features']['feature1']['title']}}</p>
+            <p class="page-screen-heading white-text text-left">{{$property['page']['features']['feature1']['title']}}</p>
 
             <p class="page-block-description font-normal light-weight mt-4 mb-2 text-left">{!!$property['page']['features']['feature1']['description']!!}</p>
         </div>
@@ -53,9 +53,9 @@
                 <img src="{{$property['page']['features']['feature2']['image']}}" class="page-screen-bg-image" style="height: 60vh;" />
             </div>
             <div class="wraper pt-2">
-                <p class="page-screen-heading text-left mb-2 mt-1">{{$property['page']['features']['feature2']['text']}}</p>
+                <p class="page-screen-heading text-left mb-2 mt-1 pt-3 pb-3">{{$property['page']['features']['feature2']['text']}}</p>
                 @if(isset($property['page']['features']['feature2']['description']))
-                <u class="page-block-description text-left font-normal mt-1">{!!$property['page']['features']['feature2']['description']!!}</u>
+                <u class="page-block-description text-left font-normal mt-1 pb-4 d-block">{!!$property['page']['features']['feature2']['description']!!}</u>
                 @endif
 
             </div>
@@ -74,8 +74,8 @@
 <div class="page-screen auto-height features-screen">
     <div class="animated-block slide-from-bottom gray-bg feature-slide pb-4">
         <div class="wraper page-block-content">
-            <div class="page-block-content top-content pl-0">
-                <p class="page-block-description text-left font-normal top-padding">About Offer</p>
+            <div class="page-block-content top-content pl-0 pb-0">
+                <p class="page-block-description text-left font-normal pt-4">About Offer</p>
             </div>
             <div>
                 <p class="page-screen-heading text-left mb-2 mt-1">{{$property['page']['features']['feature4']['text']}}</p>
@@ -106,12 +106,12 @@
 
 <!-- personal consulatation screen -->
 <div class="page-screen auto-height personal-consultation-screen" id="personalConsultScreen">
-    <div class="animated-block slide-from-bottom gray-bg top-padding pb-4">
+    <div class="animated-block slide-from-bottom gray-bg pt-4">
         <div class="wraper">
             <p class="page-screen-heading"><span class="gray-text">Start investing</span> correctly, without unnecessary risks and with the greatest benefit, <span class="gray-text">think it over and we will be there for you.</span></p>
         </div>
 
-        <div class="form-container">
+        <div class="form-container pt-3">
             <div class="form-heading black-heading pl-4 pr-4 pt-5 pb-5">Get a personal expert<br>consultation</div>
             <div class="form-content pl-4 pr-4 pt-3 pb-5">
                 <form class="custom-form">

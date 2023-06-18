@@ -3,7 +3,7 @@
 @section('content')
 <!-- top screen -->
 <div class="page-screen active-screen opened" id="homeTopScreen">
-    <img src="/images/im_main_top_bg.jpg" class="page-screen-bg-image" />
+    <img src="/images/im_main_top_bg.jpg" class="page-screen-bg-image full-height" />
     <div class="fixed-block centered-block">
         <div class="wraper">
             <img src="/images/ic_company_name.svg" class="company-name" />
@@ -14,8 +14,8 @@
 <!-- end top screen -->
 
 <!-- search screen -->
-<div class="page-screen" id="homeSearchScreen">
-    <div class="page-block-content p-0 white-bg animated-block slide-from-bottom">
+<div class="page-screen auto-height" id="homeSearchScreen">
+    <div class="page-block-content p-0 white-bg animated-block slide-from-bottom pt-5 pb-5">
         <div class="wraper">
             <p class="page-block-description">We sell the best investment properties in the most sought-after locations in the world's most investment-attractive countries.</p>
             <form class="custom-form" action="/properties/all">
@@ -43,26 +43,31 @@
         <div class="plots-block">
             <div class="plots-container">
                 <p class="plots-title top-padding mt-0">Our mission</p>
-                <img src="/images/im_plots_banner.jpg" class="banner-image" />
+                <div class="banners-block">
+                    <img src="/images/im_invest_dubai_banner.jpg" class="page-screen-bg-image banner-image active-banner" id="plotsBanner1" />
+                    <img src="/images/im_invest_miami_banner.jpg" class="page-screen-bg-image banner-image" id="plotsBanner2" />
+                    <img src="/images/im_invest_bali_banner.jpg" class="page-screen-bg-image banner-image" id="plotsBanner3" />
+                    <img src="/images/im_invest_mexico_banner.jpg" class="page-screen-bg-image banner-image" id="plotsBanner4" />
+                </div>
             </div>
         </div>
         <div class="plots-block white-bg">
             <div class="plots-container wraper">
-                <div class="plots-list">
+                <div class="plots-list pt-3">
                     <div class="plot-item opened">
-                        <div class="plot-title"><img src="/images/ic_arrow_right_red.svg" /> Dubai</div>
+                        <div class="plot-title" data-banner="#plotsBanner1"><img src="/images/ic_arrow_right_red.svg" /> Dubai</div>
                         <div class="plot-description">Land plots, apartments, villas, hotel residences, townhouses, commercial spaces, ultra-luxury projects</div>
                     </div>
                     <div class="plot-item">
-                        <div class="plot-title"><img src="/images/ic_arrow_right_red.svg" /> Miami</div>
+                        <div class="plot-title" data-banner="#plotsBanner2"><img src="/images/ic_arrow_right_red.svg" /> Miami</div>
                         <div class="plot-description">Land plots, apartments, villas, hotel residences, townhouses, commercial spaces, ultra-luxury projects</div>
                     </div>
                     <div class="plot-item">
-                        <div class="plot-title"><img src="/images/ic_arrow_right_red.svg" /> Bali</div>
+                        <div class="plot-title" data-banner="#plotsBanner3"><img src="/images/ic_arrow_right_red.svg" /> Bali</div>
                         <div class="plot-description">Land plots, apartments, villas, hotel residences, townhouses, commercial spaces, ultra-luxury projects</div>
                     </div>
                     <div class="plot-item">
-                        <div class="plot-title"><img src="/images/ic_arrow_right_red.svg" /> Mexico(Riviera Maya)</div>
+                        <div class="plot-title" data-banner="#plotsBanner4"><img src="/images/ic_arrow_right_red.svg" /> Mexico(Riviera Maya)</div>
                         <div class="plot-description">Land plots, apartments, villas, hotel residences, townhouses, commercial spaces, ultra-luxury projects</div>
                     </div>
 
