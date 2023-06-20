@@ -1,7 +1,22 @@
 var activeScreen,
-    scrollTimer = 0,
     scrollPosition = 0,
     canScroll = false;
+
+    const debounce = function(fn, d) {
+        let timer;
+
+        return function() {
+            let context = this;
+            let args = arguments;
+
+            clearTimeout(timer);
+
+            timer = setTimeout(() => {
+                fn.apply(context, args);
+            }, d);
+        }
+    }
+
 
 $(document).ready(function(){
     /*$('html, body, .page').animate({
@@ -10,14 +25,19 @@ $(document).ready(function(){
 
     activeScreen = $('.page-screen').first();
 
-    $(window).on('wheel', function(e){
-        clearTimeout(scrollTimer);
-        //if(!$(activeScreen).hasClass('auto-height')){
-            scrollTimer = setTimeout(function(){
-                scroll(e);
-            }, 300);
-        //}
+    $(document).on('touchmove', function(e){
+        console.log(e);
     });
+
+    $(window).on('wheel', debounce(function(e){
+        console.log(e.originalEvent.deltaY);
+        if(!Number.isInteger(e.originalEvent.deltaY) || (e.originalEvent.deltaY > 0 && e.originalEvent.deltaY < 100) || (e.originalEvent.deltaY < 0 && e.originalEvent.deltaY > -100)){
+            scroll(e);
+            return false;
+        }else{
+            scroll(e);
+        }
+    }, 200));
 
     $(document).on('click', '.scroll-to-btn', function(){
 		var scrollScreen = $(this).data('scroll-to'),
@@ -27,8 +47,6 @@ $(document).ready(function(){
         $(scrollScreen).addClass('opened');
 
         $('.page-screen').not($('.page-screen').first()).not($(scrollScreen)).removeClass('active-screen opened');
-
-        console.log($(activeScreen), $(scrollScreen), $(scrollScreen).is($(activeScreen)));
 
         if($(scrollScreen).is($(activeScreen))){
             autoScroll = true;
@@ -48,6 +66,7 @@ $(document).ready(function(){
 });
 
 function scroll(e){
+    console.log('scroll event');
     var anotherScreen = null;
 
     if(e.originalEvent.deltaY !== 0){
@@ -66,7 +85,6 @@ function scroll(e){
                 }
                 scrollPosition = $(activeScreen).scrollTop();
             }
-            //console.log('up', $(activeScreen).attr('id'), $(anotherScreen).attr('id'), $(activeScreen).scrollTop(), $(activeScreen).position().top, $(activeScreen).scrollTop() == $(activeScreen).position().top);
         }
         else {
             if($(activeScreen).next('.page-screen').length){
@@ -83,7 +101,6 @@ function scroll(e){
                     scrollPosition = $(activeScreen).scrollTop();
                 }
             }
-            //console.log('down', $(activeScreen).attr('id'), $(anotherScreen).attr('id'), $(activeScreen).scrollTop(), $(activeScreen).prop('scrollHeight'), window.innerHeight, $(activeScreen).scrollTop() >= $(activeScreen).prop('scrollHeight') - window.innerHeight);
         }
 
 
@@ -91,7 +108,7 @@ function scroll(e){
 
             if(e.originalEvent.deltaY < 0){
                 if($(activeScreen) != $('.page-screen').first() && $(anotherScreen) != $('.page-screen').first()){
-                    if(!$(activeScreen).hasClass('auto-height') || canScroll/*$(activeScreen).scrollTop() == $(activeScreen).position().top*/){
+                    if(!$(activeScreen).hasClass('auto-height') || canScroll){
                         $(activeScreen).removeClass('opened');
                         setTimeout(function(){
                             $(activeScreen).next('.page-screen').removeClass('active-screen');
@@ -103,7 +120,7 @@ function scroll(e){
                 $(anotherScreen).addClass('opened');
             }
             else {
-                if(!$(activeScreen).hasClass('auto-height') || canScroll/*$(activeScreen).scrollTop() >= $(activeScreen).prop('scrollHeight') - window.innerHeight*/){
+                if(!$(activeScreen).hasClass('auto-height') || canScroll){
                     $(anotherScreen).addClass('active-screen');
                     $(anotherScreen).addClass('opened');
                     activeScreen = $(anotherScreen);
@@ -112,7 +129,6 @@ function scroll(e){
             if(canScroll){
                 canScroll = false;
             }
-
         }
     }
 }
