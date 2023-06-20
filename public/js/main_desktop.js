@@ -2,42 +2,31 @@ var activeScreen,
     scrollPosition = 0,
     canScroll = false;
 
-    const debounce = function(fn, d) {
-        let timer;
+const debounce = function(func, wait) {
+    let timer;
 
-        return function() {
-            let context = this;
-            let args = arguments;
+    return function(e) {
+        clearTimeout(timer);
 
-            clearTimeout(timer);
-
-            timer = setTimeout(() => {
-                fn.apply(context, args);
-            }, d);
+        if(!Number.isInteger(e.originalEvent.deltaY) || Math.abs(e.originalEvent.deltaY < 100)){
+            wait = 100;
+        }else{
+            wait = 300;
         }
+
+        timer = setTimeout(() => {
+            console.log('debounce deltaY', e.originalEvent.deltaY);
+            func(e);
+        }, wait);
+
     }
 
+}
 
 $(document).ready(function(){
-    /*$('html, body, .page').animate({
-        scrollTop: 0
-    }, 0);*/
-
     activeScreen = $('.page-screen').first();
 
-    $(document).on('touchmove', function(e){
-        console.log(e);
-    });
-
-    $(window).on('wheel', debounce(function(e){
-        console.log(e.originalEvent.deltaY);
-        if(!Number.isInteger(e.originalEvent.deltaY) || (e.originalEvent.deltaY > 0 && e.originalEvent.deltaY < 100) || (e.originalEvent.deltaY < 0 && e.originalEvent.deltaY > -100)){
-            scroll(e);
-            return false;
-        }else{
-            scroll(e);
-        }
-    }, 200));
+    $(window).on('wheel, mousewheel', debounce(scroll, 300));
 
     $(document).on('click', '.scroll-to-btn', function(){
 		var scrollScreen = $(this).data('scroll-to'),
