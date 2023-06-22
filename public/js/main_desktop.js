@@ -1,25 +1,52 @@
 var activeScreen,
     scrollPosition = 0,
-    canScroll = false;
+    canScroll = false,
+    scrollTimer = null,
+    checkWheelInterval = 150,
+    isScrolled = false;
 
-const debounce = function(func, wait) {
+const debounce = function(func) {
     let timer;
 
-    $(window).stop(true, true);
+    //$(window).stop(true, true);
 
     return function(e) {
+        var scrollFrequency = 0;
         clearTimeout(timer);
 
-        if(!Number.isInteger(e.originalEvent.deltaY) || Math.abs(e.originalEvent.deltaY < 100)){
-            wait = 100;
-        }else{
-            wait = 300;
-        }
+        if(!Number.isInteger(e.originalEvent.deltaY) || Math.abs(e.originalEvent.deltaY) < 100){
+            scrollFrequency = 700;
+            //console.log('touchpad scroll');
 
-        timer = setTimeout(() => {
-            console.log('debounce deltaY', e.originalEvent.deltaY);
-            func(e);
-        }, wait);
+            if(!scrollTimer){
+                if(!isScrolled){
+                    func(e);
+                }
+                scrollTimer = setInterval(() => {
+                    //console.log('interval deltaY', e.originalEvent.deltaY);
+                    func(e);
+                }, scrollFrequency);
+            }
+
+            isScrolled = true;
+
+            timer = setTimeout(() => {
+                //console.log('debounce deltaY', e.originalEvent.deltaY);
+                //func(e);
+                clearInterval(scrollTimer);
+                scrollTimer = null;
+                isScrolled = false;
+            }, checkWheelInterval);
+        }else{
+            scrollFrequency = 300;
+            clearInterval(scrollTimer);
+            //console.log('mouse scroll');
+            timer = setTimeout(() => {
+                //console.log('debounce deltaY', e.originalEvent.deltaY);
+                func(e);
+                scrollTimer = null;
+            }, scrollFrequency);
+        }
 
     }
 
@@ -28,7 +55,7 @@ const debounce = function(func, wait) {
 $(document).ready(function(){
     activeScreen = $('.page-screen').first();
 
-    $(window).on('wheel, mousewheel', debounce(scroll, 300));
+    $(window).on('wheel, mousewheel', debounce(scroll));
 
     $(document).on('click', '.scroll-to-btn', function(){
 		var scrollScreen = $(this).data('scroll-to'),
@@ -130,5 +157,6 @@ function scroll(e){
                 canScroll = false;
             }
         }
+
     }
 }
