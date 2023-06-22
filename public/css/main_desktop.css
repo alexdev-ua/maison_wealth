@@ -196,6 +196,9 @@ header{
 header.red-header .border-top{
     border-top: 1px solid var(--red-color) !important;
 }
+header.red-header.disable-color .border-top{
+    border-top: 1px solid #DDDDDD !important;
+}
 footer{
     //background: var(--red-color);
     color: #FFF;
@@ -323,6 +326,9 @@ footer .group-title{
 
 header.red-header .main-menu .main-menu-link{
     color: var(--red-color);
+}
+header.red-header.disable-color .main-menu .main-menu-link{
+    color: #DDDDDD !important;
 }
 
 .custom-link, .custom-link:hover, .custom-link:focus{

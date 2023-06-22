@@ -45,7 +45,7 @@
                     <div class="plots-block"></div>
                     <div class="plots-block">
                         <div class="plots-container">
-                            <p class="plots-title mt-4 mb-0">Our mission</p>
+                            <p class="plots-title mt-4 mb-0">We offer</p>
                             <p class="plots-description">It is time for your right real estate investment</p>
                             <a href="" class="custom-link"><u>Learn more</u></a>
                         </div>

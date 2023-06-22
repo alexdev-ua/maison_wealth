@@ -5,6 +5,8 @@ var activeScreen,
 const debounce = function(func, wait) {
     let timer;
 
+    $(window).stop(true, true);
+
     return function(e) {
         clearTimeout(timer);
 
@@ -96,6 +98,10 @@ function scroll(e){
         if($(anotherScreen).length){
 
             if(e.originalEvent.deltaY < 0){
+                if($(activeScreen).attr('id') == 'footerScreen' && $('header').hasClass('red-header')){
+                    $('header').removeClass('disable-color');
+                    $('header .main-logo img').attr('src', '/images/ic_logo_red.svg');
+                }
                 if($(activeScreen) != $('.page-screen').first() && $(anotherScreen) != $('.page-screen').first()){
                     if(!$(activeScreen).hasClass('auto-height') || canScroll){
                         $(activeScreen).removeClass('opened');
@@ -113,6 +119,11 @@ function scroll(e){
                     $(anotherScreen).addClass('active-screen');
                     $(anotherScreen).addClass('opened');
                     activeScreen = $(anotherScreen);
+
+                    if($(activeScreen).attr('id') == 'footerScreen' && $('header').hasClass('red-header')){
+                        $('header').addClass('disable-color');
+                        $('header .main-logo img').attr('src', '/images/ic_logo_light.svg');
+                    }
                 }
             }
             if(canScroll){

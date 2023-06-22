@@ -476,6 +476,8 @@ button.custom-link{
 	float: right;
 	width: 30px;
 	height: 30px;
+    position: absolute;
+    right: 30px;
 }
 .pop-up .close-pop-up-btn img {
     width: 100%;

@@ -42,7 +42,7 @@
     <div class="animated-block slide-from-bottom">
         <div class="plots-block">
             <div class="plots-container">
-                <p class="plots-title top-padding mt-0">Our mission</p>
+                <p class="plots-title top-padding mt-0">We offer</p>
                 <div class="banners-block">
                     <img src="/images/im_invest_dubai_banner.jpg" class="page-screen-bg-image banner-image active-banner" id="plotsBanner1" />
                     <img src="/images/im_invest_miami_banner.jpg" class="page-screen-bg-image banner-image" id="plotsBanner2" />
