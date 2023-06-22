@@ -1,5 +1,5 @@
-<footer class="page-screen" id="footerScreen">
-	<div class="red-bg top-padding">
+<footer class="page-screen auto-height" id="footerScreen">
+	<div class="red-bg top-padding pb-4">
 		<div class="wraper">
 			<div class="text-center">
 				<p class="footer-label mb-3">Connect with us</p>
