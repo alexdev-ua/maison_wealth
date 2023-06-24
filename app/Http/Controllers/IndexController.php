@@ -282,7 +282,7 @@ class IndexController extends Controller
                     $contactParams["message"] = $message;
                 }else{
                     if($requestType == 'consultation'){
-                        $notification = "Consultation request:" . "%0A" . "First Name: " . $firstName . "%0A" . "Last Name: " . $lastName . "%0A" . "Phone: " . $phone . "%0A" . "Has WhatsApp: " . $hasWhatsapp;
+                        $notification = "Consultation request:" . "%0A" . "First Name: " . $firstName . "%0A" . "Last Name: " . $lastName . "%0A" . "Phone: " . $phone . "%0A" . "Has WhatsApp: " . $hasWhatsapp ? 'yes' : 'no';
 
                         $contactParams["has_whatsapp"] = $hasWhatsapp;
                     }
