@@ -276,13 +276,13 @@ class IndexController extends Controller
 
                 if($requestType == 'contact'){
                     $message = $request->message;
-                    $notification = "Contact request:" . "%0A" . "First Name: " . $firstName . "%0A" . "Last Name: " . $lastName . "%0A" . "Phone: " . $phone . "%0A" . "Email: " . $email . "%0A" . "Message: " . $message;
+                    $notification = "Contact form:" . "%0A" . "First Name: " . $firstName . "%0A" . "Last Name: " . $lastName . "%0A" . "Phone: " . $phone . "%0A" . "Email: " . $email . "%0A" . "Message: " . $message;
 
                     $contactParams["email"] = $email;
                     $contactParams["message"] = $message;
                 }else{
                     if($requestType == 'consultation'){
-                        $notification = "Consultation request:" . "%0A" . "First Name: " . $firstName . "%0A" . "Last Name: " . $lastName . "%0A" . "Phone: " . $phone . "%0A" . "Has WhatsApp: " . ($hasWhatsapp ? 'yes' : 'no');
+                        $notification = "Consultation form:" . "%0A" . "First Name: " . $firstName . "%0A" . "Last Name: " . $lastName . "%0A" . "Phone: " . $phone . "%0A" . "Has WhatsApp: " . ($hasWhatsapp ? 'yes' : 'no');
 
                         $contactParams["has_whatsapp"] = $hasWhatsapp;
                     }
