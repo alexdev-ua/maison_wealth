@@ -95,52 +95,7 @@
 <!-- end features screen -->
 
 <!-- personal consulatation screen -->
-<div class="page-screen gray-bg personal-consultation-screen" id="personalConsultScreen">
-    <div class="row">
-        <div class="col-6 animated-block slide-from-bottom">
-            <div class="page-block-content gray-bg top-padding">
-                <p class="page-screen-heading mb-2"><span class="gray-text">Start investing</span> correctly, without unnecessary risks and with the greatest benefit, <span class="gray-text">think it over and we will be there for you.</span></p>
-            </div>
-        </div>
-        <div class="col-6 pl-0 animated-block slide-from-top white-bg">
-            <div class="form-container">
-                <div class="form-heading black-heading top-padding">Get a personal expert<br>consultation</div>
-                <div class="form-content">
-                    <form class="custom-form">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <span class="custom-label">First Name</span>
-                                    <input type="text" name="firstName" class="custom-input" />
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <span class="custom-label">Last Name</span>
-                                    <input type="text" name="lastName" class="custom-input" />
-                                </div>
-                            </div>
-                            <div class="col-6 mt-3">
-                                <div class="form-group">
-                                    <span class="custom-label">Phone Number</span>
-                                    <input type="text" name="phone" class="custom-input" />
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <input type="checkbox" name="haveWhatsapp" class="custom-input mr-2" /><span class="custom-label">I have a WhatsApp account registered to this phone number</span>
-                                </div>
-                            </div>
-                            <div class="col-3 mt-4 pt-2">
-                                <button class="main-btn black-btn inverted-btn">Send <span class="btn-icon"></span></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@include('includes.desktop.personal_consult_screen')
 <!-- end personal consultation screen -->
 
 <!-- footer -->

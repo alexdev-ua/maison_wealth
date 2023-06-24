@@ -39,11 +39,7 @@ Route::get('/cookies', [IndexController::class, 'cookies']);
 
 Route::get('/contacts', [IndexController::class, 'contacts'])->name('contacts');
 
-Route::get('/contact-form', [OrderController::class, 'contactForm'])->name('contact-form');
-
-Route::post('/contact-form/save', [OrderController::class, 'saveContactForm'])->name('contact-form.save');
-
-Route::get('/contact-form-success', [OrderController::class, 'contactFormSuccess'])->name('contact-form-success');
+Route::post('/send-request', [IndexController::class, 'sendRequest'])->name('send-request');
 
 // Admin routes
 Route::group(['prefix' => 'dashboard', 'middleware' => ['guest:admin']], function () {

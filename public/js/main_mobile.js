@@ -23,7 +23,9 @@ $(document).ready(function(){
         if($('.main-menu').hasClass('opened')){
             $('body').css('overflow', 'hidden');
         }else{
-            $('body').css('overflow', 'auto');
+            if(!$('.request-result-dialog').length){
+                $('body').css('overflow', 'auto');
+            }
         }
 	});
 

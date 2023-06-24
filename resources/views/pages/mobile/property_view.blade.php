@@ -105,41 +105,7 @@
 <!-- end features screen -->
 
 <!-- personal consulatation screen -->
-<div class="page-screen auto-height personal-consultation-screen" id="personalConsultScreen">
-    <div class="animated-block slide-from-bottom gray-bg pt-4">
-        <div class="wraper">
-            <p class="page-screen-heading"><span class="gray-text">Start investing</span> correctly, without unnecessary risks and with the greatest benefit, <span class="gray-text">think it over and we will be there for you.</span></p>
-        </div>
-
-        <div class="form-container pt-3">
-            <div class="form-heading black-heading pl-4 pr-4 pt-5 pb-5">Get a personal expert<br>consultation</div>
-            <div class="form-content pl-4 pr-4 pt-3 pb-5">
-                <form class="custom-form">
-                    <div class="form-group mt-4">
-                        <span class="custom-label">First Name</span>
-                        <input type="text" name="firstName" class="custom-input" />
-                    </div>
-                    <div class="form-group mt-4">
-                        <span class="custom-label">Last Name</span>
-                        <input type="text" name="lastName" class="custom-input" />
-                    </div>
-                    <div class="form-group mt-4">
-                        <span class="custom-label">Phone Number</span>
-                        <input type="text" name="phone" class="custom-input" />
-                    </div>
-                    <div class="form-group mt-4">
-                        <input type="checkbox" name="haveWhatsapp" class="custom-input mr-2" /><span class="custom-label">I have a WhatsApp account registered to this phone number</span>
-                    </div>
-
-                    <div class="mt-5 pt-4 text-center">
-                        <button class="main-btn black-btn inverted-btn">Send <span class="btn-icon"></span></button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-</div>
+@include('includes.mobile.personal_consult_screen')
 <!-- end personal consultation screen -->
 
 <!-- footer -->

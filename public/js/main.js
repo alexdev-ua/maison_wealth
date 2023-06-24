@@ -52,32 +52,22 @@ $(document).ready(function(){
 			var price = '';
 
 			if(urlParams.has('price')){
-				price = '&price=' + urlParams.get('price');
+				price = 'price=' + urlParams.get('price');
 			}
 
-			$('.properties-list .property-item').css('opacity','0.5');
+			loadProperties(location, price);
 
-			$.ajax({
-				type:'GET',
-				url: '/properties/' + location + '?partial=1' + price,
-				data:{},
-				processData: false,
-				contentType: false,
-				success:function(data){
-					$('.properties-list .property-item').css('opacity','0');
-					$('.property-location-btn').not(btn).removeClass('active');
-					$(btn).addClass('active');
-					$('.properties-list').html(data);
-					setTimeout(function(){
-						$('.properties-list .property-item').removeClass('hidden-property');
-					}, 100);
-					history.pushState({}, null, '/properties/' + location + price);
-				},
-				error:function(data){
-
-				}
-			});
+			$('.property-location-btn').not(btn).removeClass('active');
+			$(btn).addClass('active');
 		}
+	});
+
+	$(document).on('click', '.reset-price-filter-btn', function(){
+		var location = $('.property-location-btn.active').data('location');
+
+		$('.price-block').remove();
+
+		loadProperties(location);
 	});
 
 	$(document).on('mouseenter', '.plot-item .plot-title', function(){
@@ -104,9 +94,94 @@ $(document).ready(function(){
 	});
 
 
+	$(document).on('submit', '#contactForm, #consultationForm', function(e){
+        e.preventDefault();
+        var form = $(this)[0],
+    		data = new FormData(form),
+            url = $(form).attr('action');
 
+        $(form).find('.custom-input').removeClass('is-invalid');
+        $(form).find('.invalid-feedback').remove();
+
+        $(form).find('.submit-btn').attr('disabled', true);
+
+		if(data){
+			$.ajax({
+				type:'POST',
+				url: url,
+				data: data,
+				processData: false,
+				contentType: false,
+				success:function(data){
+                    //$('#personalConsultationPopUp').remove();
+                    if(data.success){
+                        $(form).find('.custom-input').val('');
+						if($('.pop-up.opened').length){
+							popUp('.pop-up.opened');
+						}
+                        var formResultDialog = '<div class="request-result-dialog">'+
+								'<div class="request-result-content">' +
+									'<p class="request-result-title">Congratulations!</p>' +
+									'<p class="request-result-text">Your request was sent successfully and our managers contact with you as soon as possible</p>' +
+									'<button class="main-btn black-btn close-result-btn">Close</button>' +
+								'</div>' +
+							'</div>';
+
+						if(!$('.request-result-dialog').length){
+							$('.page').append(formResultDialog);
+						}
+						$('.request-result-dialog').fadeIn();
+						$('body').css('overflow', 'hidden');
+
+						$(form).find('.submit-btn').attr('disabled', false);
+                    }
+				},
+				error:function(data){
+					var errors = data.responseJSON.errors;
+
+					$.each(errors, function(input, error){
+                        $(form).find('.custom-input[name="'+input+'"]').addClass('is-invalid');
+                        $(form).find('.custom-input[name="'+input+'"]').after('<span class="invalid-feedback" role="alert">'+error+'</span>');
+					});
+                    $(form).find('.submit-btn').attr('disabled', false);
+				}
+			});
+		}
+    });
+
+	$(document).on('click', '.close-result-btn', function(){
+		$('.request-result-dialog').fadeOut();
+		$('body').css('overflow', 'auto');
+
+		setTimeout(function(){
+			$('.request-result-dialog').remove();
+		}, 1500);
+	});
 
 });
+
+function loadProperties(location, price = ''){
+	$('.properties-list .property-item').css('opacity','0.5');
+
+	$.ajax({
+		type:'GET',
+		url: '/properties/' + location + '?partial=1' + (price ? '&' + price : ''),
+		data:{},
+		processData: false,
+		contentType: false,
+		success:function(data){
+			$('.properties-list .property-item').css('opacity','0');
+			$('.properties-list').html(data);
+			setTimeout(function(){
+				$('.properties-list .property-item').removeClass('hidden-property');
+			}, 100);
+			history.pushState({}, null, '/properties/' + location + (price ? '?' + price : ''));
+		},
+		error:function(data){
+
+		}
+	});
+}
 
 function popUp(popUp){
 	$(popUp).fadeToggle();

@@ -26,12 +26,16 @@ href="/images/ic_logo_red.svg" type="image/x-icon" />
 <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" crossorigin="anonymous">
-<link href="/css/main_desktop.css?<?=date("HisdmY");?>" rel="stylesheet">
+<link rel="stylesheet" href="/assets/bootstrap/bootstrap-4.3.1/bootstrap.min.css">
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="/assets/jquery-3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="/assets/bootstrap/bootstrap-4.3.1/bootstrap.min.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/assets/bootstrap/select/select.min.css">
+<script src="/assets/bootstrap/select/select.min.js"></script>
+
+<link href="/css/main_desktop.css?<?=date("HisdmY");?>" rel="stylesheet">
 
 <script src="/js/main.js?<?=date("HisdmY");?>"></script>
 <script src="/js/main_desktop.js?<?=date("HisdmY");?>"></script>

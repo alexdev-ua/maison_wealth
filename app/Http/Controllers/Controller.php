@@ -9,6 +9,8 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Cookie;
 
+use App\Models\Helper;
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -40,6 +42,8 @@ class Controller extends BaseController
 		$this->viewPath = $result;
 		$this->platform = $result;
 		View::share(['platform' => $this->platform]);
+
+        View::share(['countries' => Helper::$countries]);
 
         $this->middleware(function ($request, $next) {
             $acceptCookies = Cookie::get('acceptCookies', null);

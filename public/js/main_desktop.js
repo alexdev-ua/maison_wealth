@@ -2,7 +2,7 @@ var activeScreen,
     scrollPosition = 0,
     canScroll = false,
     scrollTimer = null,
-    checkWheelInterval = 150,
+    checkWheelInterval = 300,
     isScrolled = false;
 
 const debounce = function(func) {
@@ -15,7 +15,7 @@ const debounce = function(func) {
         clearTimeout(timer);
 
         if(!Number.isInteger(e.originalEvent.deltaY) || Math.abs(e.originalEvent.deltaY) < 100){
-            scrollFrequency = 700;
+            scrollFrequency = 900;
             //console.log('touchpad scroll');
 
             if(!scrollTimer){

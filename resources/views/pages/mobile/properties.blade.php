@@ -6,6 +6,11 @@
     <div class="animated-block slide-from-bottom white-bg top-padding">
         <div class="wraper">
             <p class="page-screen-heading">Properties</p>
+            @if(isset($investPrice))
+            <div class="price-block">
+                <p class="page-screen-description">Up to ${{$investPrice}} <button class="main-btn black-btn inverted-btn reset-price-filter-btn">See All</button></p>
+            </div>
+            @endif
             <div class="properties-locations text-center">
                 <button class="custom-btn property-location-btn @if($location == 'all')active @endif" data-location="all">All</button>
                 <button class="custom-btn property-location-btn @if($location == 'dubai')active @endif" data-location="dubai">Dubai</button>
