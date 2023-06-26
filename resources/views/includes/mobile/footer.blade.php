@@ -21,7 +21,7 @@
 				</div>
 				<div class="col-6 text-right">
 					<b class="group-title">My account</b>
-					<a href="" class="custom-link white-link footer-link mt-2">Start to Invest</a>
+					<button class="custom-link white-link footer-link mt-2 pop-up-btn float-right p-0" data-pop-up="#personalConsultPopup">Start to Invest</button>
 				</div>
 			</div>
 			<div class="row mt-5 pt-3">

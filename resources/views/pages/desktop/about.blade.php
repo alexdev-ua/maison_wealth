@@ -12,7 +12,7 @@
                 <p class="page-block-description font-normal light-weight mt-3 mb-2">An international investment company that provides individual solutions for profitable real estate investing.</p>
                 <p class="page-block-description font-normal light-weight mt-1">We are always happy to help you choose the right property that meets our client's long-term needs, as well as a profitable investment plan.</p>
 
-                <a href="" class="main-btn black-btn inverted-btn d-inline-block mt-5">Start to invest <span class="btn-icon"></span></a>
+                <button class="main-btn black-btn inverted-btn d-inline-block mt-5 scroll-to-btn" data-scroll-to="#getInTouchScreen">Start to invest <span class="btn-icon"></span></button>
             </div>
         </div>
         <div class="col-6 pl-0">

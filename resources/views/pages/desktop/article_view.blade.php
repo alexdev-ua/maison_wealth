@@ -61,7 +61,7 @@
 <div class="page-screen article-screen-content">
     <div class="row">
         @if($pageScreen['align'] == 'right')
-        <div class="col-6 pr-0 animated-block {{$pageScreen['align'] == 'left' ? 'slide-from-top' : 'slide-from-bottom'}}">
+        <div class="col-6 pr-0 animated-block {{$pageScreen['align'] == 'right' ? 'slide-from-bottom' : 'slide-from-top' }}">
             <img src="{{$pageScreen['image']}}" class="page-screen-bg-image" />
         </div>
         @endif

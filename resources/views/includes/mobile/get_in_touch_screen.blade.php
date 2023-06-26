@@ -1,4 +1,4 @@
-<div class="page-screen auto-height">
+<div class="page-screen auto-height" id="getInTouchScreen">
     <div class="animated-block slide-from-bottom white-bg top-padding">
         <div class="wraper">
             <div class="get-in-touch-block">
