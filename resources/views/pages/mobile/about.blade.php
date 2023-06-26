@@ -92,7 +92,7 @@
                     <div class="carousel-slide">
                         <div class="testimonial-item">
                             <div class="testimonial-text">During my invest in Maison Wealth company. That number alone is something to be amazed at. Other ways has helped my company is through writing copy for email campaigns and web support.</div>
-                            <p class="testimonial-author">- Liliia</p>
+                            <p class="testimonial-author">- Mary</p>
                         </div>
                     </div>
                     <div class="carousel-slide">
@@ -104,7 +104,7 @@
                     <div class="carousel-slide">
                         <div class="testimonial-item">
                             <div class="testimonial-text">Investing in Maison Wealth is a good choice for own future</div>
-                            <p class="testimonial-author">- Johnny</p>
+                            <p class="testimonial-author">- John</p>
                         </div>
                     </div>
                 </div>
