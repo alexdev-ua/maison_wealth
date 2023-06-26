@@ -490,6 +490,7 @@ button.custom-link{
     position: fixed;
     right: 30px;
     z-index: 100;
+    top: 15px;
 }
 .pop-up .close-pop-up-btn img {
     width: 100%;
