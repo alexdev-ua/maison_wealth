@@ -56,19 +56,23 @@
                             @endif
                         </div>
 
+                        @if($property['square'])
                         <div class="col-6 p-1">
                             <p class="property-desc-item">
                                 <span class="property-desc-label">Square</span>
                                 {{$property['square']}}
                             </p>
                         </div>
+                        @endif
 
+                        @if($property['price_per_square'])
                         <div class="col-6 p-1">
                             <p class="property-desc-item">
                                 <span class="property-desc-label">Price per Square</span>
                                 {{$property['price_per_square']}}
                             </p>
                         </div>
+                        @endif
 
                         <div class="col-6 p-1">
                             <p class="property-desc-item">

@@ -24,8 +24,8 @@ class Property extends Model
             'image' => '/images/projects/district-11-opal-gardens/preview.jpg',
             'mode' => 'invest',
             'price_digit' => 1170800,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/district-11-opal-gardens/banner.jpg',
                 'label' => 'A lifestyle designed to ingulde',
@@ -77,8 +77,8 @@ class Property extends Model
             'image' => '/images/projects/cielo-maya/preview.jpg',
             'mode' => 'more',
             'price_digit' => 1435000,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/cielo-maya/banner.jpg',
                 'label' => 'Large area of objects',
@@ -123,8 +123,8 @@ class Property extends Model
             'image' => '/images/projects/cipriani-residences/preview.jpg',
             'mode' => 'more',
             'price_digit' => 2341900,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/cipriani-residences/banner.jpg',
                 'label' => 'A modern lifestyle',
@@ -178,8 +178,8 @@ class Property extends Model
             'image' => '/images/projects/waldorf-astoria/preview.jpg',
             'mode' => 'invest',
             'price_digit' => 3942000,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/waldorf-astoria/banner.jpg',
                 'label' => 'The tallest building in Florida',
@@ -224,8 +224,8 @@ class Property extends Model
             'image' => '/images/projects/bloom/preview.jpg',
             'mode' => 'more',
             'price_digit' => 639000,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/bloom/banner.jpg',
                 'label' => 'A paradise with access to the sea',
@@ -270,8 +270,8 @@ class Property extends Model
             'image' => '/images/projects/bentley-residences/preview.jpg',
             'mode' => 'more',
             'price_digit' => 5600000,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/bentley-residences/banner.jpg',
                 'label' => 'Lift to extraordinary heights',
@@ -342,8 +342,8 @@ class Property extends Model
             'image' => '/images/projects/nalu-luxury-residences/preview.jpg',
             'mode' => 'more',
             'price_digit' => 599200,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/nalu-luxury-residences/banner.jpg',
                 'label' => 'Sweet and mystical experiences',
@@ -390,8 +390,8 @@ class Property extends Model
             'image' => '/images/projects/damac-bay-cavalli/preview.jpg',
             'mode' => 'invest',
             'price_digit' => 814200,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/damac-bay-cavalli/banner.jpg',
                 'label' => 'A new wave of seaside luxury concept',
@@ -436,8 +436,8 @@ class Property extends Model
             'image' => '/images/projects/grand-peninsula/preview.jpg',
             'mode' => 'more',
             'price_digit' => 779000,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/grand-peninsula/banner.jpg',
                 'label' => 'A private residence of such scale',
@@ -482,8 +482,8 @@ class Property extends Model
             'image' => '/images/projects/nexo-residences/preview.jpg',
             'mode' => 'more',
             'price_digit' => 505785,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/nexo-residences/banner.jpg',
                 'label' => 'A new, urban autonomy',
@@ -535,8 +535,8 @@ class Property extends Model
             'image' => '/images/projects/west-eleventh/preview.jpg',
             'mode' => 'invest',
             'price_digit' => 511000,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/west-eleventh/banner.jpg',
                 'label' => 'The first centrally managed luxury condo residences',
@@ -587,8 +587,8 @@ class Property extends Model
             'image' => '/images/projects/secret-waters/preview.jpg',
             'mode' => 'more',
             'price_digit' => 421000,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/secret-waters/banner.jpg',
                 'label' => 'A new spectacularly spacious condominiums',
@@ -633,8 +633,8 @@ class Property extends Model
             'image' => '/images/projects/nunna/preview.jpg',
             'mode' => 'more',
             'price_digit' => 450000,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/nunna/banner.jpg',
                 'label' => 'Different types and configurations space',
@@ -679,8 +679,8 @@ class Property extends Model
             'image' => '/images/projects/600-wordcenter/preview.jpg',
             'mode' => 'invest',
             'price_digit' => 432000,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/600-wordcenter/banner.jpg',
                 'label' => 'A great investment opportunity in the New Center of Miami',
@@ -725,8 +725,8 @@ class Property extends Model
             'image' => '/images/projects/upper-house/preview.jpg',
             'mode' => 'invest',
             'price_digit' => 336600,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/upper-house/banner.jpg',
                 'label' => 'More than just a resident',
@@ -771,8 +771,8 @@ class Property extends Model
             'image' => '/images/projects/ceiba-condo-paradise/preview.jpg',
             'mode' => 'more',
             'price_digit' => 357000,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/ceiba-condo-paradise/banner.jpg',
                 'label' => 'Paradise is your home',
@@ -825,8 +825,8 @@ class Property extends Model
             'image' => '/images/projects/the-edge/preview.jpg',
             'mode' => 'invest',
             'price_digit' => 350160,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/the-edge/banner.jpg',
                 'label' => 'A truly cosmopolitan living experience',
@@ -881,8 +881,8 @@ class Property extends Model
             'image' => '/images/projects/cuddles-berawa/preview.jpg',
             'mode' => 'invest',
             'price_digit' => [250000, 320000],
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m'
+            'square' => null,
+            'price_per_square' => null
         ],
         'umalas-premier' => [
             'location' => 'bali',
@@ -900,8 +900,8 @@ class Property extends Model
             'image' => '/images/projects/umalas-premier/preview.jpg',
             'mode' => 'invest',
             'price_digit' => 260000,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/umalas-premier/banner.jpg',
                 'label' => 'A new complex of modern villas',
@@ -953,8 +953,8 @@ class Property extends Model
             'image' => '/images/projects/sunny-apart-1/preview.jpg',
             'mode' => 'invest',
             'price_digit' => 180000,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m'
+            'square' => null,
+            'price_per_square' => null
         ],
         'sunny-apart-2' => [
             'location' => 'bali',
@@ -972,8 +972,8 @@ class Property extends Model
             'image' => '/images/projects/sunny-apart-2/preview.jpg',
             'mode' => 'invest',
             'price_digit' => 180000,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m'
+            'square' => null,
+            'price_per_square' => null
         ],
         'batu-bolong' => [
             'location' => 'bali',
@@ -991,8 +991,8 @@ class Property extends Model
             'image' => '/images/projects/batu-bolong/preview.jpg',
             'mode' => 'invest',
             'price_digit' => 350000,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/batu-bolong/banner.jpg',
                 'label' => 'A new complex of modern villas',
@@ -1042,8 +1042,8 @@ class Property extends Model
             'image' => '/images/projects/sea-heaven/preview.jpg',
             'mode' => 'invest',
             'price_digit' => 2183250,
-            'square' => '1735 sq ft / 161 sq m',
-            'price_per_square' => '5000$ per sq m',
+            'square' => null,
+            'price_per_square' => null,
             'page' => [
                 'banner_image' => '/images/projects/sea-heaven/banner.jpg',
                 'label' => 'A retreat of luxury, peace, and beauty',
