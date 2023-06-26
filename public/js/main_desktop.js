@@ -14,6 +14,10 @@ const debounce = function(func) {
         var scrollFrequency = 0;
         clearTimeout(timer);
 
+        if($('div.dropdown-menu.show').length){
+            return false;
+        }
+
         if(!Number.isInteger(e.originalEvent.deltaY) || Math.abs(e.originalEvent.deltaY) < 100){
             scrollFrequency = 900;
             //console.log('touchpad scroll');
