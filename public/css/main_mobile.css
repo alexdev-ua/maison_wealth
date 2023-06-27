@@ -482,18 +482,18 @@ button.custom-link{
 }
 
 .pop-up .close-pop-up-btn{
-	background: none;
-	border: none;
-	float: right;
-	width: 30px;
-	height: 30px;
-    position: fixed;
-    right: 30px;
+    background: none;
+    border: none;
+    float: right;
+    width: 30px;
+    height: 30px;
+    position: relative;
     z-index: 100;
-    top: 15px;
+    padding: 0;
 }
 .pop-up .close-pop-up-btn img {
-    width: 100%;
+    width: 20px;
+    height: 20px;
 }
 
 /* buttons */
