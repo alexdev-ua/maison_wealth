@@ -1,13 +1,14 @@
-<div class="pop-up" id="personalConsultPopup">
+<div class="pop-up" id="notFoundConsultPopup">
     <div class="wraper">
         <div class="pop-up-header">
-            <button class="close-pop-up-btn pop-up-btn" data-pop-up="#personalConsultPopup"><img src="/images/ic_arrow_right_white.svg"> Back to Maison W.</button>
+            <button class="close-pop-up-btn pop-up-btn" data-pop-up="#notFoundConsultPopup"><img src="/images/ic_arrow_right_white.svg"> Back to Another Projects</button>
         </div>
         <div class="pop-up-content">
             <div class="row">
                 <div class="col-6 offset-6">
-                    <form class="custom-form" method="POST" action="{{route('send-request')}}" id="consultationForm">
-                        <p class="pop-up-heading mb-0">Get a personal expert<br>consultation</p>
+                    <form class="custom-form" method="POST" action="{{route('send-request')}}" id="notFoundConsultationForm">
+                        <p class="custom-form-text mb-0">We haven't found the right facility<br>But we certainly have something to offer you</p>
+                        <p class="pop-up-heading mb-0 red-text">Let’s get a personal expert consultation</p>
                         <div class="row mt-2 pt-3">
                             <div class="col-6">
                                 <div class="form-group">
@@ -45,7 +46,7 @@
                             </div>
                             <input type="hidden" name="type" value="consultation" />
                             <div class="col-3 mt-2">
-                                <button class="main-btn black-btn inverted-btn submit-btn">Send <span class="btn-icon"></span></button>
+                                <button class="main-btn red-btn inverted-btn submit-btn">Send <span class="btn-icon"></span></button>
                             </div>
                         </div>
                     </form>

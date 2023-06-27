@@ -39,10 +39,19 @@
 @include('includes.mobile.footer')
 <!-- end footer -->
 
-<script>
-    setTimeout(function(){
-        popUp('#personalConsultPopup')
-    }, 10000);
-</script>
+@if(!count($properties))
+    @include('includes.mobile.not_found_consult_popup')
+    <script>
+        setTimeout(function(){
+            popUp('#notFoundConsultPopup')
+        }, 1000);
+    </script>
+@else
+    <script>
+        setTimeout(function(){
+            popUp('#personalConsultPopup')
+        }, 10000);
+    </script>
+@endif
 
 @endsection

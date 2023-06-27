@@ -42,7 +42,7 @@
     <div class="animated-block slide-from-bottom">
         <div class="plots-block">
             <div class="plots-container">
-                <p class="plots-title top-padding mt-0">We offer</p>
+                <p class="plots-title top-padding mt-0">What do we offer</p>
                 <div class="banners-block">
                     <img src="/images/im_invest_dubai_banner.jpg" class="page-screen-bg-image banner-image active-banner" id="plotsBanner1" />
                     <img src="/images/im_invest_miami_banner.jpg" class="page-screen-bg-image banner-image" id="plotsBanner2" />
@@ -165,31 +165,31 @@
         <div class="wraper mt-4 pt-3">
             <div class="invest-block row">
                 <div class="col-6">
-                    <div class="invest-item">
+                    <div class="invest-item opened">
                         <p class="invest-name">UAE <span class="invest-city">(Dubai)</span></p>
                         <div class="invest-description">Real estate in Dubai is one of the best assets for investment. The growth in property prices is at least 10-15% per year, guaranteeing high profits for your investments.</div>
-                        <a href="/properties/dubai" class="custom-link details-btn mt-3" data-banner="#investBanner1">Details <img src="/images/ic_arrow_right_white.svg"></a>
+                        <a href="/direction/dubai" class="custom-link mt-3" data-banner="#investBanner1">Details <img src="/images/ic_arrow_right_white.svg"></a>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="invest-item">
+                    <div class="invest-item opened">
                         <p class="invest-name">USA <span class="invest-city">(Miami)</span></p>
                         <div class="invest-description">Miami is the place where dreams of stable and profitable investments come true. With an annual rental occupancy rate of over 85% and a growing demand for short-term rentals.</div>
-                        <a href="/properties/miami" class="custom-link details-btn mt-3" data-banner="#investBanner2">Details <img src="/images/ic_arrow_right_white.svg"></a>
+                        <a href="/direction/miami" class="custom-link mt-3" data-banner="#investBanner2">Details <img src="/images/ic_arrow_right_white.svg"></a>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="invest-item">
+                    <div class="invest-item opened">
                         <p class="invest-name">Indonesia<br><span class="invest-city">(Bali)</span></p>
                         <div class="invest-description">On Bali, you will find high returns on real estate investments, thanks to the 300% increase in land value over the last 5 years.</div>
-                        <a href="/properties/bali" class="custom-link details-btn mt-3" data-banner="#investBanner3">Details <img src="/images/ic_arrow_right_white.svg"></a>
+                        <a href="/direction/bali" class="custom-link mt-3" data-banner="#investBanner3">Details <img src="/images/ic_arrow_right_white.svg"></a>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="invest-item">
+                    <div class="invest-item opened">
                         <p class="invest-name">Mexico<br><span class="invest-city">(Riviera Maya)</span></p>
                         <div class="invest-description">The ROI ranges from 8% to 12%, and the payback period is 6-7 years.</div>
-                        <a href="/properties/mexico" class="custom-link details-btn mt-3" data-banner="#investBanner4">Details <img src="/images/ic_arrow_right_white.svg"></a>
+                        <a href="/direction/mexico" class="custom-link mt-3" data-banner="#investBanner4">Details <img src="/images/ic_arrow_right_white.svg"></a>
                     </div>
                 </div>
             </div>

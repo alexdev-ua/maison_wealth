@@ -825,6 +825,11 @@ button.custom-link{
     height: 50vh;
     width: 100%;
 }
+.plots-screen .plots-block .page-screen-heading{
+    display: flex;
+    align-content: flex-end;
+    flex-wrap: wrap;
+}
 .plots-screen .plots-block .plots-container{
     height: 100%;
 }

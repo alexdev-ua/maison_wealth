@@ -36,10 +36,29 @@
 @include('includes.desktop.footer')
 <!-- end footer -->
 
-<script>
-    setTimeout(function(){
-        popUp('#personalConsultPopup')
-    }, 10000);
-</script>
+@if(!count($properties))
+    @include('includes.desktop.not_found_consult_popup')
+    <script>
+        setTimeout(function(){
+            popUp('#notFoundConsultPopup')
+        }, 1000);
+    </script>
+@else
+    <script>
+        window.consultPopUpShowed = false;
+        $(document).ready(function(){
+            $('#propertiesScreen').scroll(function(e){
+                var scrollTop = $(this).scrollTop();
+
+                if(!window.consultPopUpShowed){
+                    if(scrollTop + window.innerHeight >= $(this).prop('scrollHeight')){
+                        popUp('#personalConsultPopup')
+                        window.consultPopUpShowed = true;
+                    };
+                }
+            });
+        });
+    </script>
+@endif
 
 @endsection

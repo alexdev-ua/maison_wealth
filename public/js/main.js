@@ -83,18 +83,11 @@ $(document).ready(function(){
 	$(document).on('mouseenter', '.invest-item .details-btn', function(){
 		var currentBlock = $(this).closest('.invest-item');
 
-		currentBlock.addClass('opened');
-
         $(currentBlock).closest('.page-screen').find('.banners-block .banner-image').not($($(this).data('banner'))).fadeOut();
         $($(this).data('banner')).fadeIn();
 	});
 
-	$(document).on('mouseleave', '.invest-item .details-btn', function(){
-		$(this).closest('.invest-item').removeClass('opened');
-	});
-
-
-	$(document).on('submit', '#contactForm, #consultationForm', function(e){
+	$(document).on('submit', '#contactForm, #consultationForm, #notFoundConsultationForm', function(e){
         e.preventDefault();
         var form = $(this)[0],
     		data = new FormData(form),
