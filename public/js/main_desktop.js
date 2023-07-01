@@ -1,65 +1,16 @@
 var activeScreen,
     scrollPosition = 0,
     canScroll = false,
-    scrollTimer = null,
-    checkWheelInterval = 300,
-    isScrolled = false;
-
-const debounce = function(func) {
-    let timer;
-
-    //$(window).stop(true, true);
-
-    return function(e) {
-        var scrollFrequency = 0;
-        clearTimeout(timer);
-
-        if($('div.dropdown-menu.show').length){
-            return false;
-        }
-
-        if(!Number.isInteger(e.originalEvent.deltaY) || Math.abs(e.originalEvent.deltaY) < 100){
-            scrollFrequency = 900;
-            //console.log('touchpad scroll');
-
-            if(!scrollTimer){
-                if(!isScrolled){
-                    func(e);
-                }
-                scrollTimer = setInterval(() => {
-                    //console.log('interval deltaY', e.originalEvent.deltaY);
-                    func(e);
-                }, scrollFrequency);
-            }
-
-            isScrolled = true;
-
-            timer = setTimeout(() => {
-                //console.log('debounce deltaY', e.originalEvent.deltaY);
-                //func(e);
-                clearInterval(scrollTimer);
-                scrollTimer = null;
-                isScrolled = false;
-            }, checkWheelInterval);
-        }else{
-            scrollFrequency = 300;
-            clearInterval(scrollTimer);
-            //console.log('mouse scroll');
-            timer = setTimeout(() => {
-                //console.log('debounce deltaY', e.originalEvent.deltaY);
-                func(e);
-                scrollTimer = null;
-            }, scrollFrequency);
-        }
-
-    }
-
-}
+    lastAnimation = 0;
 
 $(document).ready(function(){
     activeScreen = $('.page-screen').first();
 
-    $(window).on('wheel, mousewheel', debounce(scroll));
+    $(document).bind('wheel mousewheel DOMMouseScroll MozMousePixelScroll', function(e){
+        e.preventDefault();
+        var delta = e.originalEvent.wheelDelta || -e.originalEvent.detail;
+        initScroll(e);
+    });
 
     $(document).on('click', '.scroll-to-btn', function(){
 		var scrollScreen = $(this).data('scroll-to'),
@@ -86,6 +37,18 @@ $(document).ready(function(){
 	});
 
 });
+
+function initScroll(e) {
+    var time = new Date().getTime();
+
+    if(time - lastAnimation < 600) {
+        e.preventDefault();
+        return;
+    }
+
+    scroll(e);
+    lastAnimation = time;
+}
 
 function scroll(e){
     console.log('scroll event');
