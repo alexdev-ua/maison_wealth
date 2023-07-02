@@ -108,7 +108,7 @@ $(document).ready(function(){
 				success:function(data){
                     //$('#personalConsultationPopUp').remove();
                     if(data.success){
-                        $(form).find('.custom-input').val('');
+                        $(form).find('.custom-input').not('input[name="has_whatsapp"]').val('');
 						if($('.pop-up.opened').length){
 							popUp('.pop-up.opened');
 						}

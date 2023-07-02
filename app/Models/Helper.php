@@ -230,4 +230,41 @@ class Helper
     public static function sendTelegramLogs($message, $chatId){
         $sendTextToTelegram = file_get_contents("https://api.telegram.org/bot5596158854:AAHKI3PGQa94T5vHJxPgLhuKhXHyWDwGQWA/sendMessage?chat_id={$chatId}&parse_mode=html&text={$message}");
     }
+
+    public static function makeRequest($url, $method, $headers, $data){
+        $curl = curl_init();
+        curl_setopt($curl,CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl,CURLOPT_USERAGENT,'amoCRM-oAuth-client/1.0');
+        curl_setopt($curl,CURLOPT_URL, $url);
+        curl_setopt($curl,CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl,CURLOPT_HEADER, false);
+        curl_setopt($curl,CURLOPT_CUSTOMREQUEST, $method);
+        curl_setopt($curl,CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl,CURLOPT_SSL_VERIFYPEER, 1);
+        curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, 2);
+
+        $out = curl_exec($curl);
+        $code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        curl_close($curl);
+
+        $code = (int)$code;
+
+        $errors = [
+        	400 => 'Bad request',
+        	401 => 'Unauthorized',
+        	403 => 'Forbidden',
+        	404 => 'Not found',
+        	500 => 'Internal server error',
+        	502 => 'Bad gateway',
+        	503 => 'Service unavailable',
+        ];
+
+        if($code < 200 || $code > 204) {
+        	return false;
+        }
+
+        $response = json_decode($out, true);
+
+        return $response;
+    }
 }

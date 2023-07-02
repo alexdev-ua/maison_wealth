@@ -14,14 +14,47 @@ use App\Models\Direction;
 use App\Models\FormRequest;
 
 use App\Models\Helper;
+use App\Models\KommoCRM;
 
 class IndexController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         $pageData = [
             'title' => 'Maison Wealth',
             'description' => 'Maison Wealth is a professional real estate investment firm offering customized solutions and a proven track record of analyzing and identifying lucrative investment opportunities. Our main goal is to maximize your profits by offering exclusive deals on rare land and real estate projects that maintain their value over time. What are you waiting for? Start to Invest!'
         ];
+
+        $utm = [];
+
+        if($request->utm_content){
+            $utm['UTM_CONTENT'] = $request->utm_content; // 1220910
+        }
+        if($request->utm_medium){
+            $utm['UTM_MEDIUM'] = $request->utm_medium; // 1220912
+        }
+        if($request->utm_campaign){
+            $utm['UTM_CAMPAIGN'] = $request->utm_campaign; // 1220914
+        }
+        if($request->utm_source){
+            $utm['UTM_SOURCE'] = $request->utm_source; // 1220916
+        }
+        if($request->utm_term){
+            $utm['UTM_TERM'] = $request->utm_term; // 1220918
+        }
+        if($request->utm_referrer){
+            $utm['UTM_REFERRER'] = $request->utm_referrer; // 1220920
+        }
+        if($request->fbclid){
+            $utm['FBCLID'] = $request->fbclid; // 1220928
+        }
+        if($request->gclid){
+            $utm['GCLID'] = $request->gclid; // 1220926
+        }
+
+        if(count($utm)){
+            Cookie::queue(Cookie::make('utm', json_encode($utm), 60*24*30));
+        }
+
         return View::make('pages.'.$this->viewPath .'.home')->with([
             'pageData' => $pageData,
             'activePage' => 'home',
@@ -235,8 +268,10 @@ class IndexController extends Controller
             $phoneCode = $request->phone_code;
             $phone = $phoneCode.$phone;
 
+            $hasWhatsapp = 0;
             if($requestType == 'consultation'){
-                $hasWhatsapp = $request->has_whatsapp;
+                $hasWhatsapp = $request->has_whatsapp ? 1 : 0;
+                $data['has_whatsapp'] = $hasWhatsapp;
             }
             if($requestType == 'contact'){
                 $email = $request->email;
@@ -279,20 +314,22 @@ class IndexController extends Controller
                     $notification = "Contact form:" . "%0A" . "First Name: " . $firstName . "%0A" . "Last Name: " . $lastName . "%0A" . "Phone: " . $phone . "%0A" . "Email: " . $email . "%0A" . "Message: " . $message;
 
                     $contactParams["email"] = $email;
-                    $contactParams["message"] = $message;
+                    //$contactParams["message"] = $message;
                 }else{
                     if($requestType == 'consultation'){
                         $notification = "Consultation form:" . "%0A" . "First Name: " . $firstName . "%0A" . "Last Name: " . $lastName . "%0A" . "Phone: " . $phone . "%0A" . "Has WhatsApp: " . ($hasWhatsapp ? 'yes' : 'no');
 
-                        $contactParams["has_whatsapp"] = $hasWhatsapp;
+                        if($hasWhatsapp){
+                            $contactParams["WhatsApp"] = $hasWhatsapp;
+                        }
                     }
                 }
 
-                /*$utm = Cookie::get('utm', null);
+                $utm = Cookie::get('utm', null);
                 if($utm){
                     $utm = json_decode($utm);
                     $contactParams['utm'] = $utm;
-                }*/
+                }
                 $log = [
                     'project' => 'maisonwealth.com',
                     'type' => 'Forms requests',
@@ -300,7 +337,7 @@ class IndexController extends Controller
                     'params' => $contactParams,
                 ];
 
-                //$log['result'] = AmoCRM::sendLead($contactParams, $requestType);
+                $log['result'] = KommoCRM::sendLead($contactParams, $requestType);
 
                 // send logs
                 Helper::sendTelegramLogs(json_encode($log), "-909344007");
