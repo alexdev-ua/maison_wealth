@@ -21,7 +21,7 @@
 <div class="page-screen auto-height focus-screen">
     <div class="animated-block slide-from-bottom gray-bg top-padding pb-5">
         <div class="wraper">
-            <p class="focus-heading mb-0">Our focus is on stable and secure directions with clear legislation and high profitability. We will accompany the purchase and resale of your property at the right time.</p>
+            <p class="focus-heading mb-0">We focus on stable and secure directions with clear legislation and high profitability. We will accompany the purchase and resale of your property at the right time.</p>
             <div class="stats-block">
                 <div class="stat-item">
                     <p class="stat-counter">12</p>
@@ -48,11 +48,11 @@
         <div class="wraper auto-height mt-4">
             <p class="page-screen-heading text-left mb-2"><span class="red-text">More and better</span><br>options to invest</p>
 
-            <p class="page-block-description font-normal light-weight mt-4 mb-2 text-left">We create individual investment plans for each client and provide answers to all questions related to real estate investing, to make it safe and profitable.</p>
+            <p class="page-block-description font-normal light-weight mt-4 mb-2 text-left">We create individual investment plans for each client and provide answers to all questions related to real estate investing to make it safe and profitable.</p>
 
             <ul class="custom-list mt-4 pl-3">
                 <li><img src="/images/ic_arrow_right.svg" class="list-icon" /> Organize full post-sale service</li>
-                <li><img src="/images/ic_arrow_right.svg" class="list-icon" /> Identify ideal investment opportunities and select the most profitable properties</li>
+                <li><img src="/images/ic_arrow_right.svg" class="list-icon" /> Could you identify ideal investment opportunities and select the most beneficial properties?</li>
                 <li><img src="/images/ic_arrow_right.svg" class="list-icon" /> Legal support of the transaction</li>
                 <li><img src="/images/ic_arrow_right.svg" class="list-icon" /> Faster and seamless invest reservation</li>
                 <li><img src="/images/ic_arrow_right.svg" class="list-icon" /> Help you to choose the right property as a profitable investment plan</li>
@@ -69,7 +69,7 @@
         <div class="wraper gray-bg auto-height mt-4">
             <p class="page-screen-heading mb-2">Financial<br><span class="red-text">Advantages</span></p>
 
-            <p class="page-block-description font-normal light-weight mt-4 mb-2 text-left">Our experienced experts connect with you in 10 minutes to start together.</p>
+            <p class="page-block-description font-normal light-weight mt-4 mb-2 text-left">Our experienced experts will connect with you in 10 minutes to start together.</p>
 
             <ul class="custom-list mt-4 pl-3">
                 <li><img src="/images/ic_arrow_right.svg" class="list-icon" /> Organize full post-sale service</li>
@@ -97,13 +97,13 @@
                     </div>
                     <div class="carousel-slide">
                         <div class="testimonial-item">
-                            <div class="testimonial-text">Here must be cool text about amazing company, and so on...</div>
+                            <div class="testimonial-text">During my invest in Maison Wealth company. That number alone is something to be amazed at. Other ways has helped my company is through writing copy for email campaigns and web support.</div>
                             <p class="testimonial-author">- Alex</p>
                         </div>
                     </div>
                     <div class="carousel-slide">
                         <div class="testimonial-item">
-                            <div class="testimonial-text">Investing in Maison Wealth is a good choice for own future</div>
+                            <div class="testimonial-text">During my invest in Maison Wealth company. That number alone is something to be amazed at. Other ways has helped my company is through writing copy for email campaigns and web support.</div>
                             <p class="testimonial-author">- John</p>
                         </div>
                     </div>

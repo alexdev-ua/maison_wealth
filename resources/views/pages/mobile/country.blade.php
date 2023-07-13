@@ -37,7 +37,7 @@
                 <div class="col-6">
                     <div class="invest-item">
                         <p class="invest-name">USA <span class="invest-city">(Miami)</span></p>
-                        <div class="invest-description">Miami is the place where dreams of stable and profitable investments come true. With an annual rental occupancy rate of over 85% and a growing demand for short-term rentals.</div>
+                        <div class="invest-description">In Miami, dreams of stable and profitable investments come true with an annual rental occupancy rate of over 85% and a growing demand for short-term rentals.</div>
                         <a href="/direction/miami" class="custom-link details-btn mt-3" data-banner="#investBanner2">Details <img src="/images/ic_arrow_right_white.svg"></a>
                     </div>
                 </div>

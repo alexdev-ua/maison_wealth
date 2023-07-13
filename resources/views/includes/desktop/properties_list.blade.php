@@ -13,7 +13,7 @@
                 </div>
                 <div class="property-description">
                     @if(isset($property['page']))
-                    <a href="/property/{{$url}}" class="custom-link">{{$property['mode'] == 'more' ? 'More Info' : 'To Invest'}} <img src="/images/ic_arrow_right_white.svg"></a>
+                    <a href="/property/{{$url}}" class="custom-link">More Info<img src="/images/ic_arrow_right_white.svg"></a>
                     @endif
                     <p class="property-heading">
                         {{$property['country']}}<br><span class="property-city">{{$property['city']}}</span>

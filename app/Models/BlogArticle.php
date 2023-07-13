@@ -23,7 +23,7 @@ class BlogArticle extends Model
                     'list' => [
                         [
                             'title' => 'Neighborhood and conditions',
-                            'description' => "In Freehold, all foreign citizens can buy apartments in Dubai and make any manipulations with land and other real estates. In Leasehold purchase and sale of real estate is allowed exclusively to citizens of the UAE and some Arab countries. Before purchasing, it is necessary to familiarise yourself with the object's status to assess all the possibilities and dangers correctly."
+                            'description' => "In Freehold, all foreign citizens can buy apartments in Dubai and make any manipulations with land and other real estate. In Leasehold purchase and sale of real estate is allowed exclusively to citizens of the UAE and some Arab countries. Before you purchase, you must be familiarized with the object's status to correctly assess all possibilities and dangers."
                         ],
                         [
                             'title' => "Developer's reliability",
@@ -31,7 +31,7 @@ class BlogArticle extends Model
                         ],
                         [
                             'title' => 'Assess your capabilities',
-                            'description' => "Remember that in the UAE legal system, having a debt falls under the definition of a criminal offense, not an administrative one. Developers often offer favorable installment terms (20/80 or 30/70), but your financial situation may change during construction. An urgent sale of real estate may be required with a significant decrease in its actual value."
+                            'description' => "Remember that in the UAE legal system, having a debt falls under the definition of a criminal offense, not an administrative one. Developers often offer favorable installment terms (20/80 or 30/70), but your financial situation may change during construction. The urgent real estate sale might require a significant decrease in value."
                         ]
                     ]
                 ],
@@ -92,10 +92,10 @@ class BlogArticle extends Model
                         'title' => 'What about <span class="red-text">return</span> on property investment in Dubai',
                         'description' => 'The last ten years have shown that the investment climate in the UAE has improved significantly and has made the state an attractive place to invest capital.',
                         'list' => [
-                            'The cost of buying and selling property in Dubai is lower than in other major cities',
+                            'Buying and selling property in Dubai is lower than in other major cities',
                             'The annual yield from renting a cheap apartment in Dubai averages 6%, much higher than, for example, in Singapore, Hong Kong, or London',
                             'Purchasing an apartment in Dubai consists of zero tax, government support for foreign investors, and obtaining a residence permit',
-                            'Main features of a profitable property are short payback period, no downtime in the lease, promising area, availability of infrastructure and good repair'
+                            'The main features of a profitable property are a short payback period, no downtime in the lease, a promising area, availability of infrastructure, and good repair'
                         ],
                         'image' => '/images/blog/property-in-dubai-and-miami/screen2.jpg',
                         'align' => 'right'
