@@ -28,28 +28,28 @@
 
             <div class="invest-block row mt-5">
                 <div class="col-6">
-                    <div class="invest-item">
+                    <div class="invest-item opened">
                         <p class="invest-name">UAE <span class="invest-city">(Dubai)</span></p>
                         <div class="invest-description">Real estate in Dubai is one of the best assets for investment. The growth in property prices is at least 10-15% per year, guaranteeing high profits for your investments.</div>
                         <a href="/direction/dubai" class="custom-link details-btn mt-3" data-banner="#investBanner1">Details <img src="/images/ic_arrow_right_white.svg"></a>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="invest-item">
+                    <div class="invest-item opened">
                         <p class="invest-name">USA <span class="invest-city">(Miami)</span></p>
                         <div class="invest-description">In Miami, dreams of stable and profitable investments come true with an annual rental occupancy rate of over 85% and a growing demand for short-term rentals.</div>
                         <a href="/direction/miami" class="custom-link details-btn mt-3" data-banner="#investBanner2">Details <img src="/images/ic_arrow_right_white.svg"></a>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="invest-item">
+                    <div class="invest-item opened">
                         <p class="invest-name">Indonesia<br><span class="invest-city">(Bali)</span></p>
                         <div class="invest-description">On Bali, you will find high returns on real estate investments, thanks to the 300% increase in land value over the last 5 years.</div>
                         <a href="/direction/bali" class="custom-link details-btn mt-3" data-banner="#investBanner3">Details <img src="/images/ic_arrow_right_white.svg"></a>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="invest-item">
+                    <div class="invest-item opened">
                         <p class="invest-name">Mexico<br><span class="invest-city">(Riviera Maya)</span></p>
                         <div class="invest-description">The ROI ranges from 8% to 12%, and the payback period is 6-7 years.</div>
                         <a href="/direction/mexico" class="custom-link details-btn mt-3" data-banner="#investBanner4">Details <img src="/images/ic_arrow_right_white.svg"></a>
