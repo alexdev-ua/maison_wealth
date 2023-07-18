@@ -632,7 +632,7 @@ header {
 	display: inline-block;
 	transition: all .3 ease;
 }
-.link-item:hover .link-title {
+.link-item:not(.sidebar.opened .link-item):hover .link-title {
     position: fixed;
     z-index: 1;
     background: #f5f5f5;
