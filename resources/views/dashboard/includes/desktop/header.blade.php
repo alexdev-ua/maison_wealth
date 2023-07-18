@@ -1,30 +1,18 @@
-<div class="header">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<span class="navbar-brand" href="#"></span>
-		<a class="site-title" href="{{route('dashboard')}}">Sunny DVG - Control panel</a>
-		@if(Auth::guard('admin')->check())
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-		</button>
+<header>
+	<div class="logo-container">
+		<a class="logo-title" href="{{route('dashboard')}}">
+			<img src="/images/ic_logo_red.svg" class="logo-image" />
+			<span class="brand-label">MW</span> Control panel
+		</a>
+	</div>
+	@if(Auth::guard('admin')->check())
+	<div class="user-block">
+		<span class="user-name">{{Auth::guard('admin')->user()->name}}</span>
 
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto row">
-				<li class="nav-item active col-4">
-					<a class="nav-link" href="{{route('dashboard')}}"><i class="fas fa-columns mr-1"></i> Home <span class="sr-only">(current)</span></a>
-				</li>
-
-				<li class="nav-item active col-4">
-					<a class="nav-link" href="{{route('dashboard.orders')}}"><i class="far fa-address-card mr-1"></i> Contact forms </a>
-				</li>
-
-				<li class="nav-item col-4">
-					<a class="nav-link" href="{{route('dashboard.logout')}}"><i class="fas fa-sign-out-alt mr-1"></i>
-					Выйти
-					</a>
-				</li>
-
-			</ul>
-		</div>
-		@endif
-	</nav>
-</div>
+		<a href="/dashboard/logout" class="dash-btn orange-btn dash-logout-btn"><i class="fas fa-power-off"></i></a>
+		<span class="user-avatar">
+			<img src="/images/ic_admin.svg" />
+		</span>
+	</div>
+	@endif
+</header>

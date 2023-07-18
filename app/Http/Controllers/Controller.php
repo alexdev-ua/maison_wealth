@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Cookie;
 
 use App\Models\Helper;
+use App\Models\Lang;
+use App\Models\Country;
 
 class Controller extends BaseController
 {
@@ -17,6 +19,8 @@ class Controller extends BaseController
 
     public $platform;
     public $viewPath = '';
+    public $activeDashboardLang = 1;
+    public $langs;
 
     public function __construct()
 	{
@@ -48,13 +52,32 @@ class Controller extends BaseController
         $this->middleware(function ($request, $next) {
             $acceptCookies = Cookie::get('acceptCookies', null);
 
+            $showSidebar = Cookie::get('showSidebar', null);
+
+            if($showSidebar){
+                $showSidebar = json_decode($showSidebar);
+            }else{
+                $showSidebar = 1;
+            }
+            View::share(['showSidebar' => $showSidebar]);
+
             if($acceptCookies == null){
                 $showCookies = true;
             }else{
                 $showCookies = false;
             }
             View::share(['showCookies' => $showCookies]);
+
+            $this->langs = Lang::getActive();
+            View::share(['langs' => $this->langs]);
+
+            if(Lang::first()){
+                $this->activeDashboardLang = Lang::first()->id;
+                View::share(['dashLang' => $this->activeDashboardLang]);
+            }
+
             return $next($request);
+
         });
 
 	}

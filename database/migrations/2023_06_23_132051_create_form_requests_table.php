@@ -22,6 +22,7 @@ class CreateFormRequestsTable extends Migration
             $table->text('message')->nullable();
             $table->integer('has_whatsapp')->default(0);
             $table->string('type')->default('contact');
+            $table->string('country_code')->nullable();
 
             $table->timestamps();
         });

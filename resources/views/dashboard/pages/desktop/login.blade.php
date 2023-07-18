@@ -1,56 +1,46 @@
 @extends('dashboard.layouts.main')
 
 @section('content')
-<div class="container mt-3">
-    <div class="row justify-content-center">
-        <div class="col-6 m-auto">
-            <div class="card">
-                <div class="card-header">{{ __('Вход') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('dashboard.login.submit') }}">
+<div class="modal dash-modal dash-login-modal with-bg">
+    <div class="dash-login-header">
+        <img src="/images/ic_company_name.svg" class="dash-login-logo" />
+        <p class="dash-login-text text-right">Dashboard</p>
+    </div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title"><span class="modal-title-label">Sign In</span></div>
+            </div>
+            <div class="modal-body">
+                <div class="dash-form-container">
+                    <form class="dash-form" method="POST" action="{{ route('dashboard.login.submit') }}">
                         @csrf
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input id="email" type="email" class="form-control dash-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label">{{ __('Email') }}</label>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
 
-                            <div class="col-md-8">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
                         </div>
+                        <div class="form-group mt-3">
+                            <label>Password</label>
+                            <input id="password" type="password" class="form-control dash-input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label">{{ __('Пароль') }}</label>
-
-                            <div class="col-md-8">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-3">
-                                <button type="submit" class="btn btn-success col-md-12">
-                                    {{ __('Войти') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
+                        <div class="mt-4 text-center">
+                            <button type="submit" class="dash-btn blue-btn dash-large-btn">
+                                Log In
+                            </button>
                         </div>
                     </form>
                 </div>

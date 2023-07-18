@@ -7,7 +7,6 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Auth\AdminLoginController;
 
 use App\Http\Controllers\Dashboard\DashboardController;
-use App\Http\Controllers\Dashboard\OrderController as DashboardOrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,8 +47,18 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['guest:admin']], functio
 });
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth:admin']], function () {
 	Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-  Route::get('/orders', [DashboardOrderController::class, 'index'])->name('dashboard.orders');
 
-  Route::post('/logout', [AdminLoginController::class, 'logout'])->name('dashboard.logout');
+	Route::post('/logout', [AdminLoginController::class, 'logout'])->name('dashboard.logout');
 	Route::get('/logout', [AdminLoginController::class, 'logout'])->name('dashboard.logout');
+
+	Route::get('/toggleSidebar', [DashboardController::class, 'toggleSidebar']);
+
+	Route::get('/{model}', [DashboardController::class, 'list']);
+	Route::get('/{model}/{mode}', [DashboardController::class, 'formPage']);
+	Route::get('/{model}/{mode}/form', [DashboardController::class, 'form']);
+	Route::post('/{model}/save', [DashboardController::class, 'save']);
+	Route::post('/{model}/delete', [DashboardController::class, 'delete']);
+
+
+	Route::post('/upload', [DashboardController::class, 'upload'])->name('dashboard.upload');
 });

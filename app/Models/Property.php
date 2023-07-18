@@ -9,6 +9,106 @@ class Property extends Model
 {
     use HasFactory;
 
+    const STATUS_DRAFT = -1;
+    const STATUS_DISABLED = 0;
+    const STATUS_ACTIVE = 1;
+
+    protected $fillable = [
+        'direction_id',
+        'url',
+        'price',
+        'square',
+        'price_per_square',
+        'for_living',
+        'for_resale',
+        'for_long_rent',
+        'for_daily_rent',
+        'preview_image_id',
+        'page_banner_id',
+        'status',
+        'on_main'
+    ];
+
+    public function translate($langId){
+        $propertyTranslate = PropertyTranslate::where('property_id', '=', $this->id)->where('lang_id', '=', $langId)->first();
+
+        if($propertyTranslate){
+            return $propertyTranslate;
+        }
+        return new PropertyTranslate;
+    }
+
+    public function direction($langId){
+        $directionTranslate = DirectionTranslate::where('direction_id', '=', $this->direction_id)->where('lang_id', '=', $langId)->first();
+
+        if($directionTranslate){
+            return $directionTranslate->title;
+        }
+        return null;
+    }
+
+    public function options(){
+        return $this->hasMany('App\Models\PropertyOption', 'property_id');
+    }
+    public function features(){
+        return $this->hasMany('App\Models\PropertyFeature', 'property_id');
+    }
+
+    public function previewImage(){
+        $path = public_path('/media');
+        $photo = Media::find($this->preview_image_id);
+        if($photo){
+            if(file_exists($path.'/'.$photo->filename)){
+                return $photo->filename();
+            }
+        }
+        return null;
+    }
+    public function bannerImage(){
+        $path = public_path('/media');
+        $photo = Media::find($this->page_banner_id);
+        if($photo){
+            if(file_exists($path.'/'.$photo->filename)){
+                return $photo->filename();
+            }
+        }
+        return null;
+    }
+
+    public function deleteAllData(){
+        $id = $this->id;
+        if($this->delete()){
+            PropertyTranslate::where('property_id', '=', $id)->delete();
+            $options = $this->options;
+            if($options){
+                foreach ($options as $option) {
+                    $option->deleteAllData();
+                }
+            }
+            $features = $this->features;
+            if($features){
+                foreach ($features as $feature) {
+                    $feature->deleteAllData();
+                }
+            }
+
+            return true;
+        }
+        return false;
+    }
+
+    public function isPublished(){
+        return $this->status == self::STATUS_ACTIVE;
+    }
+
+    public function isDisabled(){
+        return $this->status == self::STATUS_DISABLED;
+    }
+
+    public function isDraft(){
+        return $this->status == self::STATUS_DRAFT;
+    }
+
     public static $properties = [
         'district-11-opal-gardens' => [
             'location' => 'dubai',
@@ -82,11 +182,11 @@ class Property extends Model
             'page' => [
                 'banner_image' => '/images/projects/cielo-maya/banner.jpg',
                 'label' => 'Large area of objects',
-                'description' => 'The Cielo Maya residential complex is located on the beachfront, with access to its own beach',
+                'description' => 'The Cielo Maya residential complex location is on the beachfront, with access to its coast',
                 'features' => [
                     'feature1' => [
                         'type' => 'text',
-                        'title' => 'Three and four bedroom flats, 3.5 bathrooms, fully equipped kitchen, terrace overlooking the beach and the sea, living room, luxury finishes.',
+                        'title' => 'The complex includes tree and four-bedroom flats, 3.5 bathrooms, a fully equipped kitchen, a terrace overlooking the beach and the sea, a living room, and luxury finishes.',
                         'description' => '8 flats ranging in size from 302 m2 to 347 m2.'
                     ],
                     'feature2' => [
@@ -128,12 +228,12 @@ class Property extends Model
             'page' => [
                 'banner_image' => '/images/projects/cipriani-residences/banner.jpg',
                 'label' => 'A modern lifestyle',
-                'description' => 'Cipriani Residences Miami continues the brand’s storied tradition, with residences that are true to its convivial, stylish spirit',
+                'description' => 'Cipriani Residences Miami continues its storied tradition with residences true to its convivial, stylish spirit',
                 'features' => [
                     'feature1' => [
                         'type' => 'text',
-                        'title' => 'Positioned on a privileged location at the gateway to the vibrant Miami neighborhood of Brickell, Cipriani Residences Miami epitomizes the timeless Italian spirit, style, and service for which the brand is so revered.',
-                        'description' => 'Residents will enjoy a life of effortless elegance and convenient access to the wealth of experiences this exciting metropolis has to offer.'
+                        'title' => 'Positioned in a privileged location at the gateway to the vibrant Miami neighborhood of Brickell, Cipriani Residences Miami epitomizes the timeless Italian spirit, style, and service for which the brand does so revered.',
+                        'description' => "Residents will enjoy a life of effortless elegance and convenient access to this exciting metropolis's wealth of experiences."
                     ],
                     'feature2' => [
                         'type' => 'combined',
@@ -183,12 +283,12 @@ class Property extends Model
             'page' => [
                 'banner_image' => '/images/projects/waldorf-astoria/banner.jpg',
                 'label' => 'The tallest building in Florida',
-                'description' => 'One of the most prestigious luxury hotel brands in the world, owned by Hilton Hotels. The tower offers 100 floors and 360 residences',
+                'description' => "This building is one of the world's most prestigious luxury hotel brands, owned by Hilton Hotels. The tower offers 100 floors and 360 residences",
                 'features' => [
                     'feature1' => [
                         'type' => 'text',
-                        'title' => 'The famous architect Carlos Ott, with the help of Sieger Suarez, designed the building to resemble a pile of unevenly stacked glass cubes. At 1,049 feet tall, Waldorf Astoria Hotel and Residences Miami is Miami’s tallest tower and Miami’s first super tall skyscraper.',
-                        'description' => 'Residences have dramatic views of Biscayne Bay, the Port of Miami, Brickell Avenue, Downtown Miami, Key Biscayne, and South Beach.Carlos Ott is the mastermind behind the famous Burj Al Arab in Dubai, and amazing residential buildings in Miami like Echo Brickell, Echo Aventura and Muse Sunny Isles.'
+                        'title' => 'With the help of Sieger Suarez, the famous architect Carlos Ott designed the building to resemble a pile of unevenly stacked glass cubes. At 1,049 feet tall, Waldorf Astoria Hotel and Residences Miami is Miami’s tallest tower and Miami’s first super-tall skyscraper.',
+                        'description' => 'Residences have dramatic views of Biscayne Bay, the Port of Miami, Brickell Avenue, Downtown Miami, Key Biscayne, and South Beach. Carlos Ott is the mastermind behind the famous Burj Al Arab in Dubai and unique residential buildings in Miami like Echo Brickell, Echo Aventura, and Muse Sunny Isles.'
                     ],
                     'feature2' => [
                         'type' => 'combined',
@@ -229,12 +329,12 @@ class Property extends Model
             'page' => [
                 'banner_image' => '/images/projects/bloom/banner.jpg',
                 'label' => 'A paradise with access to the sea',
-                'description' => 'The residential complex is located on the shore of the Marina',
+                'description' => 'The residential complex location is on the shore of the Marina',
                 'features' => [
                     'feature1' => [
                         'type' => 'text',
-                        'title' => 'Each tower has an 18-month construction period, with the next one starting every six months after construction has started. This means that all the towers will be delivered in phases.',
-                        'description' => 'The land area is 7000m2. There will be 3 towers on four floors, 32 flats with three and two bedrooms. All flats will be overlooking the marina, the fourth floor flats will be built in penthouse style. The fourth floor apartments will have a sea view.'
+                        'title' => 'Each tower has an 18-month construction period, with the next one starting every six months after construction. So, all of the buildings will deliver in phases.',
+                        'description' => 'The land area is 7000m2. There will be 3 towers on four floors, 32 flats with three and two bedrooms. All apartments will overlook the marina; the fourth-floor flats will be in penthouse style. The fourth-floor apartments will have a sea view.'
                     ],
                     'feature2' => [
                         'type' => 'combined',
@@ -279,7 +379,7 @@ class Property extends Model
                 'options' => [
                     [
                         'title' => 'Fitness Center',
-                        'description' => 'Including an outdoor terrace fitted with gym equipment and Yoga Studio with an ocean view.'
+                        'description' => 'The Center includes an outdoor terrace fitted with gym equipment and Yoga Studio with an ocean view.'
                     ],
                     [
                         'title' => 'Movie Theater',
@@ -287,14 +387,14 @@ class Property extends Model
                     ],
                     [
                         'title' => 'Exclusive beach amenities',
-                        'description' => 'Including food and beverage service, beach attendants, chaise lounges, and umbrellas.'
+                        'description' => 'The amenities include food and beverage service, beach attendants, chaise lounges, and umbrellas.'
                     ]
                 ],
                 'features' => [
                     'feature1' => [
                         'type' => 'text',
-                        'title' => 'From the moment you glide into the Dezervator™, you’ll experience spectacular space designed to transform the everyday into the extraordinary.',
-                        'description' => 'With waterfront views engulfing the entire residence, you can immerse yourself in spectacular vistas that promise to take your breath away every day.'
+                        'title' => 'From the moment you glide into the Dezervator™, you’ll experience spectacular space designed to transform the every day into the extraordinary.',
+                        'description' => 'With waterfront views engulfing the entire residence, you can immerse yourself in spectacular vistas that promise to take your breath away daily.'
                     ],
                     'feature2' => [
                         'type' => 'combined',
@@ -351,8 +451,8 @@ class Property extends Model
                 'features' => [
                     'feature1' => [
                         'type' => 'text',
-                        'title' => 'NÁLU Luxury Beachfront Residences consists of 12 exclusive luxury apartments, making it the most attractive development in Puerto Morelos.',
-                        'description' => 'At NÁLU Luxury Beachfront Residences, you will live sweet and mystical experiences through proximity to the sea. You will create unparalleled stories by being surrounded by the majestic mangrove swamp, its magical cenotes, and the imposing beauty of its coral reefs.'
+                        'title' => 'NÁLU Luxury Beachfront Residences has 12 exclusive luxury apartments, making it the most attractive development in Puerto Morelos.',
+                        'description' => 'At NÁLU Luxury Beachfront Residences, you will live sweet and mystical experiences through proximity to the sea. You will create unparalleled stories by being surrounded by the majestic mangrove swamp, its magical cenotes, and the imposing beauty of its coral reefs.'
                     ],
                     'feature2' => [
                         'type' => 'combined',
@@ -399,8 +499,8 @@ class Property extends Model
                 'features' => [
                     'feature1' => [
                         'type' => 'text',
-                        'title' => 'Surround yourself with the sky, sun, and sea from the comfort of 1, 2, 3, 4 and 5-bedroom luxury apartments with stunning views of the sea and shore alike.',
-                        'description' => 'This 49-storey Cavalli-inspired sanctuary is an architectural masterpiece of splendour, opulence and beauty, where you can experience one-of-a-kind amenities such as floating relaxation pods, beauty and body treatments in glamping tents, and aqua treatments like hydrotherapy and hot tub boats.'
+                        'title' => 'Surround yourself with the sky, sun, and sea from the comfort of 1, 2, 3, 4, and 5-bedroom luxury apartments with stunning views of the sea and shore.',
+                        'description' => 'This 49-story Cavalli-inspired sanctuary is an architectural masterpiece of splendor, luxury, and beauty, where you can experience one-of-a-kind amenities such as floating relaxation pods, beauty and body treatments in glamping tents, and aqua treatments like hydrotherapy and hot tub boats.'
                     ],
                     'feature2' => [
                         'type' => 'combined',
@@ -445,8 +545,8 @@ class Property extends Model
                 'features' => [
                     'feature1' => [
                         'type' => 'text',
-                        'title' => 'The average monthly rent for a one-year lease ranges from 3,500 USD for a two-bedroom flat and from 4,000 USD for a three-bedroom flat. It is very popular with tenants and we get rental requests all the time.',
-                        'description' => 'This is the second phase of one of the most popular residential complexes in Puerto Aventuras. The main tenant, the buyer is a high income audience. '
+                        'title' => 'The average monthly rent for a one-year lease ranges from 3,500 USD for a two-bedroom flat to 4,000 USD for a three-bedroom apartment. It is very popular with tenants, and we always get rental requests.',
+                        'description' => 'This is the second phase of one of the most popular residential complexes in Puerto Aventuras. The primary tenant, the buyer, is a high-income audience.'
                     ],
                     'feature2' => [
                         'type' => 'combined',
@@ -544,8 +644,8 @@ class Property extends Model
                 'features' => [
                     'feature1' => [
                         'type' => 'text',
-                        'title' => 'This 44-story luxury tower, was designed by internationally renowned architecture firm Seiger Suarez Architects and infused with artistic attention throughout.',
-                        'description' => 'Each fully finished and furnished studio and 1-bedroom residence has been thoughtfully curated.'
+                        'title' => 'Internationally renowned architecture firm Seiger Suarez Architects designed this 44-story luxury tower, infusing it with artistic attention throughout.',
+                        'description' => 'They have thoughtfully curated each fully finished and furnished studio and 1-bedroom residence.'
                     ],
                     'feature2' => [
                         'type' => 'combined',
@@ -592,11 +692,11 @@ class Property extends Model
             'page' => [
                 'banner_image' => '/images/projects/secret-waters/banner.jpg',
                 'label' => 'A new spectacularly spacious condominiums',
-                'description' => 'The complex is a 10-minute walk to the beach, restaurants and shops and has a large, green common area, a seating area for residents and a barbecue area',
+                'description' => 'The complex is a 10-minute walk to the beach, restaurants, and shops and has a large, green common area, a seating area for residents, and a barbecue area',
                 'features' => [
                     'feature1' => [
                         'type' => 'text',
-                        'title' => 'This is the second phase of the apartment complex. The first phase was built 15 years ago and proved to be a very popular building with tenants.',
+                        'title' => 'Secret Waters is the second phase of the apartment complex. 15 ago, a company built the first phase of the apartment complex, and it became a trendy building with many tenants.',
                         'description' => 'The new part will have 3 towers with 8 flats in each tower. The sale of the first tower has already been completed. The first tower is scheduled for completion in late autumn this year. The entire project is scheduled for completion at the end of year 23.'
                     ],
                     'feature2' => [
@@ -642,8 +742,8 @@ class Property extends Model
                 'features' => [
                     'feature1' => [
                         'type' => 'text',
-                        'title' => 'The ground floor flats will have their own small swimming pool on the terrace and a small garden. The total floor area of the ground floor flats is 171 m2. Of which: 120m2 living space, 38m2 terrace, 13m2 garden.',
-                        'description' => 'Second and third floor flats: 2 bedrooms, 2 bathrooms, space for washing machine and dryer, terrace, lounge, dining area, kitchen. Flat on the fourth floor will be built in the style of Penthouse. 2 bedrooms, 2 bathrooms, lounge, dining area, kitchen, washing and drying room, terrace, stairs to the first floor where there is an open terrace overlooking the marina and the sea and a private swimming pool on the roof. All roof terraces will have a sun awning and a mini open kitchen (barbecue area, sink and mini shower).'
+                        'title' => 'The ground floor flats will have their tiny swimming pool on the terrace and a small garden. The total floor area of the ground floor flats is 171 m2. Of which: 120m2 living space, 38m2 terrace, 13m2 garden.',
+                        'description' => 'Second and third-floor flats: 2 bedrooms, 2 bathrooms, space for washing machine and dryer, terrace, lounge, dining area, kitchen. Flat on the fourth floor will be built in the style of a Penthouse. 2 bedrooms, 2 bathrooms, a lounge, a dining area, a kitchen, a washing and drying room, a terrace, and stairs to the first floor where there is an open terrace overlooking the marina and the sea and a private swimming pool on the roof. All roof terraces will have a sun awning and a mini open kitchen (barbecue area, sink, and shower).'
                     ],
                     'feature2' => [
                         'type' => 'combined',
@@ -688,8 +788,8 @@ class Property extends Model
                 'features' => [
                     'feature1' => [
                         'type' => 'text',
-                        'title' => 'Miami World Center brings a new energy to Miami with a blend of retail, office, hospitality, and residential offerings in one unique location. This is the second largest and most exciting urban developments in the U.S., at nearly 30 acres.',
-                        'description' => 'Miami Worldcenter is the epicenter of the city surrounded by over $3 Billion Dollars of new public and private projects including mass transit, museums, parks, sports venues, entertainment, luxury retail and signature restaurants.'
+                        'title' => "Miami World Center brings new energy to Miami with a blend of retail, office, hospitality, and residential offerings in one unique location. Center is the U.S.'s second largest and most exciting urban development, at nearly 30 acres.",
+                        'description' => 'Miami Worldcenter is the epicenter of the city, surrounded by over 3 Billion Dollars of new public and private projects, including mass transit, museums, parks, sports venues, entertainment, luxury retail, and signature restaurants.'
                     ],
                     'feature2' => [
                         'type' => 'combined',
@@ -780,8 +880,8 @@ class Property extends Model
                 'features' => [
                     'feature1' => [
                         'type' => 'text',
-                        'title' => 'The location is great as the lifestyle you dream of, located in Playa del Carmen. Drawing the curtains on your room, you will discover the exceptional natural and cultural surroundings.',
-                        'description' => 'The complex is located in the Golden Zone, just steps away from the white sand beaches and amazing turquoise waters, and the famous 5th Avenue, world-famous for its gastronomic and commercial diversity.'
+                        'title' => 'The location is excellent as the lifestyle you dream of, located in Playa del Carmen. You will discover the exceptional natural and cultural surroundings by drawing the curtains in your room.',
+                        'description' => 'The complex is located in the Golden Zone, steps away from the white sand beaches, amazing turquoise waters, and the famous 5th Avenue. It is world-famous for its gastronomic and commercial diversity.'
                     ],
                     'feature2' => [
                         'type' => 'combined',
@@ -830,12 +930,12 @@ class Property extends Model
             'page' => [
                 'banner_image' => '/images/projects/the-edge/banner.jpg',
                 'label' => 'A truly cosmopolitan living experience',
-                'description' => 'The EDGE introduces an eclectic urban vibe to the city that is defined by its modern architecture and signature interior design of bold, contrasting colour palettes',
+                'description' => 'The EDGE introduces an eclectic urban vibe to the city, defined by its modern architecture and signature interior design of bold, contrasting color palettes.',
                 'features' => [
                     'feature1' => [
                         'type' => 'text',
-                        'title' => 'Make the most of your downtime and go beyond condominium living at The EDGE’s wide range of lifestyle facilities including a co-working space, games room, social lounge and more!',
-                        'description' => 'Spanning over 61,000 sq.ft., the leisure deck of the podium level offers a haven of well-being and fun for all, including a large fully equipped gymnasium, infinity pool, outdoor gym, padel courts, pickleball/basketball court, barbecue area and a selection of seating and lounge areas.'
+                        'title' => 'Make the most of your downtime and go beyond condominium living at The EDGE’s wide range of lifestyle facilities, including a co-working space, games room, social lounge, and more!',
+                        'description' => 'Spanning over 61,000 sq.ft., the leisure deck of the podium level offers a haven of well-being and fun for all, including a large fully equipped gymnasium, infinity pool, outdoor gym, padel courts, pickleball/basketball court, barbecue area, and a selection of seating and lounge areas.'
                     ],
                     'feature2' => [
                         'type' => 'combined',
@@ -996,12 +1096,12 @@ class Property extends Model
             'page' => [
                 'banner_image' => '/images/projects/batu-bolong/banner.jpg',
                 'label' => 'A new complex of modern villas',
-                'description' => 'TOP 10 Places to live and invest based on the Forbes company’s data',
+                'description' => "TOP 10 Places to Live and Invest based on the Forbes company’s data",
                 'features' => [
                     'feature1' => [
                         'type' => 'text',
-                        'title' => 'We do not just sell villas - we build a full-fledged turnkey business for you and guarantee ROI 12% per annum in the contract.',
-                        'description' => '<p>If you choose us to manage your property, we will:</p>- Make sure tenants turnover is timely<br>- Serve the guests and resolve their issues.<br>- Maintain the property and amenities.<br>- Generate you a passive income 17-24% net per annum'
+                        'title' => 'We do not just sell villas - we build a full-fledged turnkey business for you and guarantee an ROI of 12% per annum in the contract.',
+                        'description' => '<p>If you choose us to manage your property, we will:</p>- Make sure tenants turnover is timely<br>- Serve the guests and resolve their issues.<br>- Maintain the property and amenities.<br>- Generate a passive income of 17-24% net per annum'
                     ],
                     'feature2' => [
                         'type' => 'combined',
@@ -1051,8 +1151,8 @@ class Property extends Model
                 'features' => [
                     'feature1' => [
                         'type' => 'text',
-                        'title' => 'Standing majestic in the heart of Dubai Harbour, Sobha SeaHaven offers a spectacular view of Dubai’s beloved landmarks including Ain Dubai, Palm Jumeirah, Dubai Harbour & the Marina skyline converging with the oceanic horizon.',
-                        'description' => 'Sobha SeaHaven is situated at the hub of a maritime gateway making it easier to drop anchor and experience the most exclusive destinations.'
+                        'title' => 'In the heart of Dubai Harbour, Sobha Seahaven offers a spectacular view of Dubai’s beloved landmarks, including Ain Dubai, Palm Jumeirah, Dubai Harbour & the Marina skyline converging with the oceanic horizon.',
+                        'description' => 'Sobha Seahaven does situate at the hub of a maritime gateway making it easier to drop anchor and experience the most exclusive destinations.'
                     ],
                     'feature2' => [
                         'type' => 'combined',

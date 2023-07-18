@@ -9,6 +9,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Admin extends Authenticatable
 {
     use Notifiable;
+
+    const ROLE_ADMIN = 'Admin';
+	const ROLE_MANAGER = 'Manager';
+
 	protected $guard = 'admin';
     /**
      * The attributes that are mass assignable.
@@ -16,7 +20,11 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'role',
+        'name',
+        'email',
+        'password',
+        'active'
     ];
 
     /**
@@ -25,7 +33,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
     ];
 
     /**
@@ -34,6 +42,5 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
     ];
 }

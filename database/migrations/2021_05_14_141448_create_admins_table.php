@@ -15,12 +15,13 @@ class CreateAdminsTable extends Migration
     {
 		if (!Schema::hasTable('admins')) {
 			Schema::create('admins', function (Blueprint $table) {
-				$table->bigIncrements('id');
-				$table->string('name');
-				$table->string('email');
-				$table->string('password');
-				$table->rememberToken();
-				$table->timestamps();
+                $table->bigIncrements('id');
+                $table->string('name');
+                $table->string('email');
+                $table->string('password');
+                $table->integer('active')->default(0);
+                $table->string('role');
+                $table->timestamps();
 			});
 		};
     }

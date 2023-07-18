@@ -20,6 +20,13 @@ class AdminLoginController extends Controller
 		$data = [
 			'title' => 'Admin - Login',
 		];
+
+        if($this->platform != 'desktop'){
+			return View::make('dashboard.pages.in_development')->with([
+				'data' => $data
+			]);
+		}
+
        return View::make('dashboard.pages.'.$this->viewPath.'.login')->with(['data' => $data]);
     }
 

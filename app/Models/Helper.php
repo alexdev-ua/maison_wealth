@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Validator;
+
 class Helper
 {
     const BOT_TOKEN = "6256828385:AAE3UPJcc81xmk6WGy2vIHLS5d2p9_-gNRg";
@@ -223,6 +225,15 @@ class Helper
 		[ 'code' => "ZW", 'phone_code' => "263", 'name' => 'Zimbabwe'],
     ];
 
+    public static function getCountryByCode($code){
+        foreach(self::$countries as $country){
+            if('+'.$country['phone_code'] == $code){
+                return $country;
+            }
+        }
+        return null;
+    }
+
     public static function sendTelegramNotification($message, $chatId){
         $sendTextToTelegram = file_get_contents("https://api.telegram.org/bot". self::BOT_TOKEN ."/sendMessage?chat_id={$chatId}&parse_mode=html&text={$message}");
     }
@@ -267,4 +278,776 @@ class Helper
 
         return $response;
     }
+
+    public static function getRecords($model, $parentId = null){
+        switch($model){
+			case 'langs': {
+				$records = Lang::get();
+				break;
+			}
+            case 'properties': {
+                $records = Property::get();
+                break;
+            }
+            case 'property-options': {
+                $records = new PropertyOption;
+                if($parentId){
+                    $records = $records->where('property_id', '=', $parentId);
+                }
+                $records = $records->get();
+                break;
+            }
+            case 'property-features': {
+                $records = new PropertyFeature;
+                if($parentId){
+                    $records = $records->where('property_id', '=', $parentId);
+                }
+                $records = $records->get();
+                break;
+            }
+            case 'directions': {
+                $records = Direction::get();
+                break;
+            }
+            case 'direction-options': {
+                $records = new DirectionOption;
+                if($parentId){
+                    $records = $records->where('direction_id', '=', $parentId);
+                }
+                $records = $records->get();
+                break;
+            }
+            case 'direction-features': {
+                $records = new DirectionFeature;
+                if($parentId){
+                    $records = $records->where('direction_id', '=', $parentId);
+                }
+                $records = $records->get();
+                break;
+            }
+            case 'countries': {
+                $records = Country::get();
+                break;
+            }
+            case 'media': {
+                $records = Media::get();
+                break;
+            }
+            case 'requests': {
+                $records = FormRequest::get();
+                break;
+            }
+            case 'testimonials': {
+                $records = Testimonial::get();
+                break;
+            }
+            case 'list-items': {
+                $records = new ListItem;
+                if($parentId){
+                    $records = $records->where('list_id', '=', $parentId);
+                }
+                $records = $records->get();
+                break;
+            }
+            case 'articles': {
+                $records = BlogArticle::get();
+                break;
+            }
+            case 'article-options': {
+                $records = new BlogArticleOption;
+                if($parentId){
+                    $records = $records->where('blog_article_id', '=', $parentId);
+                }
+                $records = $records->get();
+                break;
+            }
+            case 'article-screens': {
+                $records = new BlogArticleScreen;
+                if($parentId){
+                    $records = $records->where('blog_article_id', '=', $parentId);
+                }
+                $records = $records->get();
+                break;
+            }
+		}
+
+        return $records;
+    }
+
+    public static function getFormData($model, $mode, $id = null, $parentId = null){
+        $data = [
+            'model' => $model,
+            'mode' => $mode
+        ];
+
+        switch($model){
+            case 'langs': {
+				$record = new Lang;
+                break;
+            }
+            case 'countries': {
+                $record = new Country;
+                break;
+            }
+            case 'directions': {
+                $record = new Direction;
+
+                $temp = $record->where('status', '=', Direction::STATUS_DRAFT)->first();
+                if(!$temp && !$id){
+                    $record = new Direction;
+                    $record->save();
+                }
+
+                $data['countries'] = Country::get();
+                break;
+            }
+            case 'direction-options': {
+                $record = new DirectionOption;
+                if($parentId && $mode == 'add'){
+                    $record->direction_id = $parentId;
+                }
+                break;
+            }
+            case 'direction-features': {
+                $record = new DirectionFeature;
+                if($parentId && $mode == 'add'){
+                    $record->direction_id = $parentId;
+                }
+                break;
+            }
+            case 'properties': {
+                $record = new Property;
+
+                $temp = $record->where('status', '=', Property::STATUS_DRAFT)->first();
+                if(!$temp && !$id){
+                    $record = new Property;
+                    $record->save();
+                }
+
+                $data['directions'] = Direction::get();
+                break;
+            }
+            case 'property-options': {
+                $record = new PropertyOption;
+                if($parentId && $mode == 'add'){
+                    $record->property_id = $parentId;
+                }
+                break;
+            }
+            case 'property-features': {
+                $record = new PropertyFeature;
+                if($parentId && $mode == 'add'){
+                    $record->property_id = $parentId;
+                }
+                break;
+            }
+            case 'media': {
+                $record = new Media;
+                break;
+            }
+            case 'requests': {
+                $record = new FormRequest;
+                break;
+            }
+            case 'testimonials': {
+                $record = new Testimonial;
+                break;
+            }
+            case 'list-items': {
+                $record = new ListItem;
+                if($parentId && $mode == 'add'){
+                    $record->list_id = $parentId;
+                }
+                break;
+            }
+            case 'articles': {
+                $record = new BlogArticle;
+
+                $temp = $record->where('status', '=', BlogArticle::STATUS_DRAFT)->first();
+                if(!$temp && !$id){
+                    $record = new BlogArticle;
+                    $record->save();
+                }
+                break;
+            }
+            case 'article-options': {
+                $record = new BlogArticleOption;
+                if($parentId && $mode == 'add'){
+                    $record->blog_article_id = $parentId;
+                }
+                break;
+            }
+            case 'article-screens': {
+                $record = new BlogArticleScreen;
+                if($parentId && $mode == 'add'){
+                    $record->blog_article_id = $parentId;
+                }
+                break;
+            }
+
+        }
+
+        if($mode != 'add'){
+            $record = $record::find($id);
+
+            if($mode == 'delete'){
+                $data['form'] = ['text' => 'Are you sure to delete this record?'];
+            }
+        }
+
+        $data['record'] = $record;
+
+        return $data;
+    }
+
+    public static function proccessFormData($model, $params){
+        $parentId = null;
+        unset($params['_token']);
+        $rules = [];
+        $id = isset($params['id']) ? $params['id'] : null;
+
+        $langs = Lang::getActive(true);
+
+        switch($model){
+            case 'langs' :{
+                $recordModel = new Lang;
+                $rules = [
+                    'title' => ['required']
+                ];
+                if(!$id){
+                    $rules['code'] = ['required', 'unique:langs'];
+                }else{
+                    $rules['code'] = ['required'];
+                }
+
+                $fillParams = $params;
+
+                break;
+            }
+            case 'countries' :{
+                $recordModel = new Country;
+
+                $fillParams = [];
+
+                foreach($langs as $key=>$langId){
+                    $rules['title_'.$langId] = ['required'];
+                }
+                break;
+            }
+            case 'directions' :{
+                $recordModel = new Direction;
+
+                $fillParams = $params;
+
+                $rules = [
+                    'url' => ['required'],
+                    'preview_image_id' => ['required'],
+                    'page_banner_id' => ['required']
+                ];
+
+                foreach($langs as $key=>$langId){
+                    $rules['title_'.$langId] = ['required'];
+                    $rules['description_'.$langId] = ['required'];
+                }
+                break;
+            }
+            case 'direction-options' :{
+                $recordModel = new DirectionOption;
+
+                $fillParams = $params;
+
+                foreach($langs as $key=>$langId){
+                    $rules['title_'.$langId] = ['required'];
+                    $rules['description_'.$langId] = ['required'];
+                }
+                break;
+            }
+            case 'direction-features':{
+                $recordModel = new DirectionFeature;
+
+                $fillParams = $params;
+                $type = $params['type'];
+
+                if($type == 'photo' || $type == 'combined'){
+                    $rules['media_id'] = ['required'];
+                }
+                foreach($langs as $key=>$langId){
+                    if($type == 'text'){
+                        $rules['title_'.$langId] = ['required'];
+                    }
+
+                    if($type == 'combined' || $type == 'offer'){
+                        $rules['text_'.$langId] = ['required'];
+                    }
+                }
+                break;
+            }
+            case 'properties' :{
+                $recordModel = new Property;
+
+                $fillParams = $params;
+
+                $rules = [
+                    'url' => ['required'],
+                    'price' => ['required'],
+                    'preview_image_id' => ['required']
+                ];
+
+                foreach($langs as $key=>$langId){
+                    $rules['title_'.$langId] = ['required'];
+                    $rules['type_'.$langId] = ['required'];
+                    $rules['location_full_'.$langId] = ['required'];
+                }
+                break;
+            }
+            case 'property-options' :{
+                $recordModel = new PropertyOption;
+
+                $fillParams = $params;
+
+                foreach($langs as $key=>$langId){
+                    $rules['title_'.$langId] = ['required'];
+                    $rules['description_'.$langId] = ['required'];
+                }
+                break;
+            }
+            case 'property-features':{
+                $recordModel = new PropertyFeature;
+
+                $fillParams = $params;
+                $type = $params['type'];
+
+                if($type == 'photo' || $type == 'combined'){
+                    $rules['media_id'] = ['required'];
+                }
+                foreach($langs as $key=>$langId){
+                    if($type == 'text'){
+                        $rules['title_'.$langId] = ['required'];
+                    }
+
+                    if($type == 'combined' || $type == 'offer'){
+                        $rules['text_'.$langId] = ['required'];
+                    }
+                }
+                break;
+            }
+            case 'testimonials' :{
+                $recordModel = new Testimonial;
+
+                $fillParams = $params;
+
+                foreach($langs as $key=>$langId){
+                    $rules['author_'.$langId] = ['required'];
+                    $rules['text_'.$langId] = ['required'];
+                }
+                break;
+            }
+            case 'list-items' :{
+                $recordModel = new ListItem;
+
+                if(!isset($params['list_id'])){
+                    $newList = new CustomList;
+                    $newList->save();
+
+                    $params['list_id'] = $newList->id;
+                }
+                $fillParams = $params;
+
+                foreach($langs as $key=>$langId){
+                    $rules['title_'.$langId] = ['required'];
+                }
+                break;
+            }
+            case 'articles' :{
+                $recordModel = new BlogArticle;
+
+                $fillParams = $params;
+
+                $rules = [
+                    'url' => ['required'],
+                    'page_banner_id' => ['required']
+                ];
+
+                foreach($langs as $key=>$langId){
+                    $rules['title_'.$langId] = ['required'];
+                    $rules['description_'.$langId] = ['required'];
+                }
+                break;
+            }
+            case 'article-options' :{
+                $recordModel = new BlogArticleOption;
+
+                $fillParams = $params;
+
+                foreach($langs as $key=>$langId){
+                    $rules['title_'.$langId] = ['required'];
+                    $rules['description_'.$langId] = ['required'];
+                }
+                break;
+            }
+            case 'article-screens':{
+                $recordModel = new BlogArticleScreen;
+
+                $fillParams = $params;
+
+                $rules['media_id'] = ['required'];
+
+                foreach($langs as $key=>$langId){
+                    $rules['title_'.$langId] = ['required'];
+                }
+                break;
+            }
+            /*case 'admins' :{
+                $recordModel = new Admin;
+                $rules = [
+                    'name' => ['required'],
+                ];
+                if(!$id){
+                    $rules['password'] = ['required'];
+                    $rules['login'] = ['required', 'unique:admins'];
+                }else{
+                    $rules['login'] = ['required'];
+                }
+                break;
+            }*/
+        }
+
+        $validator = Validator::make($params, $rules);
+
+        if(!$validator->fails()) {
+            if($id){
+                $record = $recordModel::find($id);
+                $mode = 'edit';
+
+                /*if($model == 'admins'){
+                    $params['active'] = $request->active ? 1 : 0;
+                    if(!$params['password']){
+                        $params['password'] = $record->password;
+                    }else{
+                        $params['password'] = Hash::make($params['password']);
+                    }
+                }*/
+            }else{
+                $record = new $recordModel;
+                $mode = 'add';
+
+                /*if($model == 'admins'){
+                    $params['password'] = Hash::make($params['password']);
+                }*/
+            }
+
+            if(count($fillParams)){
+                $record->fill($params)->save();
+            }else{
+                $record->save();
+            }
+
+            $fields = [];
+
+            switch($model){
+                case 'countries':{
+                    $translateModel = new CountryTranslate;
+                    $recordIdField = 'country_id';
+                    $fields = [
+                        'title'
+                    ];
+                    break;
+                }
+                case 'directions':{
+                    $translateModel = new DirectionTranslate;
+                    $recordIdField = 'direction_id';
+                    $fields = [
+                        'title',
+                        'description',
+                        'page_label',
+                        'page_description'
+                    ];
+                    break;
+                }
+                case 'direction-options':{
+                    $translateModel = new DirectionOptionTranslate;
+                    $recordIdField = 'direction_option_id';
+                    $fields = [
+                        'title',
+                        'description'
+                    ];
+                    $parentId = $record->direction_id;
+                    break;
+                }
+                case 'direction-features':{
+                    $translateModel = new DirectionFeatureTranslate;
+                    $recordIdField = 'direction_feature_id';
+
+                    if($type != 'photo'){
+                        $fields[] = 'description';
+                    }
+
+                    if($type == 'text'){
+                        $fields[] = 'title';
+                    }
+
+                    if($type == 'combined' || $type == 'offer'){
+                        $fields[] = 'text';
+                    }
+
+                    $parentId = $record->direction_id;
+                    break;
+                }
+                case 'properties':{
+                    $translateModel = new PropertyTranslate;
+                    $recordIdField = 'property_id';
+                    $fields = [
+                        'title',
+                        'type',
+                        'location_full',
+                        'payment_plan',
+                        'completion_date',
+                        'rent_out',
+                        'buy_out',
+                        'offer',
+                        'payback',
+                        'page_label',
+                        'page_description'
+                    ];
+                    break;
+                }
+                case 'property-options':{
+                    $translateModel = new PropertyOptionTranslate;
+                    $recordIdField = 'property_option_id';
+                    $fields = [
+                        'title',
+                        'description'
+                    ];
+                    $parentId = $record->property_id;
+                    break;
+                }
+                case 'property-features':{
+                    $translateModel = new PropertyFeatureTranslate;
+                    $recordIdField = 'property_feature_id';
+
+                    if($type != 'photo'){
+                        $fields[] = 'description';
+                    }
+
+                    if($type == 'text'){
+                        $fields[] = 'title';
+                    }
+
+                    if($type == 'combined' || $type == 'offer'){
+                        $fields[] = 'text';
+                    }
+
+                    $parentId = $record->property_id;
+                    break;
+                }
+                case 'testimonials':{
+                    $translateModel = new TestimonialTranslate;
+                    $recordIdField = 'testimonial_id';
+                    $fields = [
+                        'text',
+                        'author'
+                    ];
+                    break;
+                }
+                case 'list-items':{
+                    $translateModel = new ListItemTranslate;
+                    $recordIdField = 'list_item_id';
+                    $fields = [
+                        'title'
+                    ];
+                    $parentId = $record->list_id;
+                    break;
+                }
+                case 'articles':{
+                    $translateModel = new BlogArticleTranslate;
+                    $recordIdField = 'blog_article_id';
+                    $fields = [
+                        'title',
+                        'description',
+                        'page_title',
+                        'page_description',
+                        'page_options_title'
+                    ];
+                    break;
+                }
+                case 'article-options':{
+                    $translateModel = new BlogArticleOptionTranslate;
+                    $recordIdField = 'blog_article_option_id';
+                    $fields = [
+                        'title',
+                        'description'
+                    ];
+                    $parentId = $record->blog_article_id;
+                    break;
+                }
+                case 'article-screens':{
+                    $translateModel = new BlogArticleScreenTranslate;
+                    $recordIdField = 'blog_article_screen_id';
+
+                    $fields = [
+                        'title',
+                        'heading',
+                        'description'
+                    ];
+
+                    $parentId = $record->blog_article_id;
+                    break;
+                }
+            }
+
+            if(count($fields)){
+                if(isset($translateModel)){
+                    foreach($langs as $key=>$langId){
+                        if(!$translate = $translateModel->where($recordIdField, '=', $record->id)->where('lang_id', '=', $langId)->first()){
+                            $translate = new $translateModel;
+                        }
+
+                        $translate->$recordIdField = $record->id;
+                        $translate->lang_id = $langId;
+                        foreach($fields as $field){
+                            $postField = $field.'_'.$langId;
+                            $value = $params[$postField];
+                            $translate->$field = $value;
+                        }
+                        $translate->save();
+                    }
+                }
+            }
+
+            return [
+                'success' => true,
+                'data' => [
+                    'id' => $id,
+                    'model' => $model,
+                    'mode' => $mode,
+                    'parentId' => $parentId
+                ]
+            ];
+        }
+        else{
+            return [
+                'success' => false,
+                'data' => [
+                    'errors' => $validator->errors()
+                ]
+            ];
+		}
+    }
+
+    public static function deleteRecord($model, $id){
+        switch($model){
+            case 'langs': {
+                $modelRecord = Lang::find($id);
+                break;
+            }
+            case 'countries': {
+                $modelRecord = Country::find($id);
+                break;
+            }
+            case 'directions': {
+                $modelRecord = Direction::find($id);
+                break;
+            }
+            case 'direction-options': {
+                $modelRecord = DirectionOption::find($id);
+                break;
+            }
+            case 'direction-features': {
+                $modelRecord = DirectionFeature::find($id);
+                break;
+            }
+            case 'properties': {
+                $modelRecord = Property::find($id);
+                break;
+            }
+            case 'property-options': {
+                $modelRecord = PropertyOption::find($id);
+                break;
+            }
+            case 'property-features': {
+                $modelRecord = PropertyFeature::find($id);
+                break;
+            }
+            case 'media': {
+                $modelRecord = Media::find($id);
+                break;
+            }
+            case 'testimonials': {
+                $modelRecord = Testimonial::find($id);
+                break;
+            }
+            case 'list-items': {
+                $modelRecord = ListItem::find($id);
+                break;
+            }
+            case 'articles': {
+                $modelRecord = BlogArticle::find($id);
+                break;
+            }
+            case 'article-options': {
+                $modelRecord = BlogArticleOption::find($id);
+                break;
+            }
+            case 'article-screens': {
+                $modelRecord = BlogArticleScreen::find($id);
+                break;
+            }
+        }
+
+        if($modelRecord){
+            if($modelRecord->deleteAllData()){
+                return [
+                    'success' => true,
+                    'data' => [
+                        'id' => $id,
+                        'mode' => 'delete'
+                    ]
+                ];
+            }
+        }
+        return true;
+    }
+
+    public static function getStats(){
+        $propertiesCount = Property::where('status', '!=', BlogArticle::STATUS_DRAFT)->count();
+        $directionsCount = Direction::where('status', '!=', BlogArticle::STATUS_DRAFT)->count();
+        $articlesCount = BlogArticle::where('status', '!=', BlogArticle::STATUS_DRAFT)->count();
+
+        $formRequests = FormRequest::orderBy('created_at', 'DESC')->get();
+
+        $stats = [
+            'properties' => [
+                'count' => $propertiesCount,
+                'image' => null
+            ],
+            'directions' => [
+                'count' => $directionsCount,
+                'image' => null
+            ],
+            'articles' => [
+                'count' => $articlesCount,
+                'image' => null
+            ],
+            'formRequests' => [
+                'list' => $formRequests
+            ]
+        ];
+
+        if($propertiesCount){
+            $stats['properties']['image'] = Property::where('status', '!=', BlogArticle::STATUS_DRAFT)->inRandomOrder()->first()->previewImage();
+        }
+        if($directionsCount){
+            $stats['directions']['image'] = Direction::where('status', '!=', BlogArticle::STATUS_DRAFT)->inRandomOrder()->first()->previewImage();
+        }
+        if($articlesCount){
+            $stats['articles']['image'] = BlogArticle::where('status', '!=', BlogArticle::STATUS_DRAFT)->inRandomOrder()->first()->bannerImage();
+        }
+
+        if(count($formRequests)){
+            $stats['formRequests']['new'] = FormRequest::getNew();
+        }
+
+        return $stats;
+    }
+
 }
