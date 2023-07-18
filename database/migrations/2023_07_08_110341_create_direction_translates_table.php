@@ -17,10 +17,10 @@ class CreateDirectionTranslatesTable extends Migration
             $table->id();
             $table->integer('direction_id');
             $table->integer('lang_id');
-            $table->string('title');
-            $table->string('description');
-            $table->string('page_label')->nullable();
-            $table->string('page_description')->nullable();
+            $table->text('title');
+            $table->text('description');
+            $table->text('page_label')->nullable();
+            $table->text('page_description')->nullable();
         });
     }
 

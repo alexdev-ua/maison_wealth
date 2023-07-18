@@ -17,8 +17,8 @@ class CreateBlogArticleOptionTranslatesTable extends Migration
             $table->id();
             $table->integer('blog_article_option_id');
             $table->integer('lang_id');
-            $table->string('title');
-            $table->string('description')->nullable();
+            $table->text('title');
+            $table->text('description')->nullable();
         });
     }
 

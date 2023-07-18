@@ -640,7 +640,7 @@ header {
     width: 115px;
 }
 .link-item.active-link:hover .link-title{
-	background: var(--blue-color);
+	background: var(--blue-color) !important;
 	color: #FFF;
 }
 

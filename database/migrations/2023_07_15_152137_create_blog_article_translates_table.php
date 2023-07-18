@@ -17,13 +17,13 @@ class CreateBlogArticleTranslatesTable extends Migration
             $table->id();
             $table->integer('blog_article_id');
             $table->integer('lang_id');
-            $table->string('title');
+            $table->text('title');
             $table->text('description');
 
-            $table->string('page_title')->nullable();
-            $table->string('page_description')->nullable();
+            $table->text('page_title')->nullable();
+            $table->text('page_description')->nullable();
 
-            $table->string('page_options_title')->nullable();
+            $table->text('page_options_title')->nullable();
         });
     }
 

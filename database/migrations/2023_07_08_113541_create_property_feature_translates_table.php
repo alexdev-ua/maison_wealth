@@ -19,7 +19,7 @@ class CreatePropertyFeatureTranslatesTable extends Migration
             $table->integer('lang_id');
             $table->text('title')->nullable();
             $table->text('text')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
         });
     }
 

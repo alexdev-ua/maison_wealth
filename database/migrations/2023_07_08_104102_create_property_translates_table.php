@@ -17,17 +17,17 @@ class CreatePropertyTranslatesTable extends Migration
             $table->id();
             $table->integer('property_id');
             $table->integer('lang_id');
-            $table->string('title');
+            $table->text('title');
             $table->string('type');
-            $table->string('payment_plan')->nullable();
+            $table->text('payment_plan')->nullable();
             $table->string('completion_date')->nullable();
-            $table->string('location_full')->nullable();
-            $table->string('page_label')->nullable();
-            $table->string('page_description')->nullable();
-            $table->string('rent_out')->nullable();
-            $table->string('buy_out')->nullable();
-            $table->string('offer')->nullable();
-            $table->string('payback')->nullable();
+            $table->text('location_full')->nullable();
+            $table->text('page_label')->nullable();
+            $table->text('page_description')->nullable();
+            $table->text('rent_out')->nullable();
+            $table->text('buy_out')->nullable();
+            $table->text('offer')->nullable();
+            $table->text('payback')->nullable();
         });
     }
 
