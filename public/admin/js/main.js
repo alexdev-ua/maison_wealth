@@ -330,6 +330,7 @@ $(document).ready(function(){
                         if(data.result == 'success'){
                             $('.user-name').html(data.user.name);
                             $('.user-avatar').html('<img src="'+data.user.avatar+'" />');
+                            $('.user-avatar').removeClass('empty-photo');
                         }
                     },
                     error: function(err){
