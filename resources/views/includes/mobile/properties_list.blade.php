@@ -5,7 +5,7 @@
             <div class="property-item">
                 <img src="{{$property->previewImage()}}" class="property-image" />
                 <div class="property-info">
-                    <span class="property-location">{{$property->getDirection()->country($activeLang)}}</span>
+                    <span class="property-location">{{$property->getDirection()->url}}</span>
                     <p class="property-title">{{$property->translate($activeLang)->title}}</p>
                 </div>
                 <div class="property-description">
@@ -13,7 +13,7 @@
                     <a href="/property/{{$property->url}}" class="custom-link">More Info<img src="/images/ic_arrow_right_white.svg"></a>
                     @endif
                     <p class="property-heading">
-                        {{$property->getDirection()->country($activeLang)}}<br><span class="property-city">{{$property->getDirection()->translate($activeLang)->title}}</span>
+                        {{$property->getDirection()->country($activeLang)}}<br><span class="property-city">({{$property->getDirection()->translate($activeLang)->title}})</span>
                     </p>
 
                     <div class="row m-0" style="height: calc(100% - 48px);">
