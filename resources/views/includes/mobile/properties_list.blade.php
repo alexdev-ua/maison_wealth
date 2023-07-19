@@ -1,126 +1,115 @@
 @if($properties)
     @php($i = 1)
-    @foreach($properties as $url=>$property)
+    @foreach($properties as $property)
         <div class="col-6 p-1 {{($i % 2 == 0) ? 'p-0' : 'p-0'}}">
             <div class="property-item">
-                <img src="{{$property['image']}}" class="property-image" />
+                <img src="{{$property->previewImage()}}" class="property-image" />
                 <div class="property-info">
-                    <span class="property-location">{{$property['location']}}</span>
-                    <p class="property-title">{{$property['title']}}</p>
+                    <span class="property-location">{{$property->getDirection()->country($activeLang)}}</span>
+                    <p class="property-title">{{$property->translate($activeLang)->title}}</p>
                 </div>
                 <div class="property-description">
-                    @if(isset($property['page']))
-                    <a href="/property/{{$url}}" class="custom-link">More Info<img src="/images/ic_arrow_right_white.svg"></a>
+                    @if($property->bannerImage())
+                    <a href="/property/{{$property->url}}" class="custom-link">More Info<img src="/images/ic_arrow_right_white.svg"></a>
                     @endif
                     <p class="property-heading">
-                        {{$property['country']}}<br><span class="property-city">{{$property['city']}}</span>
+                        {{$property->getDirection()->country($activeLang)}}<br><span class="property-city">{{$property->getDirection()->translate($activeLang)->title}}</span>
                     </p>
 
                     <div class="row m-0" style="height: calc(100% - 48px);">
                         <div class="col-6 p-1">
                             <p class="property-desc-item">
-                                <span class="property-desc-label">Location</span> {{$property['location_full']}}
+                                <span class="property-desc-label">Location</span> {{$property->translate($activeLang)->location_full}}
                             </p>
                         </div>
 
                         <div class="col-6 p-1">
-                            @if(is_array($property['type']))
-                                <p class="property-desc-item">
-                                    <span class="property-desc-label">Type</span>
-                                    @foreach($property['type'] as $type)
-                                    {{$type}}
-                                    @endforeach
-                                </p>
-                            @else
+                            @if($property->translate($activeLang)->type)
                             <p class="property-desc-item">
-                                <span class="property-desc-label">Type</span> {{$property['type']}}
+                                <span class="property-desc-label">Type</span>
+                                {{$property->translate($activeLang)->type}}
                             </p>
                             @endif
                         </div>
 
                         <div class="col-6 p-1">
-                            @if(is_array($property['price']))
-                                <p class="property-desc-item">
-                                    <span class="property-desc-label">Price</span>
-                                    @foreach($property['price'] as $price)
-                                    {{$price}}
-                                    @endforeach
-                                </p>
-                            @else
+                            @if($property->price)
                             <p class="property-desc-item">
-                                <span class="property-desc-label">Price</span> {{$property['price']}}
+                                <span class="property-desc-label">Price</span> from {{$property->price}}$
                             </p>
                             @endif
                         </div>
 
-                        @if($property['square'])
+                        @if($property->square)
                         <div class="col-6 p-1">
                             <p class="property-desc-item">
                                 <span class="property-desc-label">Square</span>
-                                {{$property['square']}}
+                                {{$property->square}}
                             </p>
                         </div>
                         @endif
 
-                        @if($property['price_per_square'])
+                        @if($property->price_per_square)
                         <div class="col-6 p-1">
                             <p class="property-desc-item">
                                 <span class="property-desc-label">Price per Square</span>
-                                {{$property['price_per_square']}}
+                                {{$property->price_per_square}}
                             </p>
                         </div>
                         @endif
 
+                        @if($property->translate($activeLang)->completion_date)
                         <div class="col-6 p-1">
                             <p class="property-desc-item">
-                                <span class="property-desc-label">Completion date</span> {{$property['completion_date']}}
+                                <span class="property-desc-label">Completion date</span> {{$property->translate($activeLang)->completion_date}}
                             </p>
                         </div>
+                        @endif
 
 
-                        @if(isset($property['offer']))
+                        @if($property->translate($activeLang)->offer)
                         <div class="col-12 p-1">
                             <p class="property-desc-item red-desc-item">
-                                <span class="property-desc-label">Offer</span> {{$property['offer']}}
+                                <span class="property-desc-label">Offer</span> {{$property->translate($activeLang)->offer}}
                             </p>
                         </div>
                         @endif
 
-                        @if(isset($property['payment_plan']))
+                        @if($property->translate($activeLang)->payment_plan)
                         <div class="col-6 p-1">
                             <p class="property-desc-item">
-                                <span class="property-desc-label">Payment plan</span> {{$property['payment_plan']}}
+                                <span class="property-desc-label">Payment plan</span> {{$property->translate($activeLang)->payment_plan}}
                             </p>
                         </div>
                         @endif
 
-                        @if(isset($property['rent_out']))
+                        @if($property->translate($activeLang)->rent_out)
                         <div class="col-6 p-1">
                             <p class="property-desc-item red-desc-item">
-                                <span class="property-desc-label">Rent out</span> {{$property['rent_out']}}
+                                <span class="property-desc-label">Rent out</span> {{$property->translate($activeLang)->rent_out}}
                             </p>
                         </div>
                         @endif
 
-                        @if(isset($property['buy_out']))
+                        @if($property->translate($activeLang)->buy_out)
                         <div class="col-6 p-1">
                             <p class="property-desc-item">
-                                <span class="property-desc-label">Buy out</span> {{$property['buy_out']}}
+                                <span class="property-desc-label">Buy out</span> {{$property->translate($activeLang)->buy_out}}
                             </p>
                         </div>
                         @endif
 
-                        @if(isset($property['payback']))
+                        @if($property->translate($activeLang)->payback)
                         <div class="col-6 p-1">
                             <p class="property-desc-item">
-                                <span class="property-desc-label underlined-label">Payback</span> {{$property['payback']}}
+                                <span class="property-desc-label underlined-label">Payback</span> {{$property->translate($activeLang)->payback}}
                             </p>
                         </div>
                         @endif
 
                         <div class="col-12 p-1">
                             <p class="property-desc-item last-desc-item">
-                                {{$property['for']}}
+                                {{$property->forPurposes()}}
                             </p>
                         </div>
                     </div>

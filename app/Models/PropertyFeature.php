@@ -19,6 +19,13 @@ class PropertyFeature extends Model
     public function translate($langId){
         $featureTranslate = PropertyFeatureTranslate::where('property_feature_id', '=', $this->id)->where('lang_id', '=', $langId)->first();
 
+        if(!$featureTranslate){
+            $lang = Lang::first();
+            if($lang){
+                $featureTranslate = PropertyFeatureTranslate::where('property_feature_id', '=', $this->id)->where('lang_id', '=', $lang->id)->first();
+            }
+        }
+
         if($featureTranslate){
             return $featureTranslate;
         }

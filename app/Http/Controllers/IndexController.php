@@ -12,6 +12,7 @@ use App\Models\Property;
 use App\Models\BlogArticle;
 use App\Models\Direction;
 use App\Models\FormRequest;
+use App\Models\Testimonial;
 
 use App\Models\Helper;
 use App\Models\KommoCRM;
@@ -55,9 +56,14 @@ class IndexController extends Controller
             Cookie::queue(Cookie::make('utm', json_encode($utm), 60*24*30));
         }
 
+        $directions = Direction::getAll();
+        $facilities = Property::getFacilities();
+
         return View::make('pages.'.$this->viewPath .'.home')->with([
             'pageData' => $pageData,
             'activePage' => 'home',
+            'directions' => $directions,
+            'facilities' => $facilities
         ]);
     }
 
@@ -71,6 +77,9 @@ class IndexController extends Controller
             $options['price'] = $request->price;
         }
         $properties = Property::getAll($location, $options);
+
+        $directions = Direction::getAll();
+
         if($request->partial){
             return View::make('includes.'.$this->viewPath .'.properties_list')->with([
                 'properties' => $properties,
@@ -85,6 +94,7 @@ class IndexController extends Controller
                 'pageData' => $pageData,
                 'partial' => false,
                 'activePage' => 'properties',
+                'directions' => $directions
             ]);
         }
     }
@@ -143,9 +153,13 @@ class IndexController extends Controller
             'title' => 'Maison Wealth - About us',
             'description' => 'Maison Wealth is a professional real estate investment firm offering customized solutions and a proven track record of analyzing and identifying lucrative investment opportunities. Our main goal is to maximize your profits by offering exclusive deals on rare land and real estate projects that maintain their value over time. What are you waiting for? Start to Invest!'
         ];
+
+        $testimonials = Testimonial::getAll();
+
         return View::make('pages.'.$this->viewPath .'.about')->with([
             'pageData' => $pageData,
             'activePage' => 'about',
+            'testimonials' => $testimonials
         ]);
     }
 

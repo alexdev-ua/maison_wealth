@@ -22,6 +22,13 @@ class BlogArticle extends Model
     public function translate($langId){
         $articleTranslate = BlogArticleTranslate::where('blog_article_id', '=', $this->id)->where('lang_id', '=', $langId)->first();
 
+        if(!$articleTranslate){
+            $lang = Lang::first();
+            if($lang){
+                $articleTranslate = BlogArticleTranslate::where('blog_article_id', '=', $this->id)->where('lang_id', '=', $lang->id)->first();
+            }
+        }
+
         if($articleTranslate){
             return $articleTranslate;
         }
@@ -78,6 +85,12 @@ class BlogArticle extends Model
 
     public function isDraft(){
         return $this->status == self::STATUS_DRAFT;
+    }
+
+    public function date(){
+        $time = strtotime($this->created_at);
+
+        return date("d/m/Y", $time);
     }
 
     public static $articles = [
@@ -183,13 +196,13 @@ class BlogArticle extends Model
     ];
 
     public static function getAll(){
-        return self::$articles;
+        return BlogArticle::where('status', '=', BlogArticle::STATUS_ACTIVE)->get();
     }
 
     public static function getByKey($key){
-        $articles = self::$articles;
-        if(isset($articles[$key])){
-            return $articles[$key];
+        $article = BlogArticle::where('status', '=', BlogArticle::STATUS_ACTIVE)->where('url', '=', $key)->first();
+        if($article){
+            return $article;
         }
         return null;
     }

@@ -97,6 +97,7 @@
 </div>
 <!-- end financial advantages screen -->
 
+@if($testimonials)
 <!-- our clients say screen -->
 <div class="page-screen our-clients-say-screen">
     <div class="animated-block slide-from-bottom red-bg">
@@ -108,24 +109,14 @@
                 <div class="col-6">
                     <div class="testimonials-container">
                         <div class="carousel testimonials-carousel">
+                            @foreach($testimonials as $testimonial)
                             <div class="carousel-slide content-wraper">
                                 <div class="testimonial-item">
-                                    <div class="testimonial-text">During my invest in Maison Wealth company. That number alone is something to be amazed at. Other ways has helped my company is through writing copy for email campaigns and web support.</div>
-                                    <p class="testimonial-author">- Iryna</p>
+                                    <div class="testimonial-text">{{$testimonial->translate($activeLang)->text}}</div>
+                                    <p class="testimonial-author">- {{$testimonial->translate($activeLang)->author}}</p>
                                 </div>
                             </div>
-                            <div class="carousel-slide content-wraper">
-                                <div class="testimonial-item">
-                                    <div class="testimonial-text">During my invest in Maison Wealth company. That number alone is something to be amazed at. Other ways has helped my company is through writing copy for email campaigns and web support.</div>
-                                    <p class="testimonial-author">- Alex</p>
-                                </div>
-                            </div>
-                            <div class="carousel-slide content-wraper">
-                                <div class="testimonial-item">
-                                    <div class="testimonial-text">During my invest in Maison Wealth company. That number alone is something to be amazed at. Other ways has helped my company is through writing copy for email campaigns and web support.</div>
-                                    <p class="testimonial-author">- John</p>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -134,6 +125,7 @@
     </div>
 </div>
 <!-- end our clients screen -->
+@endif
 
 <!-- get in touch screen -->
 @include('includes.desktop.get_in_touch_screen')

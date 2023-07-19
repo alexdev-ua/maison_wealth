@@ -16,6 +16,13 @@ class BlogArticleOption extends Model
     public function translate($langId){
         $optionTranslate = BlogArticleOptionTranslate::where('blog_article_option_id', '=', $this->id)->where('lang_id', '=', $langId)->first();
 
+        if(!$optionTranslate){
+            $lang = Lang::first();
+            if($lang){
+                $optionTranslate = BlogArticleOptionTranslate::where('blog_article_option_id', '=', $this->id)->where('lang_id', '=', $lang->id)->first();
+            }
+        }
+
         if($optionTranslate){
             return $optionTranslate;
         }

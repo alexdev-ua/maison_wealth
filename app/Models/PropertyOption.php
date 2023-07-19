@@ -16,6 +16,13 @@ class PropertyOption extends Model
     public function translate($langId){
         $optionTranslate = PropertyOptionTranslate::where('property_option_id', '=', $this->id)->where('lang_id', '=', $langId)->first();
 
+        if(!$optionTranslate){
+            $lang = Lang::first();
+            if($lang){
+                $optionTranslate = PropertyOptionTranslate::where('property_option_id', '=', $this->id)->where('lang_id', '=', $lang->id)->first();
+            }
+        }
+
         if($optionTranslate){
             return $optionTranslate;
         }

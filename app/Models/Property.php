@@ -32,14 +32,32 @@ class Property extends Model
     public function translate($langId){
         $propertyTranslate = PropertyTranslate::where('property_id', '=', $this->id)->where('lang_id', '=', $langId)->first();
 
+        if(!$propertyTranslate){
+            $lang = Lang::first();
+            if($lang){
+                $propertyTranslate = PropertyTranslate::where('property_id', '=', $this->id)->where('lang_id', '=', $lang->id)->first();
+            }
+        }
+
         if($propertyTranslate){
             return $propertyTranslate;
         }
         return new PropertyTranslate;
     }
 
+    public function getDirection(){
+        return Direction::find($this->direction_id);
+    }
+
     public function direction($langId){
         $directionTranslate = DirectionTranslate::where('direction_id', '=', $this->direction_id)->where('lang_id', '=', $langId)->first();
+
+        if(!$directionTranslate){
+            $lang = Lang::first();
+            if($lang){
+                $directionTranslate = DirectionTranslate::where('direction_id', '=', $this->direction_id)->where('lang_id', '=', $lang->id)->first();
+            }
+        }
 
         if($directionTranslate){
             return $directionTranslate->title;
@@ -107,6 +125,29 @@ class Property extends Model
 
     public function isDraft(){
         return $this->status == self::STATUS_DRAFT;
+    }
+
+    public function forPurposes(){
+        $purposes = [];
+
+        if($this->for_living){
+            $purposes[] = 'For living';
+        }
+        if($this->for_resale){
+            $purposes[] = 'For resale';
+        }
+        if($this->for_long_rent){
+            $purposes[] = 'For long term rental';
+        }
+        if($this->for_daily_rent){
+            $purposes[] = 'For daily rent';
+        }
+
+        return implode(' / ', $purposes);
+    }
+
+    public function price(){
+        return number_format($this->price, 0, '.', ' ');
     }
 
     public static $properties = [
@@ -1183,41 +1224,39 @@ class Property extends Model
     ];
 
     public static function getAll($location, $options){
-        if($location == 'all'){
-            $properties = self::$properties;
-        }else{
-            $properties = self::getPropertiesByLocation($location);
+        $properties = Property::where('status', '=', Property::STATUS_ACTIVE);
+        if($location != 'all'){
+            $direction = Direction::where('url', '=', $location)->first();
+
+            $directionId = 0;
+
+            if($direction){
+                $directionId = $direction->id;
+            }
+
+            $properties = $properties->where('direction_id', '=', $directionId);
         }
         if(isset($options['price'])){
-            $propertiesByPrice = [];
-            foreach($properties as $url=>$property){
-                if($property['price_digit'] <= $options['price']){
-                    $propertiesByPrice[$url] = $property;
-                }
-            }
-            $properties = $propertiesByPrice;
+            $properties = $properties->where('price', '<=', $options['price']);
         }
+
+        $properties = $properties->get();
+
         return $properties;
     }
 
-    private static function getPropertiesByLocation($location){
-        if(in_array($location, ['bali', 'miami', 'dubai', 'mexico'])){
-            foreach(self::$properties as $url=>$property){
-                if($property['location'] == $location){
-                    $result[$url] = $property;
-                }
-            }
-            return $result;
-        }
-        return [];
-    }
-
     public static function getByKey($key){
-        $properties = self::$properties;
-        if(isset($properties[$key])){
-            return $properties[$key];
+        $properties = Property::where('status', '=', Property::STATUS_ACTIVE)->where('url', '=', $key)->first();
+        if($properties){
+            return $properties;
         }
         return null;
+    }
+
+    public static function getFacilities(){
+        $facilities = Property::where('status', '=', Property::STATUS_ACTIVE)->where('on_main', '=', 1)->get();
+
+        return $facilities;
     }
 
 }

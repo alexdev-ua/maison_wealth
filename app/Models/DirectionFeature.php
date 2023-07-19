@@ -19,6 +19,13 @@ class DirectionFeature extends Model
     public function translate($langId){
         $featureTranslate = DirectionFeatureTranslate::where('direction_feature_id', '=', $this->id)->where('lang_id', '=', $langId)->first();
 
+        if(!$featureTranslate){
+            $lang = Lang::first();
+            if($lang){
+                $featureTranslate = DirectionFeatureTranslate::where('direction_feature_id', '=', $this->id)->where('lang_id', '=', $lang->id)->first();
+            }
+        }
+
         if($featureTranslate){
             return $featureTranslate;
         }

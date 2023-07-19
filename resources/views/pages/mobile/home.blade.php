@@ -37,6 +37,7 @@
 </div>
 <!-- end search screen -->
 
+@if($directions)
 <!-- plots screen -->
 <div class="page-screen auto-height plots-screen" id="homePlotsScreen">
     <div class="animated-block slide-from-bottom">
@@ -44,40 +45,30 @@
             <div class="plots-container">
                 <p class="plots-title top-padding mt-0">What do we offer</p>
                 <div class="banners-block">
-                    <img src="/images/im_invest_dubai_banner.jpg" class="page-screen-bg-image banner-image active-banner" id="plotsBanner1" />
-                    <img src="/images/im_invest_miami_banner.jpg" class="page-screen-bg-image banner-image" id="plotsBanner2" />
-                    <img src="/images/im_invest_bali_banner.jpg" class="page-screen-bg-image banner-image" id="plotsBanner3" />
-                    <img src="/images/im_invest_mexico_banner.jpg" class="page-screen-bg-image banner-image" id="plotsBanner4" />
+                    @foreach($directions as $key=>$direction)
+                    <img src="{{$direction->bannerImage()}}" class="page-screen-bg-image banner-image @if($key == 0)active-banner @endif" id="plotsBanner{{$direction->id}}" />
+                    @endforeach
                 </div>
             </div>
         </div>
         <div class="plots-block white-bg">
             <div class="plots-container wraper">
                 <div class="plots-list pt-3">
-                    <div class="plot-item opened">
-                        <div class="plot-title" data-banner="#plotsBanner1"><img src="/images/ic_arrow_right_red.svg" /> Dubai</div>
+                    @foreach($directions as $key=>$direction)
+                    <div class="plot-item @if($key == 0)opened @endif">
+                        <div class="plot-title" data-banner="#plotsBanner{{$direction->id}}"><img src="/images/ic_arrow_right_red.svg" /> {{$direction->translate($activeLang)->title}}</div>
                         <div class="plot-description">Land plots, apartments, villas, hotel residences, townhouses, commercial spaces, ultra-luxury projects</div>
                     </div>
-                    <div class="plot-item">
-                        <div class="plot-title" data-banner="#plotsBanner2"><img src="/images/ic_arrow_right_red.svg" /> Miami</div>
-                        <div class="plot-description">Land plots, apartments, villas, hotel residences, townhouses, commercial spaces, ultra-luxury projects</div>
-                    </div>
-                    <div class="plot-item">
-                        <div class="plot-title" data-banner="#plotsBanner3"><img src="/images/ic_arrow_right_red.svg" /> Bali</div>
-                        <div class="plot-description">Land plots, apartments, villas, hotel residences, townhouses, commercial spaces, ultra-luxury projects</div>
-                    </div>
-                    <div class="plot-item">
-                        <div class="plot-title" data-banner="#plotsBanner4"><img src="/images/ic_arrow_right_red.svg" /> Mexico(Riviera Maya)</div>
-                        <div class="plot-description">Land plots, apartments, villas, hotel residences, townhouses, commercial spaces, ultra-luxury projects</div>
-                    </div>
-
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- end plots screen -->
+@endif
 
+@if($facilities->count() > 1)
 <!-- facilities screen -->
 <div class="page-screen auto-height" id="homeFacilitiesScreen">
     <div class="animated-block slide-from-bottom">
@@ -93,63 +84,31 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-6 pr-0">
+            @foreach($facilities as $facility)
+            <div class="col-6">
                 <div class="facility-block">
-                    <img src="/images/projects/the-edge/preview.jpg" class="facility-bg-image" />
+                    <img src="{{$facility->previewImage()}}" class="facility-bg-image" />
                     <div class="facility-info">
                         <div class="bottom-block">
-                            <a href="/property/the-edge">
-                                <p class="facility-title">The Edge</p>
+                            <a href="/property/{{$facility->url}}">
+                                <p class="facility-title">{{$facility->translate($activeLang)->title}}</p>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-6 pl-0">
-                <div class="facility-block">
-                    <img src="/images/projects/upper-house/preview.jpg" class="facility-bg-image" />
-                    <div class="facility-info">
-                        <div class="bottom-block">
-                            <a href="/property/upper-house">
-                                <p class="facility-title">Upper House</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 pr-0">
-                <div class="facility-block">
-                    <img src="/images/projects/bentley-residences/preview.jpg" class="facility-bg-image" />
-                    <div class="facility-info">
-                        <div class="bottom-block">
-                            <a href="/property/bentley-residences">
-                                <p class="facility-title">Bentley<br>Residences</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 pl-0">
-                <div class="facility-block">
-                    <img src="/images/projects/umalas-premier/preview.jpg" class="facility-bg-image" />
-                    <div class="facility-info">
-                        <div class="bottom-block">
-                            <a href="/property/umalas-premier">
-                                <p class="facility-title">Umalas Premier</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
 <!-- end facilities screen -->
+@endif
 
 <!-- invest screen -->
 @include('includes.mobile.invest_screen')
 <!-- end invest screen -->
 
+@if($directions)
 <!-- why invest screen -->
 <div class="page-screen auto-height invest-screen" id="whyInvestScreen">
     <div class="animated-block slide-from-bottom white-bg top-padding">
@@ -157,46 +116,27 @@
             <p class="page-screen-heading">Why invest in these<br>countries/ cities?</p>
         </div>
         <div class="banners-block">
-            <img src="/images/im_invest_dubai_banner.jpg" class="banner-image active-banner" id="investBanner1" />
-            <img src="/images/im_invest_miami_banner.jpg" class="banner-image" id="investBanner2" />
-            <img src="/images/im_invest_bali_banner.jpg" class="banner-image" id="investBanner3" />
-            <img src="/images/im_invest_mexico_banner.jpg" class="banner-image" id="investBanner4" />
+            @foreach($directions as $key=>$direction)
+            <img src="{{$direction->bannerImage()}}" class="banner-image @if($key == 0)active-banner @endif" id="investBanner{{$direction->id}}" />
+            @endforeach
         </div>
         <div class="wraper mt-4 pt-3">
             <div class="invest-block row">
+                @foreach($directions as $direction)
                 <div class="col-6">
                     <div class="invest-item opened">
-                        <p class="invest-name">UAE <span class="invest-city">(Dubai)</span></p>
-                        <div class="invest-description">Real estate in Dubai is one of the best assets for investment. The growth in property prices is at least 10-15% per year, guaranteeing high profits for your investments.</div>
-                        <a href="/direction/dubai" class="custom-link mt-3" data-banner="#investBanner1">Details <img src="/images/ic_arrow_right_white.svg"></a>
+                        <p class="invest-name">{{$direction->country($activeLang)}} <span class="invest-city">({{$direction->translate($activeLang)->title}})</span></p>
+                        <div class="invest-description">{{$direction->translate($activeLang)->description}}</div>
+                        <a href="/direction/{{$direction->url}}" class="custom-link mt-3" data-banner="#investBanner{{$direction->id}}">Details <img src="/images/ic_arrow_right_white.svg"></a>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="invest-item opened">
-                        <p class="invest-name">USA <span class="invest-city">(Miami)</span></p>
-                        <div class="invest-description">In Miami, dreams of stable and profitable investments come true with an annual rental occupancy rate of over 85% and a growing demand for short-term rentals.</div>
-                        <a href="/direction/miami" class="custom-link mt-3" data-banner="#investBanner2">Details <img src="/images/ic_arrow_right_white.svg"></a>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="invest-item opened">
-                        <p class="invest-name">Indonesia<br><span class="invest-city">(Bali)</span></p>
-                        <div class="invest-description">On Bali, you will find high returns on real estate investments, thanks to the 300% increase in land value over the last 5 years.</div>
-                        <a href="/direction/bali" class="custom-link mt-3" data-banner="#investBanner3">Details <img src="/images/ic_arrow_right_white.svg"></a>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="invest-item opened">
-                        <p class="invest-name">Mexico<br><span class="invest-city">(Riviera Maya)</span></p>
-                        <div class="invest-description">The ROI ranges from 8% to 12%, and the payback period is 6-7 years.</div>
-                        <a href="/direction/mexico" class="custom-link mt-3" data-banner="#investBanner4">Details <img src="/images/ic_arrow_right_white.svg"></a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
 </div>
 <!-- end why invest screen -->
+@endif
 
 <!-- get in touch screen -->
 @include('includes.mobile.get_in_touch_screen')

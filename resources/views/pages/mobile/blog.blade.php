@@ -20,15 +20,17 @@
         <div class="wraper">
             <p class="page-screen-heading"><span class="gray-text">Pay when you want and get</span> your income <span class="gray-text">immediately.</span></p>
 
+            @if($articles)
             <div class="blog-articles mt-4">
-                @foreach($articles as $key=>$article)
+                @foreach($articles as $article)
                 <div class="blog-aticle">
-                    <div class="blog-article-heading"><a href="/blog/{{$key}}"><span class="arrow-icon"></span> {!!$article['title']!!}</a></div>
-                    <div class="blog-article-description">{{$article['description']}}</div>
-                    <span class="blog-article-date">{{$article['date']}}</span>
+                    <div class="blog-article-heading"><a href="/blog/{{$article->url}}"><span class="arrow-icon"></span> {{$article->translate($activeLang)->title}}</a></div>
+                    <div class="blog-article-description">{{$article->translate($activeLang)->description}}</div>
+                    <span class="blog-article-date">{{$article->date()}}</span>
                 </div>
                 @endforeach
             </div>
+            @endif
         </div>
     </div>
 </div>

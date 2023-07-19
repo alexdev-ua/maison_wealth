@@ -16,6 +16,13 @@ class DirectionOption extends Model
     public function translate($langId){
         $optionTranslate = DirectionOptionTranslate::where('direction_option_id', '=', $this->id)->where('lang_id', '=', $langId)->first();
 
+        if(!$optionTranslate){
+            $lang = Lang::first();
+            if($lang){
+                $optionTranslate = DirectionOptionTranslate::where('direction_option_id', '=', $this->id)->where('lang_id', '=', $lang->id)->first();
+            }
+        }
+
         if($optionTranslate){
             return $optionTranslate;
         }

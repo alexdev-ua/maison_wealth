@@ -23,17 +23,19 @@
                     <p class="page-screen-heading"><span class="gray-text">Pay when you want and get</span> your income <span class="gray-text">immediately.</span></p>
                 </div>
                 <div class="col-6 offset-6">
+                    @if($articles)
                     <div class="blog-articles row">
-                        @foreach($articles as $key=>$article)
+                        @foreach($articles as $article)
                         <div class="col-6">
                             <div class="blog-aticle">
-                                <div class="blog-article-heading"><a href="/blog/{{$key}}">{!!$article['title']!!} <span class="arrow-icon"></span></a></div>
-                                <div class="blog-article-description">{{$article['description']}}</div>
-                                <span class="blog-article-date">{{$article['date']}}</span>
+                                <div class="blog-article-heading"><a href="/blog/{{$article->url}}">{{$article->translate($activeLang)->title}} <span class="arrow-icon"></span></a></div>
+                                <div class="blog-article-description">{{$article->translate($activeLang)->description}}</div>
+                                <span class="blog-article-date">{{$article->date()}}</span>
                             </div>
                         </div>
                         @endforeach
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

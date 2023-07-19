@@ -12,6 +12,13 @@ class Country extends Model
     public function translate($langId){
         $countryTranslate = CountryTranslate::where('country_id', '=', $this->id)->where('lang_id', '=', $langId)->first();
 
+        if(!$countryTranslate){
+            $lang = Lang::first();
+            if($lang){
+                $countryTranslate = CountryTranslate::where('country_id', '=', $this->id)->where('lang_id', '=', $lang->id)->first();
+            }
+        }
+
         if($countryTranslate){
             return $countryTranslate;
         }

@@ -18,6 +18,13 @@ class ListItem extends Model
     public function translate($langId){
         $listItemTranslate = ListItemTranslate::where('list_item_id', '=', $this->id)->where('lang_id', '=', $langId)->first();
 
+        if(!$listItemTranslate){
+            $lang = Lang::first();
+            if($lang){
+                $listItemTranslate = ListItemTranslate::where('list_item_id', '=', $this->id)->where('lang_id', '=', $lang->id)->first();
+            }
+        }
+
         if($listItemTranslate){
             return $listItemTranslate;
         }

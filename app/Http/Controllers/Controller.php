@@ -21,6 +21,7 @@ class Controller extends BaseController
     public $viewPath = '';
     public $activeDashboardLang = 1;
     public $langs;
+    public $activeLang;
 
     public function __construct()
 	{
@@ -73,7 +74,9 @@ class Controller extends BaseController
 
             if(Lang::first()){
                 $this->activeDashboardLang = Lang::first()->id;
+                $this->activeLang = Lang::first()->id;
                 View::share(['dashLang' => $this->activeDashboardLang]);
+                View::share(['activeLang' => $this->activeLang]);
             }
 
             return $next($request);

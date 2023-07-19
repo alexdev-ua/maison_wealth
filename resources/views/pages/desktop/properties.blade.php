@@ -12,10 +12,9 @@
         @endif
         <div class="properties-locations text-center">
             <button class="custom-btn property-location-btn @if($location == 'all')active @endif" data-location="all">All</button>
-            <button class="custom-btn property-location-btn @if($location == 'dubai')active @endif" data-location="dubai">Dubai</button>
-            <button class="custom-btn property-location-btn @if($location == 'miami')active @endif" data-location="miami">Miami</button>
-            <button class="custom-btn property-location-btn @if($location == 'bali')active @endif" data-location="bali">Bali</button>
-            <button class="custom-btn property-location-btn @if($location == 'mexico')active @endif" data-location="mexico">Mexico</button>
+            @foreach($directions as $direction)
+            <button class="custom-btn property-location-btn @if($location == $direction->url)active @endif" data-location="{{$direction->url}}">{{ucfirst($direction->url)}}</button>
+            @endforeach
         </div>
         <div class="properties-list row">
             @include('includes.desktop.properties_list')

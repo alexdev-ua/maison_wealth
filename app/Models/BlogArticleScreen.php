@@ -20,6 +20,13 @@ class BlogArticleScreen extends Model
     public function translate($langId){
         $screenTranslate = BlogArticleScreenTranslate::where('blog_article_screen_id', '=', $this->id)->where('lang_id', '=', $langId)->first();
 
+        if(!$screenTranslate){
+            $lang = Lang::first();
+            if($lang){
+                $screenTranslate = BlogArticleScreenTranslate::where('blog_article_screen_id', '=', $this->id)->where('lang_id', '=', $lang->id)->first();
+            }
+        }
+
         if($screenTranslate){
             return $screenTranslate;
         }
