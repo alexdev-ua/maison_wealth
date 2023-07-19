@@ -48,7 +48,7 @@
                     <div class="mt-3"><label>URL</label></div>
                     <div class="input-group">
                         <div class="input-group-append">
-                            <span class="input-group-text">{{route('home')}}/</span>
+                            <span class="input-group-text">{{route('home')}}/direction/</span>
                         </div>
                         <input type="text" name="url" class="form-control dash-input" autocomplete="off" value="{{$record->url}}" />
                     </div>
