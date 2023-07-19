@@ -19,11 +19,20 @@ class AdminsTableSeeder extends Seeder
     {
         //DB::table('admins')->delete();
         DB::table('admins')->insert([
-            'name' => 'Alex',
-            'email' => 'alex.webdev.13@gmail.com',
-            'password' => Hash::make('alex1993'),
-            'active' => 1,
-            'role' => Admin::ROLE_ADMIN
+            [
+                'name' => 'Alex',
+                'email' => 'alex.webdev.13@gmail.com',
+                'password' => Hash::make('alex1993'),
+                'active' => 1,
+                'role' => Admin::ROLE_ADMIN
+            ],
+            [
+                'name' => 'Liliia',
+                'email' => 'lily@maisonwealth.com',
+                'password' => Hash::make('GY*3ed_D324hr'),
+                'active' => 1,
+                'role' => Admin::ROLE_ADMIN
+            ]
         ]);
     }
 }

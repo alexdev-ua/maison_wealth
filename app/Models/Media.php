@@ -39,9 +39,6 @@ class Media extends Model
             $mediaFile = md5(microtime()).'.'.$file->getClientOriginalExtension();
             $file->move($path, $mediaFile);
 
-            $mediaMimeType = explode('/', mime_content_type($path.'/'.$mediaFile));
-            $type = $mediaMimeType[0];
-
             // reduce quality
     		$image = Image::make($path.'/'.$mediaFile);
     		$image->save($path.'/'.$mediaFile, 50);

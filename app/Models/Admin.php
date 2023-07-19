@@ -24,7 +24,8 @@ class Admin extends Authenticatable
         'name',
         'email',
         'password',
-        'active'
+        'active',
+        'avatar'
     ];
 
     /**
@@ -43,4 +44,15 @@ class Admin extends Authenticatable
      */
     protected $casts = [
     ];
+
+    public function avatar(){
+        $path = public_path('/media');
+
+        if($this->avatar){
+            if(file_exists($path.'/'.$this->avatar)){
+                return '/media/'.$this->avatar;
+            }
+        }
+        return '/images/ic_admin.svg';
+    }
 }

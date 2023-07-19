@@ -24,6 +24,11 @@
 				<div class="content-block main-content">
 					@yield('content')
 				</div>
+				@if(Auth::guard('admin')->user() && $platform == 'desktop')
+				<div class="content-block">
+					@include('dashboard.includes.desktop.profile_sidebar')
+				</div>
+				@endif
 			</div>
 			<!-- end content -->
 		</div>

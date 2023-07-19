@@ -74,7 +74,9 @@
                     <span class="dash-block-count">
                         {{count($dashStats['formRequests']['list'])}}
                         @if(isset($dashStats['formRequests']['new']))
-                        <span class="dash-block-new-label">+ {{$dashStats['formRequests']['new']}} <small>today</small></span>
+                            @if($dashStats['formRequests']['new'])
+                                <span class="dash-block-new-label">+ {{$dashStats['formRequests']['new']}} <small>today</small></span>
+                            @endif
                         @endif
                     </span>
                     <p class="dash-block-title">Requests</p>

@@ -563,22 +563,32 @@ header {
     float: right;
     display: inline-block;
     cursor: pointer;
+    user-select: none;
 }
 .user-block .user-name {
-    color: #000;
-    font-size: 20px;
+	color: #333;
+    font-size: 14px;
+    font-weight: 600;
     display: inline-block;
-    padding: 10px;
+    padding: 14px 0px;
     height: 100%;
 }
 .user-block .user-avatar {
     height: 40px;
     display: inline-flex;
     width: 40px;
-    padding: 12px;
+
     background: #555;
     margin: 5px;
     float: right;
+}
+.user-block .user-avatar img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.user-block .user-avatar.empty-photo{
+	padding: 12px;
 }
 
 
@@ -857,4 +867,53 @@ header {
 	background-image: url(../../images/dash_bg.jpg);
 	background-position: center;
 	background-size: cover;
+}
+
+/* dashboard user profile */
+.dash-sidebar-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--blue-color);
+}
+.dash-close-sidebar-btn {
+    float: right;
+    padding: 0 10px;
+    height: auto;
+}
+.dash-profile-photo:not(.empty-photo) img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.dash-profile-photo {
+	width: 190px;
+	height: 190px;
+	margin: auto;
+	position: relative;
+}
+.dash-profile-photo.empty-photo{
+	background: #555;
+    padding: 45px 65px 70px;
+}
+.dash-profile-sidebar{
+	height: calc(100vh - 50px);
+	background: #FFF;
+	box-shadow: 0px 0px 500px #000;
+	padding: 15px;
+	transition: all .3s ease;
+	transform: translateX(calc(100% + 500px));
+	position: absolute;
+	top: 50px;
+	right: 0;
+	width: 220px;
+	z-index: 10;
+}
+.dash-profile-sidebar.opened{
+	transform: translateX(0);
+}
+.dash-profile-photo-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
 }
