@@ -363,7 +363,7 @@ class IndexController extends Controller
                 Helper::sendTelegramLogs(json_encode($log), "-909344007");
 
                 // send requests to telegram
-    	        Helper::sendTelegramNotification($notification, "-905680561");
+    	        //Helper::sendTelegramNotification($notification, "-905680561");
 
                 /*if($requestType == 'popup-consultation'){
                     Cookie::queue(Cookie::make('popupConsultShowed', 1, 60*24*30));
