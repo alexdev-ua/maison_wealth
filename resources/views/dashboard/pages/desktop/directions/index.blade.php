@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="dash-table" data-model="directions">
-    <div class="dash-table-heading">
+    <div class="dash-table-heading dash-fixed-heading">
         <div class="dash-table-controls">
             <span class="dash-table-title">Directions</span>
             <a href="/dashboard/directions/add" class="dash-table-btn dash-btn blue-btn float-right" data-mode="add">Add direction</a>

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="dash-table" data-model="requests">
-    <div class="dash-table-heading">
+    <div class="dash-table-heading dash-fixed-heading">
         <div class="dash-table-controls">
             <span class="dash-table-title">Form Requests</span>
         </div>

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="dash-table" data-model="properties">
-    <div class="dash-table-heading">
+    <div class="dash-table-heading dash-fixed-heading">
         <div class="dash-table-controls">
             <span class="dash-table-title">Properties</span>
             <a href="/dashboard/properties/add" class="dash-table-btn dash-btn blue-btn float-right">Add property</a>

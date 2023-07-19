@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="dash-table" data-model="media">
-    <div class="dash-table-heading">
+    <div class="dash-table-heading dash-fixed-heading">
         <div class="dash-table-controls">
             <span class="dash-table-title">Gallery</span>
             <button class="dash-table-btn dash-btn blue-btn add-photos-btn float-right">Upload photo</button>

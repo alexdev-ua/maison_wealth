@@ -257,6 +257,12 @@ ul{
 .dash-table-heading {
     padding: 10px 10px 0;
 }
+.dash-table-heading.dash-fixed-heading{
+	position: sticky;
+	top: -10px;
+	z-index: 1;
+	background: #fefefe;
+}
 
 .dash-table-columns {
     border-top: 1px solid #ddd;
@@ -436,7 +442,7 @@ ul{
 }
 .dash-media-preview{
 	width: 100%;
-	height: 100%;
+	height: 200px;
 	object-fit: cover;
 	transition: 0.3s ease;
 	transform-origin: center center;
@@ -634,7 +640,7 @@ header {
 }
 .link-item:not(.sidebar.opened .link-item):hover .link-title {
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     background: #f5f5f5;
     padding-right: 10px;
     width: 115px;

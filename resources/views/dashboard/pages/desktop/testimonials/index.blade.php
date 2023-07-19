@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="dash-table" data-model="testimonials">
-    <div class="dash-table-heading">
+    <div class="dash-table-heading dash-fixed-heading">
         <div class="dash-table-controls">
             <span class="dash-table-title">Testimonials</span>
             <button class="dash-table-btn dash-btn blue-btn dash-control-btn float-right" data-mode="add">Add testimonial</button>
