@@ -85,18 +85,20 @@
         </div>
         <div class="row">
             @foreach($facilities as $key=>$facility)
-            <div class="col-6 @if($key % 2) pl-0 @else pr-0 @endif">
-                <div class="facility-block">
-                    <img src="{{$facility->previewImage()}}" class="facility-bg-image" />
-                    <div class="facility-info">
-                        <div class="bottom-block">
-                            <a href="/property/{{$facility->url}}">
-                                <p class="facility-title">{{$facility->translate($activeLang)->title}}</p>
-                            </a>
+                @if($key < 4)
+                    <div class="col-6 @if($key % 2) pl-0 @else pr-0 @endif">
+                        <div class="facility-block">
+                            <img src="{{$facility->previewImage()}}" class="facility-bg-image" />
+                            <div class="facility-info">
+                                <div class="bottom-block">
+                                    <a href="/property/{{$facility->url}}">
+                                        <p class="facility-title">{{$facility->translate($activeLang)->title}}</p>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                @endif
             @endforeach
         </div>
     </div>
