@@ -281,6 +281,11 @@ footer .group-title{
      background: #811810;
      color: #fff;
  }
+ .black-bg{
+     background: #000 !important;
+     color: #FFF;
+ }
+
  .white-text{
      color: #fff !important;
      font-weight: inherit;
@@ -711,6 +716,10 @@ button.custom-link{
 
 .page-screen.red-screen{
     background: #811810;
+    color: #fff;
+}
+.page-screen.black-screen{
+    background: #000;
     color: #fff;
 }
 
@@ -1701,4 +1710,45 @@ button.custom-link{
 .dropdown-menu.show {
     border-radius: 0;
     max-height: 235px !important;
+}
+
+
+.terms-block{
+    border-bottom: 1px solid #000;
+    padding-bottom: 40px;
+    margin-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.gray-bg .terms-block{
+    background: #DDD;
+    padding:50px 15%;
+}
+.terms-title{
+    font-weight: 500;
+    color: #000;
+    font-size: 32px;
+    line-height: 40px;
+    text-transform: uppercase;
+}
+.terms-text{
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    margin-top: 30px;
+    color: #1B1B1B;
+}
+
+.reach-us-block{
+    padding-bottom: 50px;
+}
+.reach-us-block .page-screen-heading{
+    font-size: 40px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #000;
+}
+
+.contact-link{
+    color: #000;
 }

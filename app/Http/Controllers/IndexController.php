@@ -202,6 +202,18 @@ class IndexController extends Controller
         Cookie::queue(Cookie::make('acceptCookies', $accept, 60*24*30*12));
     }
 
+    public function terms(Request $request){
+        $pageData = [
+            'title' => 'Maison Wealth - Terms and conditions',
+            'description' => 'Maison Wealth is a professional real estate investment firm offering customized solutions and a proven track record of analyzing and identifying lucrative investment opportunities. Our main goal is to maximize your profits by offering exclusive deals on rare land and real estate projects that maintain their value over time. What are you waiting for? Start to Invest!'
+        ];
+
+        return View::make('pages.'.$this->viewPath .'.terms')->with([
+            'pageData' => $pageData,
+            'activePage' => 'terms'
+        ]);
+    }
+
 
     public function contacts(){
         $pageData = [

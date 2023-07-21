@@ -35,6 +35,7 @@ Route::get('/blog', [IndexController::class, 'blog'])->name('blog');
 Route::get('/blog/{article}', [IndexController::class, 'articleView']);
 
 Route::get('/cookies', [IndexController::class, 'cookies']);
+Route::get('/terms', [IndexController::class, 'terms'])->name('terms');
 
 
 Route::get('/contacts', [IndexController::class, 'contacts'])->name('contacts');
