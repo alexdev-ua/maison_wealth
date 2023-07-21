@@ -84,8 +84,8 @@
             </div>
         </div>
         <div class="row">
-            @foreach($facilities as $facility)
-            <div class="col-6">
+            @foreach($facilities as $key=>$facility)
+            <div class="col-6 @if($key % 2) pl-0 @else pr-0 @endif">
                 <div class="facility-block">
                     <img src="{{$facility->previewImage()}}" class="facility-bg-image" />
                     <div class="facility-info">
