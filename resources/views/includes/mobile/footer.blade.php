@@ -26,10 +26,10 @@
 			</div>
 			<div class="row mt-5 pt-3">
 				<div class="col-6">
-					<a href="" class="custom-link white-link footer-link">Terms &<br>Conditions</a>
+					<a href="{{route('terms')}}" class="custom-link white-link footer-link">Terms &<br>Conditions</a>
 				</div>
 				<div class="col-6 text-right">
-					<a href="" class="custom-link white-link footer-link">Privacy<br>Policy</a>
+					<a href="{{route('terms')}}" class="custom-link white-link footer-link">Privacy<br>Policy</a>
 				</div>
 			</div>
 			<div class="mt-5">

@@ -32,10 +32,10 @@
 				</div>
 				<div class="col-6 row">
 					<div class="col-4">
-						<a href="" class="custom-link white-link footer-link">Terms & Conditions</a>
+						<a href="{{route('terms')}}" class="custom-link white-link footer-link">Terms & Conditions</a>
 					</div>
 					<div class="col-4">
-						<a href="" class="custom-link white-link footer-link">Privacy Policy</a>
+						<a href="{{route('terms')}}" class="custom-link white-link footer-link">Privacy Policy</a>
 					</div>
 				</div>
 			</div>
