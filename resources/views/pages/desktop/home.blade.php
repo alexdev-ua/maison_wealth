@@ -97,7 +97,7 @@
             @foreach($facilities as $key=>$facility)
                 @if($key < 2)
                 <div class="col-4 p-0">
-                    <div class="facility-block animated-block @if($key % 2 == 0)slide-from-bottom @else slide-from-top @endif">
+                    <div class="facility-block animated-block @if($key % 2 == 0)slide-from-top @else slide-from-bottom @endif">
                         <img src="{{$facility->previewImage()}}" class="facility-bg-image" />
                         <div class="facility-info">
                             <div class="bottom-block">
