@@ -76,7 +76,7 @@
                         <div class="col-6 pr-0 animated-block slide-from-bottom">
                             <div class="content-wraper gray-bg page-block-content">
                                 <div class="page-block-content top-content pl-0">
-                                    <p class="page-block-description text-left font-normal">About Direction</p>
+                                    <p class="page-block-description text-left font-normal">About Offer</p>
                                 </div>
                                 <div>
                                     <p class="page-screen-heading text-left mb-2 mt-1">{{$feature->translate($activeLang)->text}}</p>
@@ -85,7 +85,7 @@
                                     @endif
                                     @if($feature->list())
                                         <ul class="custom-list">
-                                        @foreach($feature->list()->items() as $listItem)
+                                        @foreach($feature->list()->items as $listItem)
                                             <li><img src="/images/ic_arrow_right.svg" class="list-icon"> {{$listItem->translate($activeLang)->title}}</li>
                                         @endforeach
                                         </ul>

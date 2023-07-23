@@ -84,7 +84,7 @@
 
                 @if($feature->list())
                     <ul class="custom-list">
-                    @foreach($feature->list()->items() as $listItem)
+                    @foreach($feature->list()->items as $listItem)
                         <li><img src="/images/ic_arrow_right.svg" class="list-icon"> {{$listItem->translate($activeLang)->title}}</li>
                     @endforeach
                     </ul>
