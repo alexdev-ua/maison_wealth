@@ -84,7 +84,7 @@
                 <div class="dash-main-block-content dash-main-requests-content">
                     @if(count($dashStats['formRequests']['list']))
                         @foreach($dashStats['formRequests']['list'] as $formRequest)
-                        <div class="dash-request-item dash-new-request">
+                        <div class="dash-request-item @if($formRequest->isNew()) dash-new-request @endif">
                             @if($formRequest->isNew())
                             <span class="dash-request-new">new</span>
                             @endif
