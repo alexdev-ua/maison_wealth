@@ -38,7 +38,7 @@ class FormRequest extends Model
     }
 
     public function isNew(){
-        $today = strtotime(date("d.m.Y"));
+        $today = strtotime(date("d.m.Y H:i:s"));
 
         $requestTime = strtotime($this->created_at);
 
