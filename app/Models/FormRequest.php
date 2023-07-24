@@ -17,7 +17,8 @@ class FormRequest extends Model
         'message',
         'has_whatsapp',
         'type',
-        'country_code'
+        'country_code',
+        'page'
     ];
 
     public function fullName(){

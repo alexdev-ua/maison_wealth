@@ -13,6 +13,8 @@ use App\Models\Helper;
 use App\Models\Lang;
 use App\Models\Country;
 
+use Illuminate\Http\Request;
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -78,6 +80,8 @@ class Controller extends BaseController
                 View::share(['dashLang' => $this->activeDashboardLang]);
                 View::share(['activeLang' => $this->activeLang]);
             }
+
+            View::share(['currentUrl' => url()->full()]);
 
             return $next($request);
 

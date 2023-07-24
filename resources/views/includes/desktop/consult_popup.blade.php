@@ -48,6 +48,7 @@
                                 <button class="main-btn black-btn inverted-btn submit-btn">Send <span class="btn-icon"></span></button>
                             </div>
                         </div>
+                        <input type="hidden" name="page" value="{{$currentUrl}}" />
                     </form>
                 </div>
             </div>
