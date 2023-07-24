@@ -42,6 +42,6 @@ class FormRequest extends Model
 
         $requestTime = strtotime($this->created_at);
 
-        return $requestTime == $today;
+        return ($today - $requestTime < 60*60*24) ? true : false;
     }
 }
