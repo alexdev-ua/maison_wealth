@@ -38,7 +38,7 @@
                         <div class="col-6 p-1">
                             @if($property->price)
                             <p class="property-desc-item">
-                                <span class="property-desc-label">Price</span> from {{$property->price()}}$
+                                <span class="property-desc-label">Price</span> from {{$property->priceNumber()}}$
                             </p>
                             @endif
                         </div>
