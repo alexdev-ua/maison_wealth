@@ -418,11 +418,16 @@ class Helper
             case 'properties': {
                 $record = new Property;
 
-                $temp = $record->where('status', '=', Property::STATUS_DRAFT)->first();
-                if(!$temp && !$id){
-                    $record = new Property;
-                    $record->price = 0;
-                    $record->save();
+                if($mode == 'add'){
+                    $temp = $record->where('status', '=', Property::STATUS_DRAFT)->first();
+                    if(!$temp && !$id){
+                        $record = new Property;
+                        $record->save();
+                    }else{
+                        if($temp && !$id){
+                            $record = $temp;
+                        }
+                    }
                 }
 
                 $data['directions'] = Direction::get();

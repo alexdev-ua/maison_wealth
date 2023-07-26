@@ -146,8 +146,8 @@ class Property extends Model
         return implode(' / ', $purposes);
     }
 
-    public function price(){
-        return number_format($this->price, 0, '.', ' ');
+    public function priceNumber(){
+        return ($this->price !== NULL) ? number_format($this->price, 0, '.', ' ') : $this->price;
     }
 
     public static function getAll($location, $options){
