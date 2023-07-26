@@ -286,7 +286,7 @@ class Helper
 				break;
 			}
             case 'properties': {
-                $records = Property::get();
+                $records = Property::where('status', '!=', Property::STATUS_DRAFT)->get();
                 break;
             }
             case 'property-options': {
