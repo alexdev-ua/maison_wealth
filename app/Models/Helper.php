@@ -421,6 +421,7 @@ class Helper
                 $temp = $record->where('status', '=', Property::STATUS_DRAFT)->first();
                 if(!$temp && !$id){
                     $record = new Property;
+                    $record->price = 0;
                     $record->save();
                 }
 
