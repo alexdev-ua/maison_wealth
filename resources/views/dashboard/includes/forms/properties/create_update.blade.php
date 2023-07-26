@@ -242,7 +242,7 @@
                             </div>
                             <div class="form-group mt-3">
                                 <label>Description</label>
-                                <input type="text" name="page_description_{{$lang->id}}" class="form-control dash-input" autocomplete="off" value="@if($record->translate($lang->id)){{$record->translate($lang->id)->page_description}}@endif" />
+                                <textarea name="page_description_{{$lang->id}}" class="form-control dash-input" autocomplete="off" rows="2">@if($record->translate($lang->id)){{$record->translate($lang->id)->page_description}}@endif</textarea>
                             </div>
                         </div>
                         @endforeach

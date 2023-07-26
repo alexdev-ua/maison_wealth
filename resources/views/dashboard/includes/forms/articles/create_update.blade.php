@@ -69,7 +69,7 @@
                             </div>
                             <div class="form-group mt-3">
                                 <label>Description</label>
-                                <input type="text" name="description_{{$lang->id}}" class="form-control dash-input" autocomplete="off" value="@if($record->translate($lang->id)){{$record->translate($lang->id)->description}}@endif" />
+                                <textarea name="description_{{$lang->id}}" class="form-control dash-input" autocomplete="off" rows="2">@if($record->translate($lang->id)){{$record->translate($lang->id)->description}}@endif</textarea>
                             </div>
 
                         </div>
@@ -95,18 +95,15 @@
                                 <label>Title</label>
                                 <input type="text" name="page_title_{{$lang->id}}" class="form-control dash-input" autocomplete="off" value="@if($record->translate($lang->id)){{$record->translate($lang->id)->page_title}}@endif" />
                             </div>
+                            <div class="form-group mt-3">
+                                <label>Options title</label>
+                                <input type="text" name="page_options_title_{{$lang->id}}" class="form-control dash-input" autocomplete="off" value="@if($record->translate($lang->id)){{$record->translate($lang->id)->page_options_title}}@endif" />
+                            </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Description</label>
-                                <input type="text" name="page_description_{{$lang->id}}" class="form-control dash-input" autocomplete="off" value="@if($record->translate($lang->id)){{$record->translate($lang->id)->page_description}}@endif" />
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label>Options title</label>
-                                <input type="text" name="page_options_title_{{$lang->id}}" class="form-control dash-input" autocomplete="off" value="@if($record->translate($lang->id)){{$record->translate($lang->id)->page_options_title}}@endif" />
+                                <textarea name="page_description_{{$lang->id}}" class="form-control dash-input" autocomplete="off" rows="5">@if($record->translate($lang->id)){{$record->translate($lang->id)->page_description}}@endif</textarea>
                             </div>
                         </div>
                     </div>

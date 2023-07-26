@@ -306,7 +306,7 @@ class Helper
                 break;
             }
             case 'directions': {
-                $records = Direction::get();
+                $records = Direction::where('status', '!=', Direction::STATUS_DRAFT)->get();
                 break;
             }
             case 'direction-options': {
@@ -350,7 +350,7 @@ class Helper
                 break;
             }
             case 'articles': {
-                $records = BlogArticle::get();
+                $records = BlogArticle::where('status', '!=', BlogArticle::STATUS_DRAFT)->get();
                 break;
             }
             case 'article-options': {
@@ -392,10 +392,16 @@ class Helper
             case 'directions': {
                 $record = new Direction;
 
-                $temp = $record->where('status', '=', Direction::STATUS_DRAFT)->first();
-                if(!$temp && !$id){
-                    $record = new Direction;
-                    $record->save();
+                if($mode == 'add'){
+                    $temp = $record->where('status', '=', Direction::STATUS_DRAFT)->first();
+                    if(!$temp && !$id){
+                        $record = new Direction;
+                        $record->save();
+                    }else{
+                        if($temp && !$id){
+                            $record = $temp;
+                        }
+                    }
                 }
 
                 $data['countries'] = Country::get();
@@ -469,11 +475,18 @@ class Helper
             case 'articles': {
                 $record = new BlogArticle;
 
-                $temp = $record->where('status', '=', BlogArticle::STATUS_DRAFT)->first();
-                if(!$temp && !$id){
-                    $record = new BlogArticle;
-                    $record->save();
+                if($mode == 'add'){
+                    $temp = $record->where('status', '=', BlogArticle::STATUS_DRAFT)->first();
+                    if(!$temp && !$id){
+                        $record = new BlogArticle;
+                        $record->save();
+                    }else{
+                        if($temp && !$id){
+                            $record = $temp;
+                        }
+                    }
                 }
+
                 break;
             }
             case 'article-options': {

@@ -42,11 +42,11 @@
             </div>
             <div class="form-group mt-3 textInputGroup toggle-input">
                 <label>Text</label>
-                <input type="text" name="text_{{$lang->id}}" class="form-control dash-input" autocomplete="off" value="@if($record->translate($lang->id)){{$record->translate($lang->id)->text}}@endif" />
+                <textarea name="text_{{$lang->id}}" class="form-control dash-input" autocomplete="off" rows="3">@if($record->translate($lang->id)){{$record->translate($lang->id)->text}}@endif</textarea>
             </div>
             <div class="form-group mt-3 descriptionInputGroup toggle-input active-input">
                 <label>Description</label>
-                <input type="text" name="description_{{$lang->id}}" class="form-control dash-input" autocomplete="off" value="@if($record->translate($lang->id)){{$record->translate($lang->id)->description}}@endif" />
+                <textarea name="description_{{$lang->id}}" class="form-control dash-input" autocomplete="off" rows="5">@if($record->translate($lang->id)){{$record->translate($lang->id)->description}}@endif</textarea>
             </div>
         </div>
         @endforeach

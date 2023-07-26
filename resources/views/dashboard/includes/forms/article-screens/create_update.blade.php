@@ -48,11 +48,11 @@
             </div>
             <div class="form-group mt-3">
                 <label>Heading</label>
-                <input type="text" name="heading_{{$lang->id}}" class="form-control dash-input" autocomplete="off" value="@if($record->translate($lang->id)){{$record->translate($lang->id)->heading}}@endif" />
+                <textarea name="heading_{{$lang->id}}" class="form-control dash-input" autocomplete="off" rows="3">@if($record->translate($lang->id)){{$record->translate($lang->id)->heading}}@endif</textarea>
             </div>
             <div class="form-group mt-3">
                 <label>Description</label>
-                <input type="text" name="description_{{$lang->id}}" class="form-control dash-input" autocomplete="off" value="@if($record->translate($lang->id)){{$record->translate($lang->id)->description}}@endif" />
+                <textarea name="description_{{$lang->id}}" class="form-control dash-input" autocomplete="off" rows="5">@if($record->translate($lang->id)){{$record->translate($lang->id)->description}}@endif</textarea>
             </div>
         </div>
         @endforeach
