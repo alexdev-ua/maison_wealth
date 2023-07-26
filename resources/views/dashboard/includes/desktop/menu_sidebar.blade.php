@@ -9,7 +9,7 @@
             <span class="link-title">Properties</span>
         </a>
         <a href="{{route('dashboard')}}/directions" class="link-item @if($data['page'] == 'directions')active-link @endif">
-            <span class="link-icon"><i class="fas fa-globe-europe"></i></span>
+            <span class="link-icon"><i class="fas fa-map-marked-alt"></i></span>
             <span class="link-title">Directions</span>
         </a>
         <a href="{{route('dashboard')}}/countries" class="link-item @if($data['page'] == 'countries')active-link @endif">
