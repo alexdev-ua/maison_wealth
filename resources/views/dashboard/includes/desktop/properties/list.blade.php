@@ -30,7 +30,7 @@
         {{$record->translate($dashLang)->title}}
     </div>
     <div class="dash-table-column direction-column col-2 pt-4">
-        {{$record->direction($dashLang)}}
+        {{$record->getDirection()->country($dashLang)}}({{$record->direction($dashLang)}})
     </div>
     <div class="dash-table-column for-column text-center col-4">
         <div class="row pt-3">
