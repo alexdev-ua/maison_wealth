@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Cookie;
 use App\Models\Helper;
 use App\Models\Lang;
 use App\Models\Media;
+use App\Models\Page;
 
 class DashboardController extends Controller
 {
@@ -59,6 +60,10 @@ class DashboardController extends Controller
 			$modal = [
 				'title' => ucfirst($model),
 			];
+
+			if($model == 'pages'){
+				$data['availablePages'] = Page::AVAILABLE_PAGES;
+			}
 
 			return View::make('dashboard.pages.desktop.'.$model.'.index')->with([
 				'data' => $data,

@@ -1,22 +1,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<meta name="title" content="{{ isset($pageData['title']) ? $pageData['title'] : null }}" />
-<meta name="description" content="{{ isset($pageData['description']) ? $pageData['description'] : null }}" />
-<meta name="keywords" content="{{ isset($pageData['keywords']) ? $pageData['keywords'] : null }}" />
+<meta name="title" content="@if(isset($page['meta_title'])){{$page['meta_title']}}@endif" />
+<meta name="description" content="@if(isset($page['meta_description'])){{$page['meta_description']}}@endif" />
+<meta name="keywords" content="@if(isset($page['meta_description'])){{$page['meta_keywords']}}@endif" />
 
-<meta property="og:title" content="{{ isset($pageData['title']) ? $pageData['title'] : null }}" />
-<meta property="og:description" content="{{ isset($pageData['description']) ? $pageData['description'] : null }}" />
+<meta property="og:title" content="@if(isset($page['title'])){{$page['title']}}@endif" />
+<meta property="og:description" content="@if(isset($page['meta_description'])){{$page['meta_description']}}@endif" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Maison Wealth" />
 <meta property="og:image" content="{{route('home')}}/images/ic_logo_red.svg" />
 
 <meta property="twitter:card" content="summary" />
-<meta property="twitter:title" content="{{ isset($pageData['title']) ? $pageData['title'] : null }}" />
-<meta property="twitter:description" content="{{ isset($pageData['description']) ? $pageData['description'] : null }}" />
+<meta property="twitter:title" content="@if(isset($page['title'])){{$page['title']}}@endif" />
+<meta property="twitter:description" content="@if(isset($page['meta_description'])){{$page['meta_description']}}@endif" />
 <meta property="twitter:image:src" content="{{route('home')}}/images/ic_logo_red.svg" />
 
-<title>{{ isset($pageData['title']) ? $pageData['title'] : 'Maison Wealth' }}</title>
+<title>{{ isset($page['title']) ? $page['title'] : 'Maison Wealth' }}</title>
 <link rel="shortcut icon" sizes="16x16 32x32 64x64"
 href="/images/ic_logo_red.svg" type="image/x-icon" />
 <link rel="icon" href="/images/ic_logo_red.svg" type="image/x-icon" />

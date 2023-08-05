@@ -6,8 +6,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Models\Admin;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Schema;
 
 class AdminLoginController extends Controller
 {

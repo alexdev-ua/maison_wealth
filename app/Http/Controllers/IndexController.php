@@ -20,13 +20,10 @@ use App\Models\KommoCRM;
 class IndexController extends Controller
 {
     public function index(Request $request){
-        $pageData = [
-            'title' => 'Maison Wealth',
-            'description' => 'Maison Wealth is a professional real estate investment firm offering customized solutions and a proven track record of analyzing and identifying lucrative investment opportunities. Our main goal is to maximize your profits by offering exclusive deals on rare land and real estate projects that maintain their value over time. What are you waiting for? Start to Invest!'
-        ];
+        $this->setPageMeta('home');
 
         $utm = [];
-
+        // utm labels for CRM
         if($request->utm_content){
             $utm['UTM_CONTENT'] = $request->utm_content; // 1220910
         }
@@ -60,7 +57,6 @@ class IndexController extends Controller
         $facilities = Property::getFacilities();
 
         return View::make('pages.'.$this->viewPath .'.home')->with([
-            'pageData' => $pageData,
             'activePage' => 'home',
             'directions' => $directions,
             'facilities' => $facilities
@@ -68,10 +64,8 @@ class IndexController extends Controller
     }
 
     public function properties($location='all', Request $request){
-        $pageData = [
-            'title' => 'Maison Wealth - Properties',
-            'description' => 'Maison Wealth is a professional real estate investment firm offering customized solutions and a proven track record of analyzing and identifying lucrative investment opportunities. Our main goal is to maximize your profits by offering exclusive deals on rare land and real estate projects that maintain their value over time. What are you waiting for? Start to Invest!'
-        ];
+        $this->setPageMeta('properties');
+
         $options = [];
         if($request->price){
             $options['price'] = $request->price;
@@ -91,7 +85,6 @@ class IndexController extends Controller
                 'location' => $location,
                 'properties' => $properties,
                 'investPrice' => $request->price,
-                'pageData' => $pageData,
                 'partial' => false,
                 'activePage' => 'properties',
                 'directions' => $directions
@@ -100,98 +93,74 @@ class IndexController extends Controller
     }
 
     public function propertyView($property, Request $request){
-        $pageData = [
-            'title' => 'Maison Wealth',
-            'description' => 'Maison Wealth is a professional real estate investment firm offering customized solutions and a proven track record of analyzing and identifying lucrative investment opportunities. Our main goal is to maximize your profits by offering exclusive deals on rare land and real estate projects that maintain their value over time. What are you waiting for? Start to Invest!'
-        ];
         $propertyItem = Property::getByKey($property);
         if(!$propertyItem){
             abort(404);
         }
+        $this->setPageMeta('property-view', ['property' => $propertyItem->translate($this->activeLang)->title]);
 
         return View::make('pages.'.$this->viewPath .'.property_view')->with([
             'property' => $propertyItem,
-            'pageData' => $pageData,
             'activePage' => 'property-view',
         ]);
     }
 
     public function country(Request $request){
-        $pageData = [
-            'title' => 'Maison Wealth - Countries',
-            'description' => 'Maison Wealth is a professional real estate investment firm offering customized solutions and a proven track record of analyzing and identifying lucrative investment opportunities. Our main goal is to maximize your profits by offering exclusive deals on rare land and real estate projects that maintain their value over time. What are you waiting for? Start to Invest!'
-        ];
+        $this->setPageMeta('countries');
 
         $directions = Direction::getAll();
 
         return View::make('pages.'.$this->viewPath .'.country')->with([
-            'pageData' => $pageData,
             'activePage' => 'countries',
             'directions' => $directions
         ]);
     }
 
     public function directionView($direction, Request $request){
-        $pageData = [
-            'title' => 'Maison Wealth',
-            'description' => 'Maison Wealth is a professional real estate investment firm offering customized solutions and a proven track record of analyzing and identifying lucrative investment opportunities. Our main goal is to maximize your profits by offering exclusive deals on rare land and real estate projects that maintain their value over time. What are you waiting for? Start to Invest!'
-        ];
         $directionItem = Direction::getByKey($direction);
         if(!$directionItem){
             abort(404);
         }
+        $this->setPageMeta('direction-view', ['direction' => $directionItem->translate($this->activeLang)->title]);
 
         return View::make('pages.'.$this->viewPath .'.direction_view')->with([
             'direction' => $directionItem,
-            'pageData' => $pageData,
             'activePage' => 'direction-view',
         ]);
     }
 
     public function about(){
-        $pageData = [
-            'title' => 'Maison Wealth - About us',
-            'description' => 'Maison Wealth is a professional real estate investment firm offering customized solutions and a proven track record of analyzing and identifying lucrative investment opportunities. Our main goal is to maximize your profits by offering exclusive deals on rare land and real estate projects that maintain their value over time. What are you waiting for? Start to Invest!'
-        ];
+        $this->setPageMeta('about');
 
         $testimonials = Testimonial::getAll();
 
         return View::make('pages.'.$this->viewPath .'.about')->with([
-            'pageData' => $pageData,
             'activePage' => 'about',
             'testimonials' => $testimonials
         ]);
     }
 
     public function blog(){
-        $pageData = [
-            'title' => 'Maison Wealth - Blog',
-            'description' => 'Maison Wealth is a professional real estate investment firm offering customized solutions and a proven track record of analyzing and identifying lucrative investment opportunities. Our main goal is to maximize your profits by offering exclusive deals on rare land and real estate projects that maintain their value over time. What are you waiting for? Start to Invest!'
-        ];
+        $this->setPageMeta('blog');
 
         $articles = BlogArticle::getAll();
 
         return View::make('pages.'.$this->viewPath .'.blog')->with([
-            'pageData' => $pageData,
             'activePage' => 'blog',
             'articles' => $articles
         ]);
     }
 
     public function articleView($article, Request $request){
-        $pageData = [
-            'title' => 'Maison Wealth',
-            'description' => 'Maison Wealth is a professional real estate investment firm offering customized solutions and a proven track record of analyzing and identifying lucrative investment opportunities. Our main goal is to maximize your profits by offering exclusive deals on rare land and real estate projects that maintain their value over time. What are you waiting for? Start to Invest!'
-        ];
-
         $articleItem = BlogArticle::getByKey($article);
 
         if(!$articleItem){
             abort(404);
         }
 
+        $this->setPageMeta('article-view', ['article' => $articleItem->translate($this->activeLang)->title]);
+
         return View::make('pages.'.$this->viewPath .'.article_view')->with([
-            'pageData' => $pageData,
             'activePage' => 'article-view',
             'article' => $articleItem
         ]);
@@ -203,25 +172,18 @@ class IndexController extends Controller
     }
 
     public function terms(Request $request){
-        $pageData = [
-            'title' => 'Maison Wealth - Terms and conditions',
-            'description' => 'Maison Wealth is a professional real estate investment firm offering customized solutions and a proven track record of analyzing and identifying lucrative investment opportunities. Our main goal is to maximize your profits by offering exclusive deals on rare land and real estate projects that maintain their value over time. What are you waiting for? Start to Invest!'
-        ];
+        $this->setPageMeta('terms');
 
         return View::make('pages.'.$this->viewPath .'.terms')->with([
-            'pageData' => $pageData,
             'activePage' => 'terms'
         ]);
     }
 
 
     public function contacts(){
-        $pageData = [
-            'title' => 'Maison Wealth - Contacts',
-            'description' => 'Maison Wealth is a professional real estate investment firm offering customized solutions and a proven track record of analyzing and identifying lucrative investment opportunities. Our main goal is to maximize your profits by offering exclusive deals on rare land and real estate projects that maintain their value over time. What are you waiting for? Start to Invest!'
-        ];
+        $this->setPageMeta('contacts');
+
         return View::make('pages.'.$this->viewPath .'.contacts')->with([
-            'pageData' => $pageData,
             'activePage' => 'contacts',
         ]);
     }

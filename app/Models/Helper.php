@@ -279,6 +279,30 @@ class Helper
         return $response;
     }
 
+    public static function getMeta($key, $lang, $data=[]){
+        $pageModel = Page::where('key', '=', $key)->first();
+
+        if($pageModel){
+            $pageMeta = $pageModel->meta($lang);
+            if($pageMeta){
+                if(count($data)){
+                  foreach($data as $key=>$value){
+                    $pageMeta->title = str_ireplace('{'.$key.'}', $value, $pageMeta->title);
+                    $pageMeta->meta_title = str_ireplace('{'.$key.'}', $value, $pageMeta->meta_title);
+                    $pageMeta->meta_description = str_ireplace('{'.$key.'}', $value, $pageMeta->meta_description);
+                  }
+                }
+                return [
+                    'title' => $pageMeta->title,
+                    'meta_title' => $pageMeta->meta_title,
+                    'meta_description' => $pageMeta->meta_description,
+                    'meta_keywords' => $pageMeta->meta_keywords,
+                ];
+            }
+        }
+        return [];
+    }
+
     public static function getRecords($model, $parentId = null){
         switch($model){
 			case 'langs': {
@@ -367,6 +391,10 @@ class Helper
                     $records = $records->where('blog_article_id', '=', $parentId);
                 }
                 $records = $records->get();
+                break;
+            }
+            case 'pages': {
+                $records = Page::get();
                 break;
             }
 		}
@@ -503,11 +531,24 @@ class Helper
                 }
                 break;
             }
+            case 'pages': {
+                if(!$record = Page::where('key', '=', $id)->first()){
+                    $record = new Page;
+                    $record->key = $id;
+                    $record->save();
+                }
+                $data['availablePages'] = Page::AVAILABLE_PAGES;
+                break;
+            }
 
         }
 
         if($mode != 'add'){
-            $record = $record::find($id);
+            if($model == 'pages'){
+                $record = $record::where('key', '=', $id)->first();
+            }else{
+                $record = $record::find($id);
+            }
 
             if($mode == 'delete'){
                 $data['form'] = ['text' => 'Are you sure to delete this record?'];
@@ -716,6 +757,16 @@ class Helper
                 }
                 break;
             }
+            case 'pages' :{
+                $recordModel = new Page;
+
+                $fillParams = $params;
+
+                foreach($langs as $key=>$langId){
+                    $rules['title_'.$langId] = ['required'];
+                }
+                break;
+            }
             /*case 'admins' :{
                 $recordModel = new Admin;
                 $rules = [
@@ -912,6 +963,17 @@ class Helper
                     $parentId = $record->blog_article_id;
                     break;
                 }
+                case 'pages':{
+                    $translateModel = new PageMeta;
+                    $recordIdField = 'page_id';
+                    $fields = [
+                        'title',
+                        'meta_title',
+                        'meta_description',
+                        'meta_keywords'
+                    ];
+                    break;
+                }
             }
 
             if(count($fields)){
@@ -939,7 +1001,8 @@ class Helper
                     'id' => $id,
                     'model' => $model,
                     'mode' => $mode,
-                    'parentId' => $parentId
+                    'parentId' => $parentId,
+                    'record' => $record
                 ]
             ];
         }
@@ -1028,8 +1091,8 @@ class Helper
     }
 
     public static function getStats(){
-        $propertiesCount = Property::where('status', '!=', BlogArticle::STATUS_DRAFT)->count();
-        $directionsCount = Direction::where('status', '!=', BlogArticle::STATUS_DRAFT)->count();
+        $propertiesCount = Property::where('status', '!=', Property::STATUS_DRAFT)->count();
+        $directionsCount = Direction::where('status', '!=', Direction::STATUS_DRAFT)->count();
         $articlesCount = BlogArticle::where('status', '!=', BlogArticle::STATUS_DRAFT)->count();
 
         $formRequests = FormRequest::orderBy('created_at', 'DESC')->get();
@@ -1053,10 +1116,10 @@ class Helper
         ];
 
         if($propertiesCount){
-            $stats['properties']['image'] = Property::where('status', '!=', BlogArticle::STATUS_DRAFT)->inRandomOrder()->first()->previewImage();
+            $stats['properties']['image'] = Property::where('status', '!=', Property::STATUS_DRAFT)->inRandomOrder()->first()->previewImage();
         }
         if($directionsCount){
-            $stats['directions']['image'] = Direction::where('status', '!=', BlogArticle::STATUS_DRAFT)->inRandomOrder()->first()->previewImage();
+            $stats['directions']['image'] = Direction::where('status', '!=', Direction::STATUS_DRAFT)->inRandomOrder()->first()->previewImage();
         }
         if($articlesCount){
             $stats['articles']['image'] = BlogArticle::where('status', '!=', BlogArticle::STATUS_DRAFT)->inRandomOrder()->first()->bannerImage();

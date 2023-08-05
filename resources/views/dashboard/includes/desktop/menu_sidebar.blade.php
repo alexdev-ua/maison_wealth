@@ -37,11 +37,11 @@
             <span class="link-icon"><i class="far fa-comments"></i></span>
             <span class="link-title">Testimonials</span>
         </a>
-        <!--<a class="link-item">
+        <a href="{{route('dashboard')}}/pages" class="link-item @if($data['page'] == 'pages')active-link @endif">
             <span class="link-icon"><i class="fas fa-file-invoice"></i></span>
             <span class="link-title">Pages&SEO</span>
         </a>
-        <a class="link-item">
+        <!--<a class="link-item">
             <span class="link-icon"><i class="fas fa-user-shield"></i></span>
             <span class="link-title">Managers</span>
         </a>-->

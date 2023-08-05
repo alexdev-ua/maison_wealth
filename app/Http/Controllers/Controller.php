@@ -24,6 +24,7 @@ class Controller extends BaseController
     public $activeDashboardLang = 1;
     public $langs;
     public $activeLang;
+    public $lang = 'en';
 
     public function __construct()
 	{
@@ -88,5 +89,15 @@ class Controller extends BaseController
         });
 
 	}
+
+    public function setPageMeta($key, $data=[]){
+        $lang = Lang::where('code', '=', $this->lang)->first();
+        if($lang){
+            $langId = $lang->id;
+            if($langId){
+                View::share(['page' => Helper::getMeta($key, $langId, $data)]);
+            }
+        }
+    }
 
 }
