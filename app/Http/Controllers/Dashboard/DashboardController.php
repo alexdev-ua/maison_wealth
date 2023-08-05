@@ -40,9 +40,13 @@ class DashboardController extends Controller
 	public function list($model, Request $request){
 
 		$records = Helper::getRecords($model, $request->id);
+		if($model == 'pages'){
+			$data['availablePages'] = Page::AVAILABLE_PAGES;
+		}
 
 		if($request->ajax()){
 			return View::make('dashboard.includes.desktop.'.$model.'.list')->with([
+				'data' => $data,
 				'records' => $records,
 			]);
 		}else{
@@ -60,10 +64,6 @@ class DashboardController extends Controller
 			$modal = [
 				'title' => ucfirst($model),
 			];
-
-			if($model == 'pages'){
-				$data['availablePages'] = Page::AVAILABLE_PAGES;
-			}
 
 			return View::make('dashboard.pages.desktop.'.$model.'.index')->with([
 				'data' => $data,
