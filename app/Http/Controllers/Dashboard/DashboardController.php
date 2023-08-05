@@ -38,8 +38,13 @@ class DashboardController extends Controller
 	}
 
 	public function list($model, Request $request){
-
 		$records = Helper::getRecords($model, $request->id);
+
+		$data = [
+			'title' => 'MW Dashboard - '.ucfirst($model),
+			'page' => $model,
+		];
+
 		if($model == 'pages'){
 			$data['availablePages'] = Page::AVAILABLE_PAGES;
 		}
@@ -50,11 +55,6 @@ class DashboardController extends Controller
 				'records' => $records,
 			]);
 		}else{
-			$data = [
-				'title' => 'MW Dashboard - '.ucfirst($model),
-				'page' => $model,
-			];
-
 			if($this->platform != 'desktop'){
 				return View::make('dashboard.pages.in_development')->with([
 					'data' => $data,
