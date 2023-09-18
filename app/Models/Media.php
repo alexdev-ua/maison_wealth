@@ -40,8 +40,8 @@ class Media extends Model
             $file->move($path, $mediaFile);
 
             // reduce quality
-    		//$image = Image::make($path.'/'.$mediaFile);
-    		//$image->save($path.'/'.$mediaFile, 50);
+    		$image = Image::make($path.'/'.$mediaFile);
+    		$image->save($path.'/'.$mediaFile, 50);
 
             $mediaModel = new Media;
             $mediaModel->filename = $mediaFile;

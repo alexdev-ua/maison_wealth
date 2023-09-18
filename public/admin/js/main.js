@@ -496,8 +496,8 @@ function readFiles(files, container) {
             //img.src = e.target.result;
             var img = new Image();
             img.onload = function(){
-                imageWidth = this.width,
-                imageHeight = this.height;
+                imageWidth = this.naturalWidth,
+                imageHeight = this.naturalHeight;
                 var aspectRatio = imageWidth / imageHeight;
 
                 /*if(aspectRatio >= 1){
