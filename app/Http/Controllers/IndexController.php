@@ -336,7 +336,7 @@ class IndexController extends Controller
                     $log['result'] = KommoCRM::sendLead($contactParams, $requestType);
 
                     // send logs
-                    //Helper::sendTelegramLogs(json_encode($log), "-909344007");
+                    Helper::sendTelegramLogs(json_encode($log), "-4161873707");
 
                     // send requests to telegram
         	        Helper::sendTelegramNotification($notification, "-905680561");
