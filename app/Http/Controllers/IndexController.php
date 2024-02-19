@@ -321,13 +321,13 @@ class IndexController extends Controller
                     'params' => $contactParams,
                 ];
 
-                //$log['result'] = KommoCRM::sendLead($contactParams, $requestType);
+                $log['result'] = KommoCRM::sendLead($contactParams, $requestType);
 
                 // send logs
                 Helper::sendTelegramLogs(json_encode($log), "-4161873707");
 
                 // send requests to telegram
-    	        //Helper::sendTelegramNotification($notification, "-905680561");
+    	        Helper::sendTelegramNotification($notification, "-905680561");
 
                 /*if($requestType == 'popup-consultation'){
                     Cookie::queue(Cookie::make('popupConsultShowed', 1, 60*24*30));
