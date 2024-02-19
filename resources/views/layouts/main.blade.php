@@ -56,5 +56,6 @@
 			@endif
 		@endif
 
+		<script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=en' async defer></script>
 	</body>
 </html>

@@ -1,3 +1,8 @@
+var contactRecaptcha,
+	consultationRecaptcha,
+	consultation2Recaptcha,
+	notFoundConsultationRecaptcha;
+
 $(document).ready(function(){
 
 	if($('.cookies-panel').length){
@@ -128,6 +133,14 @@ $(document).ready(function(){
 
 						$(form).find('.submit-btn').attr('disabled', false);
                     }
+					if(form.attr('id') == 'contactForm'){
+						grecaptcha.reset(contactRecaptcha);
+					}else if(form.attr('id') == 'consultationForm'){
+						grecaptcha.reset(consultationRecaptcha);
+						grecaptcha.reset(consultation2Recaptcha);
+					}else if(form.attr('id') == 'notFoundConsultationForm'){
+						grecaptcha.reset(notFoundConsultationRecaptcha);
+					}
 				},
 				error:function(data){
 					var errors = data.responseJSON.errors;
@@ -137,6 +150,14 @@ $(document).ready(function(){
                         $(form).find('.custom-input[name="'+input+'"]').after('<span class="invalid-feedback" role="alert">'+error+'</span>');
 					});
                     $(form).find('.submit-btn').attr('disabled', false);
+
+					if(form.attr('id') == 'contactForm'){
+						grecaptcha.reset(contactRecaptcha);
+					}else if(form.attr('id') == 'consultationForm'){
+						grecaptcha.reset(consultationRecaptcha);
+					}else if(form.attr('id') == 'notFoundConsultationForm'){
+						grecaptcha.reset(notFoundConsultationRecaptcha);
+					}
 				}
 			});
 		}
@@ -183,5 +204,34 @@ function popUp(popUp){
 		$('body').css('overflow', 'hidden');
 	}else{
 		$('body').css('overflow', 'auto');
+	}
+}
+
+function onloadCallback(){
+	var sitekey = '6LfT_XcpAAAAABFIQbXMbqMKgQAC0aG6BJ0Q28s5';
+
+	if($('#contactRecaptcha').length){
+		contactRecaptcha = grecaptcha.render('contactRecaptcha', {
+	      'sitekey' : sitekey,
+		  //'size': 'invisible',
+	    });
+	}
+	if($('#consultationRecaptcha').length){
+		consultationRecaptcha = grecaptcha.render('consultationRecaptcha', {
+	      'sitekey' : sitekey,
+		  //'size': 'invisible',
+	    });
+	}
+	if($('#consultation2Recaptcha').length){
+		consultation2Recaptcha = grecaptcha.render('consultation2Recaptcha', {
+	      'sitekey' : sitekey,
+		  //'size': 'invisible',
+	    });
+	}
+	if($('#notFoundConsultationRecaptcha').length){
+		notFoundConsultationRecaptcha = grecaptcha.render('notFoundConsultationRecaptcha', {
+	      'sitekey' : sitekey,
+		  //'size': 'invisible',
+	    });
 	}
 }

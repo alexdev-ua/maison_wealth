@@ -69,6 +69,9 @@
                                 </div>
                             </div>
                             <input type="hidden" name="type" value="contact" />
+
+                            <div id="contactRecaptcha" data-badge="inline"></div>
+                            
                             <div class="row mt-3">
                                 <div class="col-3 mt-4 pt-2">
                                     <button class="main-btn red-btn inverted-btn submit-btn">Send <span class="btn-icon"></span></button>

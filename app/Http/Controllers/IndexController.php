@@ -220,35 +220,24 @@ class IndexController extends Controller
 	  		});
 	    }
 
-        /*$captcha = $request->get('g-recaptcha-response');
+        $captcha = $request->get('g-recaptcha-response');
         if(!$captcha){
             $validator->after(function ($validator) {
-                $validator->errors()->add('g-recaptcha-response', 'reCaptcha error - Not initialized');
+                $validator->errors()->add('g-recaptcha-response', 'Verification not passed');
             });
         }else{
-            if($requestType == 'popup-consultation'){
-                $secretKey = "6Ld68YomAAAAAA_jNU_1GZqJ1ueKpxqCPXExtp3t";
-            }else{
-                $secretKey = "6LcBDYsmAAAAAFqAXXU_oB2cJffb7ti5s9lkXE05";
-            }
+            $secretKey = "6LfT_XcpAAAAAGyDz42S6IqqsRlKTbfjMHiOQ5IY";
+            $ip = $_SERVER['REMOTE_ADDR'];
 
             $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
             $response = file_get_contents($url);
             $responseKeys = json_decode($response,true);
             if(!$responseKeys["success"]) {
                 $validator->after(function ($validator) {
-                    $validator->errors()->add('g-recaptcha-response', 'reCaptcha error - Not authorized');
+                    $validator->errors()->add('g-recaptcha-response', 'Verification not passed');
                 });
-            }else{
-                if($requestType == 'popup-consultation'){
-                    if($responseKeys["score"] < 0.5){
-                        $validator->after(function ($validator) {
-                            $validator->errors()->add('g-recaptcha-response', 'reCaptcha error - Verification not passed');
-                        });
-                    }
-                }
             }
-        }*/
+        }
 
 	    if(!$validator->fails()) {
             $firstName = $request->first_name;
@@ -256,95 +245,93 @@ class IndexController extends Controller
             $phoneCode = $request->phone_code;
             $phone = $phoneCode.$phone;
 
-            if(strpos($firstName, 'Awaps') === false && strpos($lastName, 'Awaps') === false){
-                $hasWhatsapp = 0;
-                if($requestType == 'consultation'){
-                    $hasWhatsapp = $request->has_whatsapp ? 1 : 0;
-                    $data['has_whatsapp'] = $hasWhatsapp;
-                }
-                if($requestType == 'contact'){
-                    $email = $request->email;
-                    $message = $request->message;
-                }
+            $hasWhatsapp = 0;
+            if($requestType == 'consultation'){
+                $hasWhatsapp = $request->has_whatsapp ? 1 : 0;
+                $data['has_whatsapp'] = $hasWhatsapp;
+            }
+            if($requestType == 'contact'){
+                $email = $request->email;
+                $message = $request->message;
+            }
 
-                $data = $request->all();
-                $data['phone'] = $phone;
+            $data = $request->all();
+            $data['phone'] = $phone;
 
-                $newRequest = false;
+            $newRequest = false;
 
-                $formRequest = FormRequest::where('first_name', '=', $firstName)->where('last_name', '=', $lastName)->where('phone', '=', $phone);
+            $formRequest = FormRequest::where('first_name', '=', $firstName)->where('last_name', '=', $lastName)->where('phone', '=', $phone);
 
-                if($requestType == 'contact'){
-                    $formRequest = $formRequest->where('email', '=', $email)->where('message', '=', $message);
-                }
-                $formRequest = $formRequest->where('type', '=', $requestType)->first();
+            if($requestType == 'contact'){
+                $formRequest = $formRequest->where('email', '=', $email)->where('message', '=', $message);
+            }
+            $formRequest = $formRequest->where('type', '=', $requestType)->first();
 
-                if(!$formRequest){
+            if(!$formRequest){
+                $newRequest = true;
+            }else{
+                if(strtotime(date('Y-m-d H:i:s')) - strtotime($formRequest->created_at) > 60){
                     $newRequest = true;
-                }else{
-                    if(strtotime(date('Y-m-d H:i:s')) - strtotime($formRequest->created_at) > 60){
-                        $newRequest = true;
-                    }
+                }
+            }
+
+            if($newRequest){
+                $formRequest = new FormRequest;
+
+                $country = Helper::getCountryByCode($phoneCode);
+                if($country){
+                    $data['country_code'] = $country['code'];
                 }
 
-                if($newRequest){
-                    $formRequest = new FormRequest;
+                $formRequest->fill($data)->save();
 
-                    $country = Helper::getCountryByCode($phoneCode);
-                    if($country){
-                        $data['country_code'] = $country['code'];
-                    }
+                $contactParams = [
+                    "first_name" => $firstName,
+                    "last_name" => $lastName,
+                    "phone" => $phone,
+                    "id" => $formRequest->id,
+                    "page" => $formRequest->page
+                ];
 
-                    $formRequest->fill($data)->save();
+                if($requestType == 'contact'){
+                    $message = $request->message;
+                    $notification = "Contact form:" . "%0A" . "Page: " . $formRequest->page . "%0A" . "First Name: " . $firstName . "%0A" . "Last Name: " . $lastName . "%0A" . "Phone: " . $phone . "%0A" . "Email: " . $email . "%0A" . "Message: " . $message;
 
-                    $contactParams = [
-                        "first_name" => $firstName,
-                        "last_name" => $lastName,
-                        "phone" => $phone,
-                        "id" => $formRequest->id,
-                        "page" => $formRequest->page
-                    ];
+                    $contactParams["email"] = $email;
+                    //$contactParams["message"] = $message;
+                }else{
+                    if($requestType == 'consultation'){
+                        $notification = "Consultation form:" . "%0A" . "Page: " . $formRequest->page . "%0A" . "First Name: " . $firstName . "%0A" . "Last Name: " . $lastName . "%0A" . "Phone: " . $phone . "%0A" . "Has WhatsApp: " . ($hasWhatsapp ? 'yes' : 'no');
 
-                    if($requestType == 'contact'){
-                        $message = $request->message;
-                        $notification = "Contact form:" . "%0A" . "Page: " . $formRequest->page . "%0A" . "First Name: " . $firstName . "%0A" . "Last Name: " . $lastName . "%0A" . "Phone: " . $phone . "%0A" . "Email: " . $email . "%0A" . "Message: " . $message;
-
-                        $contactParams["email"] = $email;
-                        //$contactParams["message"] = $message;
-                    }else{
-                        if($requestType == 'consultation'){
-                            $notification = "Consultation form:" . "%0A" . "Page: " . $formRequest->page . "%0A" . "First Name: " . $firstName . "%0A" . "Last Name: " . $lastName . "%0A" . "Phone: " . $phone . "%0A" . "Has WhatsApp: " . ($hasWhatsapp ? 'yes' : 'no');
-
-                            if($hasWhatsapp){
-                                $contactParams["WhatsApp"] = $hasWhatsapp;
-                            }
+                        if($hasWhatsapp){
+                            $contactParams["WhatsApp"] = $hasWhatsapp;
                         }
                     }
-
-                    $utm = Cookie::get('utm', null);
-                    if($utm){
-                        $utm = json_decode($utm);
-                        $contactParams['utm'] = $utm;
-                    }
-                    $log = [
-                        'project' => 'maisonwealth.com',
-                        'type' => 'Forms requests',
-                        'requestType' => $requestType,
-                        'params' => $contactParams,
-                    ];
-
-                    $log['result'] = KommoCRM::sendLead($contactParams, $requestType);
-
-                    // send logs
-                    Helper::sendTelegramLogs(json_encode($log), "-4161873707");
-
-                    // send requests to telegram
-        	        Helper::sendTelegramNotification($notification, "-905680561");
-
-                    /*if($requestType == 'popup-consultation'){
-                        Cookie::queue(Cookie::make('popupConsultShowed', 1, 60*24*30));
-                    }*/
                 }
+
+                $utm = Cookie::get('utm', null);
+                if($utm){
+                    $utm = json_decode($utm);
+                    $contactParams['utm'] = $utm;
+                }
+                $log = [
+                    'project' => 'maisonwealth.com',
+                    'type' => 'Forms requests',
+                    'requestType' => $requestType,
+                    'params' => $contactParams,
+                ];
+
+                //$log['result'] = KommoCRM::sendLead($contactParams, $requestType);
+
+                // send logs
+                Helper::sendTelegramLogs(json_encode($log), "-4161873707");
+
+                // send requests to telegram
+    	        //Helper::sendTelegramNotification($notification, "-905680561");
+
+                /*if($requestType == 'popup-consultation'){
+                    Cookie::queue(Cookie::make('popupConsultShowed', 1, 60*24*30));
+                }*/
             }
 
             return response(['success' => true], 200);

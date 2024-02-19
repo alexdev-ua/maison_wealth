@@ -35,6 +35,9 @@
                         <label class="custom-label"><input type="checkbox" name="has_whatsapp" value="1" class="custom-input mr-2" />I have a WhatsApp account registered to this phone number</label>
                     </div>
                     <input type="hidden" name="type" value="consultation" />
+
+                    <div id="consultation2Recaptcha" data-badge="inline"></div>
+
                     <div class="mt-5 pt-4 text-center">
                         <button class="main-btn black-btn inverted-btn submit-btn">Send <span class="btn-icon"></span></button>
                     </div>

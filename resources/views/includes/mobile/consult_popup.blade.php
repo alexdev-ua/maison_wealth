@@ -42,6 +42,11 @@
                         </div>
                     </div>
                     <input type="hidden" name="type" value="consultation" />
+
+                    <div class="col-12">
+                        <div id="consultationRecaptcha" data-badge="inline"></div>
+                    </div>
+
                     <div class="col-6 offset-3 mt-4 pt-2">
                         <button class="main-btn black-btn inverted-btn submit-btn">Send <span class="btn-icon"></span></button>
                     </div>
