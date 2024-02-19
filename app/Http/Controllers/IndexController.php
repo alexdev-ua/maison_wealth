@@ -226,7 +226,7 @@ class IndexController extends Controller
                 $validator->errors()->add('g-recaptcha-response', 'Verification not passed');
             });
         }else{
-            $secretKey = "6LfT_XcpAAAAAGyDz42S6IqqsRlKTbfjMHiOQ5IY";
+            $secretKey = env('RECAPTCHA_SECRET_KEY');
             $ip = $_SERVER['REMOTE_ADDR'];
 
             $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
