@@ -133,12 +133,12 @@ $(document).ready(function(){
 
 						$(form).find('.submit-btn').attr('disabled', false);
                     }
-					if(form.attr('id') == 'contactForm'){
+					if($(form).attr('id') == 'contactForm'){
 						grecaptcha.reset(contactRecaptcha);
-					}else if(form.attr('id') == 'consultationForm'){
+					}else if($(form).attr('id') == 'consultationForm'){
 						grecaptcha.reset(consultationRecaptcha);
 						grecaptcha.reset(consultation2Recaptcha);
-					}else if(form.attr('id') == 'notFoundConsultationForm'){
+					}else if($(form).attr('id') == 'notFoundConsultationForm'){
 						grecaptcha.reset(notFoundConsultationRecaptcha);
 					}
 				},
@@ -151,11 +151,11 @@ $(document).ready(function(){
 					});
                     $(form).find('.submit-btn').attr('disabled', false);
 
-					if(form.attr('id') == 'contactForm'){
+					if($(form).attr('id') == 'contactForm'){
 						grecaptcha.reset(contactRecaptcha);
-					}else if(form.attr('id') == 'consultationForm'){
+					}else if($(form).attr('id') == 'consultationForm'){
 						grecaptcha.reset(consultationRecaptcha);
-					}else if(form.attr('id') == 'notFoundConsultationForm'){
+					}else if($(form).attr('id') == 'notFoundConsultationForm'){
 						grecaptcha.reset(notFoundConsultationRecaptcha);
 					}
 				}
